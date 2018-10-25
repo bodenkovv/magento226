@@ -51,7 +51,9 @@
 
         <referenceContainer name="sidebar.additional">
 
+
             <block name="banner" template="Magento_Catalog::baner/baner.phtml"/>
+
 
             <block class="Magento\Framework\View\Element\Template" name="catalog.compare.sidebar"
                    template="Magento_Catalog::product/compare/sidebar.phtml">

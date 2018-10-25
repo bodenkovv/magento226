@@ -37,6 +37,10 @@
 
         <referenceContainer name="content">
             <container name="product.info.main" htmlTag="div" htmlClass="product-info-main" before="-">
+
+
+
+
                 <container name="product.info.price" label="Product info auxiliary container" htmlTag="div" htmlClass="product-info-price">
                     <container name="product.info.stock.sku" label="Product auxiliary info" htmlTag="div" htmlClass="product-info-stock-sku">
                         <container name="product.info.type" before="-"/>
@@ -50,15 +54,30 @@
                             </arguments>
                         </block>
                     </container>
+
+
+                <container name="product.info.extrahint2" as="extrahint2" label="Product View Extra Hint">
+                    <container name="product.info.social2" as="social2"  label="Product social links container" htmlTag="div" htmlClass="product-social-links">
+                        <block class="Magento\Catalog\Block\Product\View" name="product.info.addto2" as="addto2" template="Magento_Catalog::product/view/addto.phtml">
+                            <block class="Magento\Catalog\Block\Product\View\AddTo\Compare" name="view.addto.compare2" as="compare2" after="view.addto.wishlist" template="Magento_Catalog::product/view/addto/compare.phtml" />
+                        </block>
+                        <block class="Magento\Catalog\Block\Product\View" name="product.info.mailto2" as="mail2" template="Magento_Catalog::product/view/mailto.phtml"/>
+                    </container>
+                </container>
+
+
                     <block class="Magento\Catalog\Block\Product\View" name="product.info.review" template="Magento_Catalog::product/view/review.phtml" after="product.info.stock.sku" />
                     <block class="Magento\Catalog\Pricing\Render" name="product.price.final">
                         <arguments>
                             <argument name="price_render" xsi:type="string">product.price.render.default</argument>
                             <argument name="price_type_code" xsi:type="string">final_price</argument>
                             <argument name="zone" xsi:type="string">item_view</argument>
+                            <argument name="bodtest" xsi:type="string">bodtest</argument>
                         </arguments>
+
                     </block>
                 </container>
+
 
 
                 <block class="Magento\Catalog\Pricing\Render" name="product.price.tier" after="product.info.price">
@@ -69,13 +88,17 @@
                     </arguments>
                 </block>
 
+
                 <container name="alert.urls" as="alert_urls" label="Alert Urls" after="product.price.tier"/>
                 <block class="Magento\Catalog\Block\Product\View" name="product.info" template="Magento_Catalog::product/view/form.phtml" after="alert.urls">
                     <container name="product.info.form.content" as="product_info_form_content">
                         <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart" as="addtocart" template="Magento_Catalog::product/view/addtocart.phtml"/>
                     </container>
+
+
                     <block class="Magento\Framework\View\Element\Template" name="product.info.form.options" as="options_container">
                         <block class="Magento\Catalog\Block\Product\View" name="product.info.options.wrapper" as="product_options_wrapper" template="Magento_Catalog::product/view/options/wrapper.phtml">
+
 
                             <block name="banner" template="Magento_Catalog::baner/baner.phtml"/>
 
@@ -142,6 +165,7 @@
                     </arguments>
                 </block>
             </container>
+
             <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.details" template="Magento_Catalog::product/view/details.phtml" after="product.info.media">
                 <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.description" as="description" template="Magento_Catalog::product/view/attribute.phtml" group="detailed_info">
                     <arguments>
