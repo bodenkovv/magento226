@@ -17,4 +17,4 @@
         <move element="product.info.social" destination="product.info.main" before="-"/>
     </referenceBlock>
 </body>
-</page>		
+</page>
