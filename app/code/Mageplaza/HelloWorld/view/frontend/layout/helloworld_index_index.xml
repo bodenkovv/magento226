@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="content">
+        <block class="Mageplaza\HelloWorld\Block\Index" name="helloworld_index_index" template="Mageplaza_HelloWorld::index.phtml" />
+        <!-- <block name="banner" template="Magento_Catalog::baner/baner.phtml"/>
+        -->
+        <block name="banner" template="Vector_Banner::baner.phtml" before="helloworld_index_index"/>
+    </referenceContainer>
+
+
+
+
+</page>
+
+
