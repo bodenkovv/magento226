@@ -146,6 +146,7 @@ return [
         'Mageplaza_HelloWorld' => 1,
         'Temando_Shipping' => 1,
         'Vector_Banner' => 1,
+        'Vector_Module' => 1,
         'Vertex_Tax' => 1
     ]
 ];
