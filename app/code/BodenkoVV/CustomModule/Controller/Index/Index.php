@@ -27,28 +27,26 @@ class Index extends \Magento\Framework\App\Action\Action
 }
 */
 
-
 use Magento\Framework\Controller\ResultFactory;
 class Index extends \Magento\Framework\App\Action\Action
 {
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
+
     public function execute()
     {
         /**
          * $this->_view->loadLayout();
          * $this->_view->renderLayout();
          */
-     //
-         $geethubText = "Home-work 3";
          $homeworkText = "_Home-work 3_";
-
 
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         //$resultPage->getLayout()->getBlock('custom.lesson.page.result')->setGeethubText($geethubText);
         $resultPage->getLayout()->getBlock('custom.lesson.page.result')->setHomeworkText($homeworkText);
+
         return $resultPage;
     }
 }

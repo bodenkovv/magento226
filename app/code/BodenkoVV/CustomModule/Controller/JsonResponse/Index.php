@@ -34,6 +34,7 @@ class Index extends \Magento\Framework\App\Action\Action
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
+
     public function execute()
     {
         //$geethubText = "return json ";
@@ -44,9 +45,6 @@ class Index extends \Magento\Framework\App\Action\Action
         /** @var \Magento\Framework\View\Result\Page $resultPage */
 
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-
-    //    $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        //$resultPage->getLayout()->getBlock('custom.lesson.page.result.jsonresponse')->setGeethubText($geethubText);
         //$resultPage->getLayout()->getBlock('custom.lesson.page.result.jsonresponse')->setMyJsonText($myjsonText);
 	    $resultPage->setData($myjsonText);
 

@@ -28,7 +28,6 @@ class Index extends \Magento\Framework\App\Action\Action
 }
 */
 
-
 use Magento\Framework\Controller\ResultFactory;
 
 class Index extends \Magento\Framework\App\Action\Action
@@ -36,16 +35,15 @@ class Index extends \Magento\Framework\App\Action\Action
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
+
     public function execute()
     {
         $homenameText = "Victor";
         $lastnameText = "Bodenko";
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-
         $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonname')->setHomeNameText($homenameText);
         $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonlastname')->setHomeLastNameText($lastnameText);
-
 /*
         $resultPage->getLayout()
             ->getBlock('custom.lesson.page.result.showperson.name')
@@ -54,11 +52,6 @@ class Index extends \Magento\Framework\App\Action\Action
             ->getBlock('custom.lesson.page.result.showperson.lastname')
             ->setLastnameText($lastnameText);
 
-        $resultPage->getLayout()->getBlock('custom.lesson.page.result.showperson.name')->toHtml($homenameText);
-        $resultPage->getLayout()->getBlock('custom.lesson.page.result.showperson.lastname')->toHtml($lastnameText);
-*/
-
-    /*
         $resultPage->getLayout()->getBlock('custom.lesson.page.result.showperson.name')->setData($homenameText);
         $resultPage->getLayout()->getBlock('custom.lesson.page.result.showperson.lastname')->setData($lastnameText);
     */

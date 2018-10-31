@@ -16,8 +16,9 @@ class CustomBlock extends \Magento\Framework\View\Element\Template
     {
         parent::_prepareLayout();
         $this->setTemplate(self::HOMEWORK_TEMPLATE);
+
         return $this;
     }
 */
-
 }
+

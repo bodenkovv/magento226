@@ -11,8 +11,6 @@
             <block class="BodenkoVV\CustomModule\Block\CustomBlock"
                    name="custom.lesson.page.showpersonlastname"
                    template="BodenkoVV_CustomModule::showperson.phtml"/>
-
-
         </referenceContainer>
 
     </body>
