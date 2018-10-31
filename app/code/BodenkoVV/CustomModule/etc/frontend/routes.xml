@@ -1,12 +1,9 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route frontName="homework" id="homework">
+        <route frontName="homework" id="myhomework">
             <module name="BodenkoVV_CustomModule"/>
         </route>
 
-        <route frontName="helloworld2" id="helloworld2">
-            <module name="BodenkoVV_CustomModule"/>
-        </route>
     </router>
 </config>

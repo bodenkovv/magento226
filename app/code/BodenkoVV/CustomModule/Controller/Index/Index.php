@@ -36,10 +36,19 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $geethubText = "Home-work 3";
+        /**
+         * $this->_view->loadLayout();
+         * $this->_view->renderLayout();
+         */
+     //
+         $geethubText = "Home-work 3";
+         $homeworkText = "_Home-work 3_";
+
+
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getLayout()->getBlock('custom.lesson.page.result')->setGeethubText($geethubText);
+        //$resultPage->getLayout()->getBlock('custom.lesson.page.result')->setGeethubText($geethubText);
+        $resultPage->getLayout()->getBlock('custom.lesson.page.result')->setHomeworkText($homeworkText);
         return $resultPage;
     }
 }

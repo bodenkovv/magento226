@@ -1,0 +1,15 @@
+<div class="content-wrapper">
+
+    <?php if ($block->getHomeworkText()):?>
+        <h1>
+            <span>Your request was successfully</span>
+        </h1>
+        <h3>
+            <?= /* @escapeNotVerified */ $block->getHomeworkText(); ?>
+        </h3>
+    <?php endif;?>
+	<a href="<?= $block->getUrl('homework/JsonResponse') ?>"> Link JSON </a>
+
+
+
+</div>
