@@ -4,12 +4,9 @@
 <div class="content-wrapper">
 
     <h1>
-        <span>Response is COMING</span>
+        <span>Response is COMING Block</span>
     </h1>
-    <?php if ($block->getHomeworkText()):?>
-        <h3>
-            <?= /* @escapeNotVerified */ $block->getHomeworkText(); ?>
-        </h3>
-    <?php endif;?>
+
+    <?= /* @escapeNotVerified */ $block->myurltext('homework/JsonResponse'); ?>
 
 </div>

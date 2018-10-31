@@ -5,9 +5,11 @@
 
         <referenceContainer name="content">
             <block class="BodenkoVV\CustomModule\Block\CustomBlock"
-                   name="custom.lesson.page.result"
+                   name="custom.lesson.page.myurltext"
                    template="BodenkoVV_CustomModule::myhomework.phtml"/>
         </referenceContainer>
 
     </body>
 </page>
+        <!--  template="BodenkoVV_CustomModule::myhomework.phtml"/>-->
+        <!--template="BodenkoVV_CustomModule::customblock.phtml"/>-->
