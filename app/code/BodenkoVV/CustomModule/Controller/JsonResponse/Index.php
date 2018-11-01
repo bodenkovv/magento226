@@ -7,26 +7,6 @@
  */
 namespace BodenkoVV\CustomModule\Controller\JsonResponse;
 
-/*
-class Index extends \Magento\Framework\App\Action\Action
-{
-    protected $_pageFactory;
-
-    public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $pageFactory)
-    {
-        $this->_pageFactory = $pageFactory;
-        return parent::__construct($context);
-    }
-
-    public function execute()
-    {
-        return $this->_pageFactory->create();
-    }
-}
-*/
-
 use Magento\Framework\Controller\ResultFactory;
 
 class Index extends \Magento\Framework\App\Action\Action
@@ -37,18 +17,10 @@ class Index extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-        //$geethubText = "return json ";
-        //$myjsonText = setJsonData('{"variable": "value","variable4": "value","variable3": "value","variable2": "value","variables":"{"variable4": "value","variable3": "value","variable2": "value"}}"}');
-        //$myjsonText = "{\"variable\": "value","variable4": "value","variable3": "value","variable2": "value","variables":"{"variable4": "value","variable3": "value","variable2": "value"}}"}';
         $myjsonText = ['variable'=> 'value','variable4'=> 'value','variable3'=> 'value','variable2'=> 'value','variables'=>['variable4'=> 'value','variable3'=> 'value','variable2'=> 'value']];
-
         /** @var \Magento\Framework\View\Result\Page $resultPage */
-
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        //$resultPage->getLayout()->getBlock('custom.lesson.page.result.jsonresponse')->setMyJsonText($myjsonText);
-	    $resultPage->setData($myjsonText);
-
-     //        $resultPage->setData($myjsonText);
+ 	    $resultPage->setData($myjsonText);
 
         return $resultPage;
     }

@@ -8,13 +8,13 @@
             <?= /* @escapeNotVerified */ $block->getHomeworkText(); ?>
         </h2>
     <?php endif;
-    $myjsoncontroller='homework/JsonResponse';
+    $myjsoncontroller='homework/jsonresponse';
     ?>
 	<a href="<?= $block->getUrl($myjsoncontroller) ?>"> Link JSON </a>
 
-    <?php if ($block->myurltext($myjsoncontroller)):?>
+    <?php if ($block->myurltext("")):?>
         <h2>
-            <a href="<?= /* @escapeNotVerified */ $block->myurltext($myjsoncontroller); ?>"> from block function get URL json</a>
+            <?= /* @escapeNotVerified */ $block->myurltext("from block function get URL json"); ?>
         </h2>
     <?php endif;?>
 
