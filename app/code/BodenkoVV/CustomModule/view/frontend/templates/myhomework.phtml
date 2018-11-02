@@ -12,7 +12,7 @@
     ?>
 	<a href="<?= $block->getUrl($myjsoncontroller) ?>"> Link JSON </a>
 
-    <?php if ($block->myurltext("")):?>
+    <?php if (function_exists('myurltext')):?>
         <h2>
             <?= /* @escapeNotVerified */ $block->myurltext("from block function get URL json"); ?>
         </h2>
