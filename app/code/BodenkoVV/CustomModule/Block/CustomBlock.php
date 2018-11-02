@@ -18,12 +18,17 @@ class CustomBlock extends \Magento\Framework\View\Element\Template
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
 
-    public $myurl="homework/jsonresponse";
+    public $myurl="home-work/jsonresponse";
 
     public function myurltext($linktext)
     {
         /** @var \Magento\Framework\View\Result\Page $resultPage */
-        $linkform="<a href=".$this->getUrl($this->myurl)."> ".$linktext."</a>";
+        $linkform="0";
+        if (strlen($linktext)>0)
+        {
+            $linkform="<a href=".$this->getUrl($this->myurl)."> ".$linktext."</a>";
+        }
+
         return $linkform;
     }
 }

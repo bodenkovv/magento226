@@ -8,14 +8,8 @@
             <?= /* @escapeNotVerified */ $block->getHomeworkText(); ?>
         </h2>
     <?php endif;
-    $myjsoncontroller='homework/jsonresponse';
+    $myjsoncontroller='home-work/jsonresponse';
     ?>
 	<a href="<?= $block->getUrl($myjsoncontroller) ?>"> Link JSON </a>
-
-    <?php if (function_exists('myurltext')):?>
-        <h2>
-            <?= /* @escapeNotVerified */ $block->myurltext("from block function get URL json"); ?>
-        </h2>
-    <?php endif;?>
 
 </div>

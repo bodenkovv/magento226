@@ -38,23 +38,13 @@ class Index extends \Magento\Framework\App\Action\Action
 
     public function execute()
     {
-        $homenameText = "Victor";
-        $lastnameText = "Bodenko";
+        $name = "Victor";
+        $lastname = "Bodenko";
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonname')->setHomeNameText($homenameText);
-        $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonlastname')->setHomeLastNameText($lastnameText);
-/*
-        $resultPage->getLayout()
-            ->getBlock('custom.lesson.page.result.showperson.name')
-            ->setHomenameText($homenameText);
-        $resultPage->getLayout()
-            ->getBlock('custom.lesson.page.result.showperson.lastname')
-            ->setLastnameText($lastnameText);
+        $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonname')->setHomeNameText($name);
+        $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonlastname')->setHomeLastNameText($lastname);
 
-        $resultPage->getLayout()->getBlock('custom.lesson.page.result.showperson.name')->setData($homenameText);
-        $resultPage->getLayout()->getBlock('custom.lesson.page.result.showperson.lastname')->setData($lastnameText);
-    */
         return $resultPage;
     }
 }
