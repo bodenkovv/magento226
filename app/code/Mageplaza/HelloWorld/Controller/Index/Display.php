@@ -1,0 +1,24 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: vector
+ * Date: 26.10.18
+ * Time: 12:20
+ */
+
+namespace Mageplaza\HelloWorld\Controller\Index;
+
+class Display extends \Magento\Framework\App\Action\Action
+{
+    public function __construct(
+        \Magento\Framework\App\Action\Context $context)
+    {
+        return parent::__construct($context);
+    }
+
+    public function execute()
+    {
+        echo 'Hello World display!!!!!!!!!!';
+        exit;
+    }
+}
