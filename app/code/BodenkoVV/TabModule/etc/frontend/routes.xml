@@ -4,6 +4,5 @@
         <route frontName="home-work-tab" id="myhomeworktab">
             <module name="BodenkoVV_TabModule"/>
         </route>
-
     </router>
 </config>

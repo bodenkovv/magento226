@@ -22,7 +22,6 @@ class Index extends \Magento\Framework\App\Action\Action
         if ($resultPage->getLayout()->getBlock('custom.homework4.tab2')){
             $resultPage->getLayout()->getBlock('custom.homework4.tab2')->setHomeworkText($homeworkText);
         }
-
         if ($resultPage->getLayout()->getBlock('custom.homework4.tab')){
             $resultPage->getLayout()->getBlock('custom.homework4.tab')->setHomeworkText($homeworkText);
         }
