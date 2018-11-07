@@ -1,0 +1,4 @@
+grunt clean
+grunt exec:vector
+grunt less:vector
+grunt watch
