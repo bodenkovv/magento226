@@ -39,11 +39,11 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $name = "Victor";
-        $lastname = "Bodenko";
+        $lastName = "Bodenko";
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonname')->setHomeNameText($name);
-        $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonlastname')->setHomeLastNameText($lastname);
+        $resultPage->getLayout()->getBlock('custom.lesson.page.showpersonlastname')->setHomeLastNameText($lastName);
 
         return $resultPage;
     }

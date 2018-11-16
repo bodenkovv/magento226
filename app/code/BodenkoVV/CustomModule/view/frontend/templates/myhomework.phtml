@@ -1,13 +1,13 @@
 <div class="content-wrapper">
     <?php if ($block->getHomeworkText()):?>
         <h1>
-            <span>Your request was successfully</span>
+            <span><?= $block->escapeHtml(__('Your request was successfully'))?></span>
         </h1>
         <h2>
-            <?= /* @escapeNotVerified */ $block->getHomeworkText(); ?>
+            <?= $block->escapeHtml(__($block->getHomeworkText())) ?>
         </h2>
     <?php endif;
-    $myjsoncontroller='home-work/jsonresponse';
+    $myJsonController='home-work/jsonresponse';
     ?>
-	<a href="<?= $block->getUrl($myjsoncontroller) ?>"> Link JSON </a>
+	<a href="<?= $block->getUrl($myJsonController) ?>"> Link JSON </a>
 </div>
