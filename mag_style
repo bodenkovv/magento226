@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 
-rm -rf pub/static/deployed_version.txt pub/static/frontend/vector/theme2/ var/view_preprocessed/ var/cache/
-bin/magento setup:static-content:deploy --area frontend --theme vector/theme2 -f
+rm -rf pub/static/deployed_version.txt pub/static/frontend/ var/view_preprocessed/ var/cache/
+#rm -rf pub/static/deployed_version.txt pub/static/frontend/vector/theme2/ var/view_preprocessed/ var/cache/
+#bin/magento setup:static-content:deploy --area frontend --theme vector/theme2 -f
