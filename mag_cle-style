@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+
+./mag_style
+./mag_cle
+

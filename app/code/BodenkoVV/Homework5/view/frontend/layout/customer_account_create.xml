@@ -4,6 +4,8 @@
     <body>
         <referenceContainer name="content">
                 <block class="Magento\Framework\View\Element\Template" name="form_additional_link_register" before="form.additional.info" template="BodenkoVV_Homework5::linkregister.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="form_additional_link_register2" template="BodenkoVV_Homework5::linkregister2.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="form_additional_form_register" template="BodenkoVV_Homework5::customformregister.phtml"/>
         </referenceContainer>
     </body>
 </page>
