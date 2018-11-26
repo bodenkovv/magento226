@@ -1,13 +1,6 @@
 <?php
 namespace BodenkoVV\CustomModule\Block;
 
-/**
- * Created by PhpStorm.
- * User: vector
- * Date: 30.10.18
- * Time: 19:27
- */
-
 use Magento\Framework\Controller\ResultFactory;
 class CustomBlock extends \Magento\Framework\View\Element\Template
 {
@@ -18,17 +11,17 @@ class CustomBlock extends \Magento\Framework\View\Element\Template
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */
 
-    public $myurl="home-work/jsonresponse";
+    private $myUrl="home-work/jsonresponse";
 
-    public function myurltext($linktext)
+    public function getLinkForText($linkText)
     {
         /** @var \Magento\Framework\View\Result\Page $resultPage */
-        $linkform="0";
-        if (strlen($linktext)>0)
+        $linkForm="0";
+        if (strlen($linkText)>0)
         {
-            $linkform="<a href=".$this->getUrl($this->myurl)."> ".$linktext."</a>";
+            $linkForm="<a href=".$this->getUrl($this->myUrl).">".$linkText."</a>";
         }
 
-        return $linkform;
+        return $linkForm;
     }
 }
