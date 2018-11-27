@@ -1,0 +1,12 @@
+<?php if ($block->getHomeNameText()):?>
+    <h3>
+        <p>Name: <?= /* @escapeNotVerified */ $block->getHomeNameText(); ?></p>
+
+    </h3>
+<?php endif;?>
+
+<?php if ($block->getHomeLastNameText()):?>
+    <h3>
+        <p>LastName: <?= /* @escapeNotVerified */ $block->getHomeLastNameText(); ?></p>
+    </h3>
+<?php endif;?>
