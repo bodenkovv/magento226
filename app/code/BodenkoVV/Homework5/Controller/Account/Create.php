@@ -1,10 +1,10 @@
 <?php
-namespace BodenkoVV\Homework5\Controller\account;
+namespace BodenkoVV\Homework5\Controller\Account;
 
 use Magento\Customer\Block\Form\Register;
 use Magento\Customer\Model\AccountManagement;
 use Magento\Framework\Controller\ResultFactory;
-class create extends \Magento\Framework\App\Action\Action
+class Create extends \Magento\Framework\App\Action\Action
 {   protected $_pageFactory;
     protected $_register;
     protected $_accountManagement;
