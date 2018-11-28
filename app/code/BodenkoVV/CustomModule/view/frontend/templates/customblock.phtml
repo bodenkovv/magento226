@@ -2,10 +2,8 @@
 /** @var \Magento\Framework\View\Element\Template $block */
 ?>
 <div class="content-wrapper">
-
     <h1>
-        <span>Response is COMING Block</span>
+        <span><?= $block->escapeHtml(__('Response is COMING Block')) ?></span>
     </h1>
-    <?= /* @escapeNotVerified */ $block->myurltext("Link from block function get URL json"); ?>
-
+    <?= /* @escapeNotVerified */ $block->getLinkForText("Link from block function get URL json"); ?>
 </div>
