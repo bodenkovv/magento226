@@ -5,7 +5,6 @@ return [
         'Magento_Directory' => 1,
         'Magento_Eav' => 1,
         'BodenkoVV_AskQuestion' => 1,
-        'BodenkoVV_Homework5' => 1,
         'BodenkoVV_CustomModule' => 1,
         'BodenkoVV_TabModule' => 1,
         'Magento_Theme' => 1,
