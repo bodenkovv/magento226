@@ -4,6 +4,5 @@
         <route frontName="homework5" id="homework5">
             <module name="BodenkoVV_Homework5"/>
         </route>
-
     </router>
 </config>

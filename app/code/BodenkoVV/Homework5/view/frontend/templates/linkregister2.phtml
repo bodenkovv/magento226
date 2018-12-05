@@ -1,20 +1,24 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
-
-// @codingStandardsIgnoreFile
-
 /** @var \Magento\Customer\Block\Form\Register $block */
 ?>
 <br>
-<a href="#" id="register-popup" data-mage-init='{"homework_register": {}}'><?= $block->escapeHtml(__('__Registration for dealer #2__'))?></a>
+<a href="#" id="register-popup" data-mage-init='{"homework_register": {}}'><?= $block->escapeHtml(__('__Registration for dealer in popup__'))?></a>
 <?= $block->getChildHtml('form_fields_before') ?>
 <?php /* Extensions placeholder */ ?>
 <?= $block->getChildHtml('customer.form.register.extra') ?>
 <div class="block" id="popup-register-modal" style="display: none" >
-<form class="form create account form-create-account" action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>" method="post" id="form-validate-register2" enctype="multipart/form-data" autocomplete="off">
+
+    <!--    <script type="text/x-magento-init">-->
+    <!--    {-->
+    <!--        "#register-popup": {-->
+    <!--            "BodenkoVV_Homework5/js/link-register3": {-->
+    <!--                "":""-->
+    <!--            }-->
+    <!--        }-->
+    <!--    }-->
+    <!--    </script>-->
+
+<form class="form create account form-create-account" action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>" method="post" id="form-validate-popup" enctype="multipart/form-data" autocomplete="off">
     <?= /* @noEscape */ $block->getBlockHtml('formkey'); ?>
     <fieldset class="fieldset create info">
         <legend class="legend"><span><?= $block->escapeHtml(__('Personal Information')) ?></span></legend><br>
@@ -94,24 +98,24 @@
                 </div>
             </div>
 
-            <div class="field region2 required">
-                <label for="region_id" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?></span></label>
+            <div class="field region-popup required">
+                <label for="region-id-popup" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?></span></label>
                 <div class="control">
-                    <select id="region_id" name="region_id" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="validate-select" style="display:none;">
+                    <select id="region-id-popup" name="region-id-popup" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="validate-select" style="display:none;">
                         <option value=""><?= $block->escapeHtml(__('Please select a region, state or province.')) ?></option>
                     </select>
-                    <input type="text" id="region2" name="region" value="<?= $block->escapeHtml($block->getRegion()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('region')) ?>" style="display:none;">
+                    <input type="text" id="region-popup" name="region" value="<?= $block->escapeHtml($block->getRegion()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('region')) ?>" style="display:none;">
                 </div>
             </div>
 
-            <div class="field zip2 required">
+            <div class="field zip-popup required">
                 <label for="zip" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('postcode') ?></span></label>
                 <div class="control">
-                    <input type="text" name="postcode" value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('postcode') ?>" id="zip2" class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>">
+                    <input type="text" name="postcode" value="<?= $block->escapeHtmlAttr($block->getFormData()->getPostcode()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('postcode') ?>" id="zip-popup" class="input-text validate-zip-international <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('postcode')) ?>">
                 </div>
             </div>
 
-            <div class="field country2 required">
+            <div class="field country-popup required">
                 <label for="country" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('country_id') ?></span></label>
                 <div class="control">
                     <?= $block->getCountryHtmlSelect() ?>
@@ -140,7 +144,7 @@
         <div class="field password required">
             <label for="password" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
             <div class="control">
-                <input type="password" name="password" id="password2"
+                <input type="password" name="password" id="password-popup"
                        title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
                        class="input-text"
                        data-password-min-length="<?= $block->escapeHtmlAttr($block->getMinimumPasswordLength()) ?>"
@@ -161,7 +165,7 @@
         <div class="field confirmation required">
             <label for="password-confirmation" class="label"><span><?= $block->escapeHtml(__('Confirm Password')) ?></span></label>
             <div class="control">
-                <input type="password" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password2'}" autocomplete="off">
+                <input type="password" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password-popup'}" autocomplete="off">
             </div>
         </div>
         <?= $block->getChildHtml('form_additional_info') ?>
@@ -181,7 +185,7 @@ require([
     'mage/mage'
 ], function($){
 
-    var dataForm = $('#form-validate-register2');
+    var dataForm = $('#form-validate-popup');
     var ignore = <?= /* @noEscape */ $_dob->isEnabled() ? '\'input[id$="full"]\'' : 'null' ?>;
 
     dataForm.mage('validation', {
@@ -209,13 +213,13 @@ require([
 <?php if ($block->getShowAddressFields()): ?>
 <script type="text/x-magento-init">
     {
-        "#country2": {
+        "#country-popup": {
             "regionUpdater": {
                 "optionalRegionAllowed": <?= /* @noEscape */ $block->getConfig('general/region/display_all') ? 'true' : 'false' ?>,
-                "regionListId": "#region_id",
-                "regionInputId": "#region2",
-                "postcodeId": "#zip2",
-                "form": "#form-validate-register2",
+                "regionListId": "#region-id-popup",
+                "regionInputId": "#region-popup",
+                "postcodeId": "#zip-popup",
+                "form": "#form-validate-popup",
                 "regionJson": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getRegionJson() ?>,
                 "defaultRegion": "<?= (int) $block->getFormData()->getRegionId() ?>",
                 "countriesWithOptionalZip": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getCountriesWithOptionalZip(true) ?>
@@ -227,7 +231,7 @@ require([
 
 <script type="text/x-magento-init">
     {
-        ".field.password2": {
+        ".field.password-popup": {
             "passwordStrengthIndicator": {
                 "formSelector": "form.form-create-account"
             }

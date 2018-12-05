@@ -3,11 +3,6 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-                <block class="Magento\Framework\View\Element\Template" name="form_additional_link_register" before="form.additional.info" template="BodenkoVV_Homework5::linkregister.phtml"/>
-                <block class="Magento\Customer\Block\Form\Login" name="form_additional_form_login2" template="BodenkoVV_Homework5::login.phtml" />
-
-            <!--<block class="Magento\Customer\Block\Form\Register" name="customer_form_register2" template="BodenkoVV_Homework5::linkregister2.phtml">-->
-
             <block class="BodenkoVV\Homework5\Block\CustomBlock" name="customer_form_register2" template="BodenkoVV_Homework5::linkregister2.phtml">
                 <arguments>
                     <argument name="attribute_data" xsi:type="object">Magento\Customer\Block\DataProviders\AddressAttributeData</argument>

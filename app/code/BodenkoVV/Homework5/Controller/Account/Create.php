@@ -5,15 +5,16 @@ use Magento\Customer\Block\Form\Register;
 use Magento\Customer\Model\AccountManagement;
 use Magento\Framework\Controller\ResultFactory;
 class Create extends \Magento\Framework\App\Action\Action
-{   protected $_pageFactory;
+{
+    protected $_pageFactory;
     protected $_register;
     protected $_accountManagement;
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $pageFactory,
-        \Magento\Customer\Block\Form\Register $register,
-        \Magento\Customer\Model\AccountManagement $accountManagement)
+        Register $register,
+        AccountManagement $accountManagement)
     {
         $this->_pageFactory = $pageFactory;
         $this->_register = $register;
@@ -26,11 +27,4 @@ class Create extends \Magento\Framework\App\Action\Action
         return $this->_pageFactory->create();
     }
 
-
-//    public function execute()
-//    {
-//        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-//        return $resultPage;
-//    }
 }
-
