@@ -43,7 +43,8 @@
              $tempTime=strtotime($request->getParam('hideit2'))-strtotime($request->getParam('hideit1'));
              if (($tempTime==0)or($tempTime>120))
              {
-                 if ($request->getParam('phone')[0]=='3')
+//                 if ($request->getParam('phone')[0]=='+38')
+                 if (strpos($request->getParam('phone'),'+38')===0)
                  {
                      $data = [
                          'status' => self::STATUS_SUCCESS,

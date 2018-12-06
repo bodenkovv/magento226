@@ -38,17 +38,21 @@
                            class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
                 </div>
             </div>
-            <div class="field telephone">
+            <div class="field telephone required">
                 <label class="label" for="phone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
                 <div class="control">
-                    <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>"
-                           placeholder="380976655321"
-                           maxlength="12"
-                           minlength="12"
+                    <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr(__('Phone Number in format: +38(097)665-5321')) ?>"
+                           placeholder="+38(097)665-5321"
+                           minlength="13"
                            data-validate="{required:true}"
                            class="input-text" type="tel"/>
                     <span class="label" id="phone-error"></span>
                 </div>
+<!--                class="input-text phoneUK" type="text"/>-->
+
+                <!--                           maxlength="12"-->
+                <!--                           minlength="12"-->
+<!--                data-validate="{required:true, 'phoneUA':true}"-->
 
             </div>
             <div class="field comment required">

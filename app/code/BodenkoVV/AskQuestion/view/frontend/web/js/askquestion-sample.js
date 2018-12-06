@@ -4,13 +4,16 @@ define([
     'Magento_Ui/js/modal/alert',
     'mage/cookies',
     'mage/translate',
+    'mage/validation/validation',
     'jquery/ui'
 ], function ($, validationAlert, alert) {
     'use strict';
+
     $.widget('homework6.requestSample', {
         options: {
             cookieName: 'homework6_sample_was_requested'
         },
+
         /** @inheritdoc */
         _create: function () {
             $(this.element).submit(this.submitForm.bind(this));
@@ -23,39 +26,41 @@ define([
 
         submitForm: function () {
             if (!this.validateForm()) {
-                return;
-            }
-            if(!$('#phone').val().match('^3'))
-            {
-                document.getElementById('phone-error').style.backgroundColor="red";
-                document.getElementById('phone-error').textContent='Not valid Ukrainian Phone Number';
-                validationAlert('Not valid Ukrainian Phone Number');
-                document.getElementById('phone').title='Not valid Ukrainian Phone Number';
+
                 return;
             }
 
-            document.getElementById('phone-error').textContent='';
-            document.getElementById('phone').title='Phone Number';
+            //if (!$('#phone').val().match('^3')) {
+            if (($('#phone').val().length > 17) || ((!$('#phone').val().match('^(\\+38)?((-|\\s)?(\\()?(0?[2-9]{1}?\\d{1})?(\\))?(-|\\s)?\\d{3}(-|\\s)?((\\d{2})?(-|\\s)?(\\d{2}))|(\\d{4}))$')))) {
+                document.getElementById('phone-error').style.backgroundColor = 'red';
+                document.getElementById('phone-error').textContent = 'Not valid Ukrainian Phone Number';
+                validationAlert('Not valid Ukrainian Phone Number');
+                document.getElementById('phone').title = 'Not valid Ukrainian Phone Number';
+
+                return;
+            }
+
+            document.getElementById('phone-error').textContent = '';
+            document.getElementById('phone').title = 'Phone Number' ;
 
             var sendQuestionTime = new Date(new Date().getTime() + 120 * 1000);
-            document.getElementById('hideit2').value=sendQuestionTime.toUTCString();
-            var sendQuestTime = sendQuestionTime.toUTCString()-$.mage.cookies.get(this.options.cookieName);
+            document.getElementById('hideit2').value = sendQuestionTime.toUTCString();
+            var sendQuestTime = sendQuestionTime.toUTCString() - $.mage.cookies.get(this.options.cookieName);
             var sendQuestTime2 = document.getElementById('hideit2').value-document.getElementById('hideit1').value;
-            if ((($.mage.cookies.get(this.options.cookieName)=="undefined")||($.mage.cookies.get(this.options.cookieName)==null)||(!($.mage.cookies.get(this.options.cookieName)))))
+
+            if ((($.mage.cookies.get(this.options.cookieName) == "undefined")||($.mage.cookies.get(this.options.cookieName) == null)||(!($.mage.cookies.get(this.options.cookieName)))))
             {
-                document.cookie = this.options.cookieName+"="+ sendQuestionTime.toUTCString()+"; path=/; expires=" + sendQuestionTime.toUTCString();
-                document.getElementById('hideit1').value=$.mage.cookies.get(this.options.cookieName);
+                document.cookie = this.options.cookieName + '=' + sendQuestionTime.toUTCString() + '; path=/; expires=' + sendQuestionTime.toUTCString();
+                document.getElementById('hideit1').value = $.mage.cookies.get(this.options.cookieName);
                 this.ajaxSubmit();
-            }
-            else
-            {
+            } else {
                 alert({
-                    title: $.mage.__('Atantion!!!'),
-                    content: $.mage.__('Please waite to time '+$.mage.cookies.get(this.options.cookieName)+' and tray again')
+                    title: $.mage.__('Atantion!!!'), content: $.mage.__('Please waite to time ' + $.mage.cookies.get(this.options.cookieName) + ' and tray again')
                 });
 
             }
         },
+
         /**
          * Submit request via AJAX. Add form key to the post data.
          */
@@ -87,18 +92,20 @@ define([
                         title: $.mage.__(response.status),
                         content: $.mage.__(response.message)
                     });
+
                     if (response.status === 'Success') {
-                        document.getElementById('phone').value='';
-                        document.getElementById('name').value='';
-                        document.getElementById('email').value='';
-                        document.getElementById('question').value='';
+                        document.getElementById('phone').value = '';
+                        document.getElementById('name').value = '';
+                        document.getElementById('email').value = '';
+                        document.getElementById('question').value = '';
                         var sendQuestionTime = new Date(new Date().getTime() + 120 * 1000);
-                        if (($.mage.cookies.get(this.options.cookieName)=="undefined")||($.mage.cookies.get(this.options.cookieName)==null)||(!($.mage.cookies.get(this.options.cookieName))))
-                        {
-                            document.cookie = this.options.cookieName+"="+ sendQuestionTime.toUTCString()+"; path=/; expires=" + sendQuestionTime.toUTCString();
+
+                        if (($.mage.cookies.get(this.options.cookieName) == 'undefined') || ($.mage.cookies.get(this.options.cookieName) == null) ||
+                            (!($.mage.cookies.get(this.options.cookieName)))) {
+                            document.cookie = this.options.cookieName + '=' + sendQuestionTime.toUTCString() + '; path=/; expires=' + sendQuestionTime.toUTCString();
                         }
-                        document.getElementById('hideit1').value=$.mage.cookies.get(this.options.cookieName);
-                        document.getElementById('hideit2').value=sendQuestionTime.toUTCString();
+                        document.getElementById('hideit1').value = $.mage.cookies.get(this.options.cookieName);
+                        document.getElementById('hideit2').value = sendQuestionTime.toUTCString();
                     }
                 },
 
@@ -128,5 +135,6 @@ define([
             $.mage.cookies.clear(this.options.cookieName);
         }
     });
+
     return $.homework6.requestSample;
 });
