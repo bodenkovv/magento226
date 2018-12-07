@@ -13,7 +13,6 @@ define (
             modalClass: 'form-create-account',
             buttons: false,
         };
-        debugger;
         $('#register-popup').click(function(){
         var popup = modal(options, $('#popup-register-modal'));
         $('#popup-register-modal').modal('openModal');
