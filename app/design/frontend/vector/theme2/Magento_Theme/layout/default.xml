@@ -19,4 +19,4 @@
     <move element="product.info.social" destination="product.info.price" after="-"/>
 
 </body>
-</page>		
+</page>
