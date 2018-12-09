@@ -17,8 +17,6 @@ define([
          */
         openModal: function () {
             var element = this._super();
-          //  debugger;
-
             $('<div></div>').html(this.options.content).appendTo(element);
         }
     });

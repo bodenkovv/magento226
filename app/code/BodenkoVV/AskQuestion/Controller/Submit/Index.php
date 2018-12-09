@@ -38,17 +38,13 @@
 
              if (!$request->isAjax()) {
                  throw new LocalizedException(__('This date is not valid and can not be commit.'));
-                 //throw new LocalizedException(__('This request is not valid and can not be processed.'));
              }
-
-             // @TODO: #111 Backend form validation
-             // Here we must also process backend validation or all form fields.
-             // Otherwise attackers can just copy our page, remove fields validation and send anything they want
 
              $tempTime=strtotime($request->getParam('hideit2'))-strtotime($request->getParam('hideit1'));
              if (($tempTime==0)or($tempTime>120))
              {
-                 if ($request->getParam('phone')[0]=='3')
+//                 if ($request->getParam('phone')[0]=='+38')
+                 if (strpos($request->getParam('phone'),'+38')===0)
                  {
                      $data = [
                          'status' => self::STATUS_SUCCESS,
@@ -68,9 +64,6 @@
                      'message' => 'Please waite '.(120-$tempTime).'s and tray again'
                  ];
              }
-
-
-
 //             'message' => __('Your request was submitted. We\'ll get in touch with you as soon as possible.')
          } catch (LocalizedException $e) {
              $data = [

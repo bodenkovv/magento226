@@ -4,6 +4,5 @@
         <route id="askquestion_sample" frontName="askquestion-sample">
             <module name="BodenkoVV_AskQuestion"/>
         </route>
-
     </router>
 </config>
