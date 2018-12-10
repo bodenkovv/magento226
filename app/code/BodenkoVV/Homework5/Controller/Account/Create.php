@@ -15,11 +15,11 @@ class Create extends \Magento\Framework\App\Action\Action
         \Magento\Framework\View\Result\PageFactory $pageFactory,
         Register $register,
         AccountManagement $accountManagement)
-    {
-        $this->_pageFactory = $pageFactory;
-        $this->_register = $register;
-        $this->_accountManagement = $accountManagement;
-        return parent::__construct($context);
+        {
+            parent::__construct($context);
+            $this->_pageFactory = $pageFactory;
+            $this->_register = $register;
+            $this->_accountManagement = $accountManagement;
     }
 
     public function execute()
