@@ -6,7 +6,6 @@
 <?= $block->getChildHtml('form_fields_before') ?>
 <?php /* Extensions placeholder */ ?>
 <?= $block->getChildHtml('customer.form.register.extra') ?>
-
 <div class="block" id="popup-register-modal" style="display: none" >
 
     <!--    <script type="text/x-magento-init">-->
@@ -119,7 +118,7 @@
             <div class="field country-popup required">
                 <label for="country" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('country_id') ?></span></label>
                 <div class="control">
-                    <?= $block->getCountryHtmlSelect() ?>
+                    <?= $block->getCountryHtmlSelect(null, 'country_id', 'country-popup') ?>
                 </div>
             </div>
             <?php $addressAttributes = $block->getChildBlock('customer_form_address_user_attributes');?>
