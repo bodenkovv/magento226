@@ -40,31 +40,16 @@
                  throw new LocalizedException(__('This date is not valid and can not be commit.'));
              }
 
-             $tempTime=strtotime($request->getParam('hideit2'))-strtotime($request->getParam('hideit1'));
-             if (($tempTime==0)or($tempTime>120))
-             {
-//                 if ($request->getParam('phone')[0]=='+38')
-                 if (strpos($request->getParam('phone'),'+38')===0)
-                 {
-                     $data = [
-                         'status' => self::STATUS_SUCCESS,
-                         'message' => 'Your Question receive.'
-                     ];
-                 }else
-                 {
-                     $data = [
-                         'status'  => self::STATUS_ERROR,
-                         'message' => 'Not valid Ukrainian Phone Number.'
-                     ];
-                 }
-             }else
+             if (strpos($request->getParam('phone'),'+38(0')===0)
              {
                  $data = [
-                     'status'  => self::STATUS_ERROR,
-                     'message' => 'Please waite '.(120-$tempTime).'s and tray again'
+                     'status' => self::STATUS_SUCCESS,
+                     'message' => __('Your Question receive.')
                  ];
+             }else
+             {
+                 throw new LocalizedException(__('Not valid Ukrainian Phone Number.'));
              }
-//             'message' => __('Your request was submitted. We\'ll get in touch with you as soon as possible.')
          } catch (LocalizedException $e) {
              $data = [
                  'status'  => self::STATUS_ERROR,

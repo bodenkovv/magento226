@@ -7,7 +7,11 @@
 
 <div class="catalog-product-view-tab-request-sample-form">
     <h2><?php echo $block->escapeHtml(__('Ask Question a Sample Form Home Work 6'))?></h2>
-
+    <?php if ($imageObject) : ?>
+        <div class="image-wrapper">
+            <?php echo $imageObject->toHtml();?>
+        </div>
+    <?php endif;?>
     <form class="form askquestion-sample"
           action="<?= $block->escapeUrl($block->getUrl('askquestion_sample/submit')) ?>"
           id="askquestion-sample-form"
@@ -19,6 +23,7 @@
                 <span><?= $block->escapeHtml(__('Ask Question')) ?></span>
             </legend>
             <br/>
+
             <div class="field name required">
                 <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
                 <div class="control">
@@ -43,16 +48,11 @@
                 <div class="control">
                     <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr(__('Phone Number in format: +38(097)665-5321')) ?>"
                            placeholder="+38(097)665-5321"
-                           minlength="13"
-                           data-validate="{required:true}"
+                           minlength="15"
+                           maxlength="17"
+                           data-validate="{required:true, 'phoneUA':true}"
                            class="input-text" type="tel"/>
-                    <span class="label" id="phone-error"></span>
                 </div>
-<!--                class="input-text phoneUK" type="text"/>-->
-
-                <!--                           maxlength="12"-->
-                <!--                           minlength="12"-->
-<!--                data-validate="{required:true, 'phoneUA':true}"-->
 
             </div>
             <div class="field comment required">
@@ -71,8 +71,6 @@
         <div class="actions-toolbar">
             <div class="primary">
                 <input type="hidden" name="hideit" id="hideit" value=""/>
-                <input type="hidden" name="hideit1" id="hideit1" value=""/>
-                <input type="hidden" name="hideit2" id="hideit2" value=""/>
                 <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
                     <span><?= $block->escapeHtml(__('Submit')) ?></span>
                 </button>

@@ -5,6 +5,7 @@ define([
     'mage/translate'
 ], function ($) {
     'use strict';
+
     $.widget('homework6.validationAlert', $.mage.alert, {
         options: {
             modalClass: 'error',
@@ -20,5 +21,6 @@ define([
             $('<div></div>').html(this.options.content).appendTo(element);
         }
     });
+
     return $.homework6.validationAlert;
 });
