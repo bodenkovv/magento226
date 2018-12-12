@@ -40,16 +40,14 @@
                  throw new LocalizedException(__('This date is not valid and can not be commit.'));
              }
 
-             if (strpos($request->getParam('phone'),'+38(0')===0)
-             {
-                 $data = [
-                     'status' => self::STATUS_SUCCESS,
-                     'message' => __('Your Question receive.')
-                 ];
-             }else
+             if (strpos(trim($request->getParam('phone')),'+380')===false)
              {
                  throw new LocalizedException(__('Not valid Ukrainian Phone Number.'));
              }
+             $data = [
+                 'status' => self::STATUS_SUCCESS,
+                 'message' => __('Your Question receive.')
+             ];
          } catch (LocalizedException $e) {
              $data = [
                  'status'  => self::STATUS_ERROR,

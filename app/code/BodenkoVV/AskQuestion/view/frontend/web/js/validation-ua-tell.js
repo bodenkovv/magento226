@@ -7,7 +7,7 @@ define([
             'phoneUA': [
                 function (value) {
                     if (!$.mage.isEmpty(value)) {
-                        if (!((value.length > 14) && (value.match(/^(\+38\(0)([3-9]{1}[0-9]{1})\)?((\d{3}?(-|\s)?\d{4})|(\d{2}?(-|\s)?\d{2}?(-|\s)?\d{3}))/ig)))) {
+                        if (!((value.length > 12) && (value.match(/^(\+380)([3-9]{1}[0-9]{1})?(-|\s)?((\d{3}?(-|\s)?\d{4})|(\d{2}?(-|\s)?\d{2}?(-|\s)?\d{3}))/ig)))) {
 
                                 return false;
                         }

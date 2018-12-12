@@ -46,10 +46,10 @@
             <div class="field telephone required">
                 <label class="label" for="phone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
                 <div class="control">
-                    <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr(__('Phone Number in format: +38(097)665-5321')) ?>"
-                           placeholder="+38(097)665-5321"
-                           minlength="15"
-                           maxlength="17"
+                    <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr(__('Phone Number in format: +38097-665-53-21')) ?>"
+                           placeholder="+38097-665-53-21"
+                           minlength="13"
+                           maxlength="16"
                            data-validate="{required:true, 'phoneUA':true}"
                            class="input-text" type="tel"/>
                 </div>
@@ -63,8 +63,7 @@
                               title="<?= $block->escapeHtmlAttr(__('What’s your question?')) ?>"
                               class="input-text"
                               cols="5" rows="3"
-                              data-validate="{required:true}">
-                    </textarea>
+                              data-validate="{required:true}"></textarea>
                 </div>
             </div>
         </fieldset>

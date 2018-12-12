@@ -72,8 +72,9 @@ define([
                         $('#name').val('');
                         $('#email').val('');
                         $('#question').val('');
+
                         if (!($.mage.cookies.get(this.options.cookieName))) {
-                            $.mage.cookies.set(this.options.cookieName,this.options.cookieName,{lifetime: 120});
+                            $.mage.cookies.set(this.options.cookieName, this.options.cookieName,{lifetime: 120});
                         }
                     }
                     alert({
