@@ -1,0 +1,20 @@
+<?php
+/* @var $block \Geekhub\CmsExamples\Block\Widget\SpecialLink */
+?>
+<style>
+    .geekhub-custom-widget {
+        background: #ffff99;
+        padding: 30px;
+        border-radius: 5px;
+        width: 250px;
+        text-align: center;
+    }
+</style>
+<div class="geekhub-custom-widget">
+    <?php if($block->getCustomWidgetTitle()): ?>
+            <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')
+                ->setBlockId('Banner-Homepage')->toHtml(); ?>
+        <?= /* @noEscape */ $block->getPageContent() ?>
+        <a href='<?php echo $block->escapeUrl($block->getUrl('geekhub-cms'))?>'><button><?php echo $block->escapeHtml($block->getCustomWidgetTitle())?></button>
+        <?php endif;?>
+</div>
