@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="BodenkoVV_HomeWork10::homework10" title="AskQuestion" module="BodenkoVV_HomeWork10" sortOrder="51" resource="BodenkoVV_HomeWork10::homework10" parent="Magento_Backend::content"/>
+        <add id="BodenkoVV_HomeWork10::homework10_askquestion" title="AskQuestion" module="BodenkoVV_HomeWork10" sortOrder="10" action="homework10/askquestion" resource="BodenkoVV_HomeWork10::askquestion" parent="BodenkoVV_HomeWork10::homework10"/>
+        <add id="BodenkoVV_HomeWork10::homework10_configuration" title="Configuration" module="BodenkoVV_HomeWork10" sortOrder="20" action="adminhtml/system_config/edit/section/askquestion" resource="BodenkoVV_HomeWork10::configuration" parent="BodenkoVV_HomeWork10::homework10"/>
+    </menu>
+</config>

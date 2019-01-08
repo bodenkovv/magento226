@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <askquestion>
+            <general>
+                <homework10_askquestion_enable>1</homework10_askquestion_enable>
+                <homework10_askquestion_title>AskQuestion Title</homework10_askquestion_title>
+                <homework10_askquestion_text>AskQuestion MORE TEXT</homework10_askquestion_text>
+            </general>
+        </askquestion>
+    </default>
+</config>

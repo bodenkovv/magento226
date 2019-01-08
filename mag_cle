@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 echo "php bin/magento setup:upgrade"
-#php bin/magento setup:upgrade
+php bin/magento setup:upgrade
 echo "-----------------------------"
 echo "php bin/magento cache:clean"
 php bin/magento cache:clean
