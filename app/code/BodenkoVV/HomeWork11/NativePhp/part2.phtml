@@ -36,7 +36,7 @@ class ChildClassContent extends ClassContent
     public $pub_test1_child, $pub_test2_child;
     private $priv_test1_child, $priv_test2_child;
 
-    public function getName()
+    public function name()
     {
         return $this->childNameValuePub();
     }
@@ -61,18 +61,24 @@ class GetClassData
 {
     public function getAllConstNameValue($temp)
     {
-        $reflectionClass = new \ReflectionClassConstant($temp);
+        //$curTemp = new ReflectionClass($temp);
+        $curTempClass = new \ReflectionClass($temp);
+        $reflectionClass = $curTempClass->getReflectionConstants();
+        echo "\nAll CONST:";
         foreach ($reflectionClass as $items) {
-            echo $items->getName . "=" . $items->getValue . "\n";
+            echo "\n".$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
         }
     }
 
     public function getAllPublicMetod($temp)
     {
-        $curClassContent = new ClassContent();
-        $reflectionClass = new ReflectionMethod('ClassContent');
+        //$curTemp = new \ReflectionClass($temp);
+        $curTempClass = new \ReflectionClass($temp);
+        $reflectionClass = $curTempClass->getMethods(ReflectionMethod::IS_PUBLIC);
+      //  $reflectionClass = new ReflectionMethod('ClassContent');
+        echo "\nPublic metods:";
         foreach ($reflectionClass as $items) {
-            echo $items->getName . "=" . $items->getValue . "\n";
+            echo "\n".$items->class.' : '.$items->name;
         }
 
     }
@@ -85,19 +91,8 @@ $curChildClassContent = new ChildClassContent();
 $curProfile = new Profile();
 $curGetClassData = new GetClassData();
 
-
-//$foo1->getAllConstNameValue();
-//$foo1->getAllPublicMetod();
-
-//$curGetClassData->getAllConstNameValue($curClassContent);
-$curGetClassData->getAllPublicMetod($curClassContent );
-
-// инициализация
-$reflectionClass = new \ReflectionClass($curClassContent);
-
-// получить имя класса
-//var_dump($reflectionClass->getName());
-
-// получить документацию класса
-//var_dump($reflectionClass->getDocComment());
-
+echo "\n ------------ \n";
+$curGetClassData->getAllConstNameValue($curChildClassContent);
+echo "\n ------------ \n";
+$curGetClassData->getAllPublicMetod($curChildClassContent);
+echo "\n ------------ \n";
