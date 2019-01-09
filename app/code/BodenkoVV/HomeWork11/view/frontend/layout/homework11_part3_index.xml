@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="BodenkoVV\HomeWork11\Block\Part3Block" name="customer_form_part3" template="BodenkoVV_HomeWork11::part3.phtml">
+            </block>
+        </referenceContainer>
+    </body>
+</page>
+
+
+<!--<arguments>-->
+<!--<argument name="attribute_data" xsi:type="object">BodenkoVV\HomeWork11\Helper\Part3Class</argument>-->
+<!--</arguments>-->
