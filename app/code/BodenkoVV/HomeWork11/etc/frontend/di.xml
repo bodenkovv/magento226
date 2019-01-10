@@ -1,10 +1,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="BodenkoVV\HomeWork11\Controller\Part3\Index">
+    <type name="BodenkoVV\HomeWork11\Model\Part3Helper">
         <arguments>
-            <!-- Pass simple string -->
+            <!-- Pass simplqe string -->
             <argument name="_classString" xsi:type="string">yyyyyyyyyyyyyy</argument>
-            <!-- Pass instance of Magento\Some\Type -->
-            <argument name="_classObj" xsi:type="object">BodenkoVV\HomeWork11\NativePhp\part2</argument>
+            <!-- Pass instance of BodenkoVV\HomeWork11\Model\Part2 -->
+            <argument name="_classObj" xsi:type="object">BodenkoVV\HomeWork11\Model\Part2</argument>
             <!-- Pass true -->
             <argument name="_classBool" xsi:type="boolean">1</argument>
             <!-- Pass 1 -->
@@ -16,16 +16,10 @@
                 <!-- First element is value of constant -->
                 <item name="firstElem" xsi:type="const">Magento\Captcha\Helper\Data::DEFAULT_CAPTCHA_TYPE</item>
                 <!-- Second element is null -->
-                <item name="secondElem" xsi:type="null"/>
+                <item name="secondElem" xsi:type="string">22222</item>
                 <!-- Third element is a subarray -->
-                <item name="thirdElem" xsi:type="array">
-                    <!-- Subarray contains scalar value -->
-                    <item name="scalarValue" xsi:type="string">ScalarValue</item>
-                    <!-- and application init argument -->
-                    <item name="globalArgument " xsi:type="init_parameter">Magento\Captcha\Helper\Data::MODE_AFTER_FAIL</item>
-                </item>
+                <item name="thirdElem" xsi:type="number">33333</item>
             </argument>
-
         </arguments>
     </type>
 </config>
