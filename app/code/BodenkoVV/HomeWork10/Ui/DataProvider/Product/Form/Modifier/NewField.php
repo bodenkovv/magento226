@@ -6,6 +6,7 @@ use Magento\Bundle\Test\Block\Catalog\Product\View\Type\Option\Checkbox;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Customer\Model\Metadata\Form\Multiselect;
+use Magento\Ui\Component\Form\Element\AbstractOptionsField;
 use Magento\Ui\Component\Form\Fieldset;
 use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Form\Element\Select;
@@ -20,9 +21,17 @@ use \BodenkoVV\HomeWork10\Helper\Data;
 
 class NewField extends AbstractModifier
 {
+    /** @var LocatorInterface  */
     private $locator;
+
+    /** @var Data  */
     protected $_helperData;
 
+    /**
+     * NewField constructor.
+     * @param Data $helperData
+     * @param LocatorInterface $locator
+     */
     public function __construct(
         Data $helperData,
         LocatorInterface $locator
@@ -30,10 +39,24 @@ class NewField extends AbstractModifier
         $this->locator = $locator;
         $this->_helperData = $helperData;
     }
+
+    /**
+     * Modify data
+     *
+     * @param array
+     * @return array
+     */
     public function modifyData(array $data)
     {
         return $data;
     }
+
+    /**
+     * Modify Meta data
+     *
+     * @param array
+     * @return array
+     */
     public function modifyMeta(array $meta)
     {
         if ($this->_helperData->getGeneralConfig('homework10_askquestion_enable'))
@@ -67,6 +90,14 @@ class NewField extends AbstractModifier
         return $meta;
     }
 
+    /**
+     * get custom field
+     *
+     * @param $lable string
+     * @param $type AbstractOptionsField
+     * @param $scope DataScope
+     * @return array
+     */
     public function getCustomField($lable, $type, $scope)
     {
        $result=
@@ -82,7 +113,7 @@ class NewField extends AbstractModifier
                    ],
                ],
            ];
-        if ($type==Select::NAME) {
+        if ($type===Select::NAME) {
             $result['arguments']['data']['config']['options'] = [
                                                                     ['value' => '0', 'label' => __('value 0')],
                                                                     ['value' => '1', 'label' => __('value 1')],
@@ -93,13 +124,13 @@ class NewField extends AbstractModifier
             $result['arguments']['data']['config']['formElement'] = $type;
             $result['arguments']['data']['config']['dataType'] = Text::NAME;
 
-        }elseif ($type==Input::NAME){
+        }elseif ($type===Input::NAME){
             $result['arguments']['data']['config']['formElement'] = $type;
             $result['arguments']['data']['config']['dataType'] = Text::NAME;
-        }elseif ($type==Date::NAME){
+        }elseif ($type===Date::NAME){
             $result['arguments']['data']['config']['formElement'] = $type;
             $result['arguments']['data']['config']['dataType'] = $type;
-        }elseif ($type==Multiselectt::NAME){
+        }elseif ($type===Multiselectt::NAME){
             $result['arguments']['data']['config']['options'] = [
                                                                     ['value' => '0', 'label' => __('value 0')],
                                                                     ['value' => '1', 'label' => __('value 1')],

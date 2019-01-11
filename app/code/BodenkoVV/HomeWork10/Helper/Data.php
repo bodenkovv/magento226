@@ -1,4 +1,5 @@
 <?php
+
 namespace BodenkoVV\HomeWork10\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
@@ -9,6 +10,13 @@ class Data extends AbstractHelper
 
     const XML_PATH_MODULEMENUTEST = 'askquestion/';
 
+    /**
+     * get conf value
+     *
+     * @param $field
+     * @param $storeId
+     * @return mixed
+     */
     public function getConfigValue($field, $storeId = null)
     {
         return $this->scopeConfig->getValue(
@@ -16,6 +24,13 @@ class Data extends AbstractHelper
         );
     }
 
+    /**
+     * get general config
+     *
+     * @param $code
+     * @param $storeId
+     * @return mixed
+     */
     public function getGeneralConfig($code, $storeId = null)
     {
 
