@@ -1,4 +1,5 @@
 <?php
+
 namespace BodenkoVV\CustomWidget\Block\Widget;
 
 use Magento\Framework\View\Element\Template;

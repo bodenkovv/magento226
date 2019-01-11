@@ -1,4 +1,5 @@
 <?php
+
  namespace BodenkoVV\AskQuestion\Controller\Submit;
 
  use Magento\Framework\App\Request\Http;
@@ -8,10 +9,12 @@
  {
      const STATUS_ERROR = 'Error';
      const STATUS_SUCCESS = 'Success';
+
      /**
       * @var \Magento\Framework\Data\Form\FormKey\Validator
       */
      private $formKeyValidator;
+
      /**
       * Index constructor.
       * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
@@ -24,6 +27,7 @@
          parent::__construct($context);
          $this->formKeyValidator = $formKeyValidator;
      }
+
      /**
       * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
       */
