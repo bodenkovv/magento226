@@ -67,40 +67,59 @@ class ChildClassContent extends ClassContent
 }
 
 
-class GetClassData
+class Part2GetClassData extends\Magento\Framework\View\Element\Template implements \Magento\Framework\View\Element\BlockInterface
 {
     /**
      * get reflection class Const
      *
+     * @param $temp
      * @print string
+     * @return array
+     * @throws \ReflectionException
      */
-    public function getAllConstNameValue($temp)
+    public function getAllConstNameValue()
     {
+        $temp = new ChildClassContent();
+//        $curGetClassData = new Part2GetClassData();
+//        echo "\n ------------ \n";
+//        $curGetClassData->getAllConstNameValue($curChildClassContent);
+
         //$curTemp = new ReflectionClass($temp);
         $curTempClass = new \ReflectionClass($temp);
         $reflectionClass = $curTempClass->getReflectionConstants();
-        echo "\nAll CONST:";
+        $result[] = 'All CONST:';
+//        echo "\nAll CONST:";
         foreach ($reflectionClass as $items) {
-            echo "\n".$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
+//            echo "\n".$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
+            $result[]=$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
         }
+
+        return $result;
     }
 
     /**
      * get reflection publick metod
      *
+     * @param $temp
      * @print string
+     * @return array
+     * @throws \ReflectionException
      */
-    public function getAllPublicMetod($temp)
+    public function getAllPublicMetod()
     {
+        $temp = new ChildClassContent();
         //$curTemp = new \ReflectionClass($temp);
         $curTempClass = new \ReflectionClass($temp);
         $reflectionClass = $curTempClass->getMethods(ReflectionMethod::IS_PUBLIC);
       //  $reflectionClass = new ReflectionMethod('ClassContent');
-        echo "\nPublic metods:";
+        $result[] = '\nPublic metods:';
+//        echo "Public metods:";
         foreach ($reflectionClass as $items) {
-            echo "\n".$items->class.' : '.$items->name;
+//            echo "\n".$items->class.' : '.$items->name;
+            $result[]=$items->class.' : '.$items->name;
         }
 
+        return $result;
     }
 
     /**
@@ -111,7 +130,7 @@ class GetClassData
     public function main ()
     {
         $curChildClassContent = new ChildClassContent();
-        $curGetClassData = new GetClassData();
+        $curGetClassData = new Part2GetClassData();
         echo "\n ------------ \n";
         $curGetClassData->getAllConstNameValue($curChildClassContent);
         echo "\n ------------ \n";
@@ -121,13 +140,12 @@ class GetClassData
 
 }
 
-//$curClassContent = new ClassContent();
-$curChildClassContent = new ChildClassContent();
-//$curProfile = new Profile();
-$curGetClassData = new GetClassData();
-
-echo "\n ------------ \n";
-$curGetClassData->getAllConstNameValue($curChildClassContent);
-echo "\n ------------ \n";
-$curGetClassData->getAllPublicMetod($curChildClassContent);
-echo "\n ------------ \n";
+//
+//$curChildClassContent = new ChildClassContent();
+//$curGetClassData = new Part2GetClassData();
+//
+//echo "\n ------------ \n";
+//$curGetClassData->getAllConstNameValue($curChildClassContent);
+//echo "\n ------------ \n";
+//$curGetClassData->getAllPublicMetod($curChildClassContent);
+//echo "\n ------------ \n";

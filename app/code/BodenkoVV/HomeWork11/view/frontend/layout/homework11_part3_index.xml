@@ -7,7 +7,7 @@
             </block>
             <block class="BodenkoVV\HomeWork11\Model\Part1" name="customer_form_part1" template="BodenkoVV_HomeWork11::part1.phtml">
             </block>
-            <block class="BodenkoVV\HomeWork11\Model\Part2" name="customer_form_part2" template="BodenkoVV_HomeWork11::part2.phtml">
+            <block class="BodenkoVV\HomeWork11\Model\Part2GetClassData" name="customer_form_part2" template="BodenkoVV_HomeWork11::part2.phtml">
             </block>
         </referenceContainer>
     </body>

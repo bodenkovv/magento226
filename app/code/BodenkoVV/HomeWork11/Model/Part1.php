@@ -11,26 +11,38 @@ use RegexIterator;
 use RecursiveRegexIterator;
 //use Magento\Framework\App\Helper\AbstractHelper;
 
-class Part1
-    //extends\Magento\Framework\View\Element\Template implements \Magento\Framework\View\Element\BlockInterface
+class Part1 extends\Magento\Framework\View\Element\Template implements \Magento\Framework\View\Element\BlockInterface
 {
     /**
      * get path listing info
      *
      * @param $path
+     * @param $resultPrint
      * @print string
+     * @return array
      */
-    public function getPathContent($path = './app')
+    public function getPathContent($path = './app',$resultPrint = 1)
     {
-        $path = realpath($path);
-        $directory = new \RecursiveDirectoryIterator($path);
-        $iterator = new \RecursiveIteratorIterator($directory, RecursiveIteratorIterator::CHILD_FIRST);
+        $realPath = realpath($path);
+        if ($realPath===false)
+        {
+            $realPath = realpath('./.'.$path);
+        }
+        if ($realPath===false)
+        {
+            $realPath = realpath('./../app/code/');
+        }
+        $result=[];
+
+        $directory = new RecursiveDirectoryIterator($realPath);
+        $iterator = new RecursiveIteratorIterator($directory, RecursiveIteratorIterator::CHILD_FIRST);
         foreach ($iterator as $filename) {
+            $tmpString='';
             if ($filename->isDir()) {
-                echo "dir :  -  : ";
+                $tmpString .= 'dir :  -  : ';
             } else {
                 $filesize = $filename->getSize();
-                echo "file: " . number_format($filesize) . "kB : ";
+                $tmpString .= 'file: ' . number_format($filesize) . 'kB : ';
             }
 
             $stat = stat($filename->getPathname());
@@ -45,22 +57,30 @@ class Part1
             } else {
                 $timeLastAccess = $timeModify;
             }
-            echo "$timeModify : $timeLastAccess : $filename\n";
+            $tmpString .= "$timeModify : $timeLastAccess : $filename\n";
+
+            if ($resultPrint===1) {
+                echo $tmpString ;
+            }else {
+                $result[]=$tmpString;
+            }
         }
+        if ($resultPrint===0) return $result;
     }
 
-    /**
-     * execute function to get path info
-     *
-     * @return string
-     */
-    public function main()
-    {
-        $foo1 = new Part1();
-        $foo1->getPathContent('./app/code');
-    }
+//    /**
+//     * execute function to get path info
+//     *
+//     * @return string
+//     */
+//    public function main()
+//    {
+//      //  $foo1 = new Part1();
+//        //$foo1->
+//        getPathContent('./app/code/',0);
+//    }
 
 }
-
-$foo1 = new Part1();
-$foo1->getPathContent('./app/code');
+//
+//$foo1 = new Part1();
+//$foo1->getPathContent('./app/code/',1);
