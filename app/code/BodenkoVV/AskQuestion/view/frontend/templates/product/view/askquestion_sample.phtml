@@ -1,19 +1,13 @@
 <?php
 /**
  * @var $block \Magento\Catalog\Block\Product\View
+ * @var $_helpers BodenkoVV\AskQuestion\Helper\Data
  */
 ?>
-<?php $imageObject = $block->getImage($block->getProduct(), 'product_base_image');?>
-
 <div class="catalog-product-view-tab-request-sample-form">
     <h2><?php echo $block->escapeHtml(__('Ask Question a Sample Form Home Work 6'))?></h2>
-    <?php if ($imageObject) : ?>
-        <div class="image-wrapper">
-            <?php echo $imageObject->toHtml();?>
-        </div>
-    <?php endif;?>
     <form class="form askquestion-sample"
-          action="<?= $block->escapeUrl($block->getUrl('askquestion_sample/submit')) ?>"
+          action="<?= $block->escapeUrl($block->getUrl('askquestion/submit')) ?>"
           id="askquestion-sample-form"
           method="post"
           data-mage-init='{"homework6_askquestionSample":{}}'
@@ -49,7 +43,7 @@
                     <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr(__('Phone Number in format: +38097-665-53-21')) ?>"
                            placeholder="+38097-665-53-21"
                            minlength="13"
-                           maxlength="16"
+                           maxlength="17"
                            data-validate="{required:true, 'phoneUA':true}"
                            class="input-text" type="tel"/>
                 </div>
@@ -70,6 +64,12 @@
         <div class="actions-toolbar">
             <div class="primary">
                 <input type="hidden" name="hideit" id="hideit" value=""/>
+                <input type="hidden" name="hideit1" id="hideit1" value=""/>
+                <input type="hidden" name="hideit2" id="hideit2" value=""/>
+                <input type="hidden" name="sku" id="sku" value="<?= $block->getProduct()->getSku()?>"/>
+                <input type="hidden" name="product_url" id="product_url" value="<?= $block->getProduct()->getProductUrl()?>"/>
+                <input type="hidden" name="product_name" id="product_name" value="<?= $block->getProduct()->getName()?>"/>
+                <input type="hidden" name="store_id" id="store_id" value="<?= $block->getStoreId()?>"/>
                 <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
                     <span><?= $block->escapeHtml(__('Submit')) ?></span>
                 </button>

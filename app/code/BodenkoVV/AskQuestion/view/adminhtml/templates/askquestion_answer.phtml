@@ -1,0 +1,121 @@
+<?php
+/**
+ * @var $block \Magento\Catalog\Block\Product\View
+ * @var $_helpers BodenkoVV\AskQuestion\Helper\Data
+ */
+?>
+<div class="catalog-product-view-tab-request-sample-form">
+    <h2><?php echo $block->escapeHtml(__('Answer Client Question'))?></h2>
+
+    <form class="form askquestion-sample"
+          action="<?= $block->escapeUrl($block->getUrl('askquestion/submit')) ?>"
+          id="askquestion-sample-form"
+          method="post"
+          data-mage-init='{"homework6_askquestionSample":{}}'
+          onsubmit="return false;">
+        <fieldset class="fieldset">
+            <legend class="legend">
+                <span><?= $block->escapeHtml(__('Answer Question')) ?></span>
+            </legend>
+            <br/>
+
+            <div class="field comment required">
+                <label class="label"
+                       for="name"><span><?= $block->escapeHtml(__('What’s user name?')) ?></span></label>
+                <div class="control">
+                    <input name="name" id="name" title="<?= $block->escapeHtmlAttr(__('User name ')) ?>"
+                           value="<?= $block->getName()?>"
+                           class="input-text"/>
+                </div>
+            </div>
+
+            <div class="field email required">
+                <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                <div class="control">
+                    <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                           placeholder="bigbod@big.bob"
+                           size="50"
+                           value="<?= $block->getEmail()?>"
+                           class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field telephone required">
+                <label class="label" for="phone"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+                <div class="control">
+                    <input name="phone" id="phone" title="<?= $block->escapeHtmlAttr(__('Phone Number in format: +38097-665-53-21')) ?>"
+                           placeholder="+38097-665-53-21"
+                           minlength="13"
+                           maxlength="17"
+                           value="<?= $block->getPhone()?>"
+                           data-validate="{required:true, 'phoneUA':true}"
+                           class="input-text" type="tel"/>
+                </div>
+
+            </div>
+            <div class="field comment required">
+                <label class="label"
+                       for="question"><span><?= $block->escapeHtml(__('What’s user question?')) ?></span></label>
+                <div class="control">
+                    <textarea name="question" id="question"
+                              title="<?= $block->escapeHtmlAttr(__('What’s user question?')) ?>"
+                              class="input-text"
+                              cols="5" rows="3"
+                              data-validate="{required:true}"><?= $block->getQuestion()?></textarea>
+                </div>
+            </div>
+
+            <div class="field comment required">
+                <label class="label"
+                       for="answer"><span><?= $block->escapeHtml(__('What’s your Answer?')) ?></span></label>
+                <div class="control">
+                    <textarea name="answer" id="answer"
+                              title="<?= $block->escapeHtmlAttr(__('What’s your Answer?')) ?>"
+                              class="input-text"
+                              cols="5" rows="3"
+                              data-validate="{required:true}"><?= $block->getAnswer()?></textarea>
+                </div>
+            </div>
+
+            <div class="field comment required">
+                <label class="label"
+                       for="sku"><span><?= $block->escapeHtml(__('What’s product SKU?')) ?></span></label>
+                <div class="control">
+                    <input name="sku" id="sku" title="<?= $block->escapeHtmlAttr(__('Product SKU')) ?>"
+                           value="<?= $block->getSku()?>"
+                           class="input-text"/>
+               </div>
+            </div>
+
+            <div class="field comment required">
+                <label class="label"
+                       for="product_url"><span><?= $block->escapeHtml(__('What’s product url?')) ?></span></label>
+                <div class="control">
+                    <input name="product_url" id="product_url" title="<?= $block->escapeHtmlAttr(__('product url')) ?>"
+                           value="<?= $block->getProductUrl()?>"
+                           class="input-text" />
+                </div>
+            </div>
+
+            <div class="field comment required">
+                <label class="label"
+                       for="store_id"><span><?= $block->escapeHtml(__('What’s your store id?')) ?></span></label>
+                <div class="control">
+                    <input name="store_id" id="store_id" title="<?= $block->escapeHtmlAttr(__('store id')) ?>"
+                           value="<?= $block->getStoreId()?>"
+                           class="input-text"/>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value=""/>
+                <input type="hidden" name="hideit1" id="hideit1" value=""/>
+                <input type="hidden" name="hideit2" id="hideit2" value=""/>
+                <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                    <span><?= $block->escapeHtml(__('Submit')) ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,10 +1,14 @@
 <?php
 
-
 namespace BodenkoVV\AskQuestion\Block;
 
-use BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection;
+use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection;
+use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
 
+/**
+ * Class Requests
+ * @package BodenkoVV\AskQuestion\Block
+ */
 class Requests
 {
     /**
@@ -14,12 +18,12 @@ class Requests
 
     /**
      * Requests constructor.
-     * @param \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory $collectionFactory
+     * @param CollectionFactory $collectionFactory
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
     public function __construct(
-        \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory $collectionFactory,
+        CollectionFactory $collectionFactory,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
     ) {
@@ -43,5 +47,4 @@ class Requests
         }
         return $collection;
     }
-
 }

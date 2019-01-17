@@ -117,6 +117,8 @@
         "requireParamTypes": true
     },
   "excludeFiles": [
-    "../../../../../../../../../app/code/BodenkoVV/AskQuestion/view/frontend/web/js/validation-ua-tell.js"
+    "../../../../../../../../../app/code/BodenkoVV/AskQuestion/view/frontend/web/js/validation-ua-tell.js",
+    "../../../../../../../../../app/code/BodenkoVV/AskQuestion/view/frontend/web/js/askquestion-sample.js",
+    "../../../../../../../../../app/code/BodenkoVV/AskQuestion/view/frontend/web/js/grid/columns/select.js"
   ]
 }

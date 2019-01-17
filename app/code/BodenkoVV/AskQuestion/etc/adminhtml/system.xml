@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="askquestion" translate="label" sortOrder="10">
+            <label>Ask Question</label>
+        </tab>
+        <section id="askquestion" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Ask Question</label>
+            <tab>askquestion</tab>
+            <resource>BodenkoVV_AskQuestion::askquestion_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Ask Question Configuration</label>
+
+                <field id="bodenkovv_askquestion_enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="bodenkovv_askquestion_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>AskQuestion</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+
+                <field id="bodenkovv_askquestion_description" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>AskQuestion description</label>
+                    <comment>You have chance ask us about this product.</comment>
+                </field>
+
+                <field id="bodenkovv_askquestion_status_auto" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Chose default status questions</label>
+                    <source_model>BodenkoVV\AskQuestion\Model\Config\Source\Status</source_model>
+                </field>
+
+           </group>
+        </section>
+    </system>
+</config>

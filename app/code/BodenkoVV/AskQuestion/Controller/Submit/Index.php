@@ -4,7 +4,7 @@
  use Magento\Framework\App\Request\Http;
  use Magento\Framework\Controller\ResultFactory;
  use Magento\Framework\Exception\LocalizedException;
- use BodenkoVV\AskQuestion\Model\Question;
+ use BodenkoVV\AskQuestion\Model\QuestionFactory;
 
  class Index extends \Magento\Framework\App\Action\Action
  {
@@ -24,11 +24,12 @@
      /**
       * Index constructor.
       * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
+      * @param QuestionFactory $requestQuestionFactory
       * @param \Magento\Framework\App\Action\Context $context
       */
      public function __construct(
          \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
-         BodenkoVV\AskQuestion\Model\QuestionFactory $requestQuestionFactory,
+         QuestionFactory $requestQuestionFactory,
          \Magento\Framework\App\Action\Context $context
      ) {
          parent::__construct($context);
@@ -59,15 +60,16 @@
                  throw new LocalizedException(__('Not valid Ukrainian Phone Number.'));
              }
 
-
              /** @var ResultFactory $requestQuestion */
              $requestQuestion = $this->requestQuestionFactory->create();
              $requestQuestion->setName($request->getParam('name'))
                  ->setEmail($request->getParam('email'))
-                 ->setPhone($request->getParam('phone'))
+                 ->setPhone(str_replace(['-','(',')',' '], '', $request->getParam('phone')))
                  ->setProductName($request->getParam('product_name'))
+                 ->setProductUrl($request->getParam('product_url'))
                  ->setSku($request->getParam('sku'))
-                 ->setRequest($request->getParam('question'));
+                 ->setStoreId($request->getParam('store_id'))
+                 ->setQuestion($request->getParam('question'));
              $requestQuestion->save();
 
              $data = [
@@ -81,9 +83,7 @@
              ];
          }
 
-
-
- /**
+         /**
           * @var \Magento\Framework\Controller\Result\Json $controllerResult
           */
          $controllerResult = $this->resultFactory->create(ResultFactory::TYPE_JSON);

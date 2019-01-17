@@ -95,13 +95,6 @@ class InstallSchema implements InstallSchemaInterface
                     ['nullable' => false],
                     'Phone user'
                 )
-//                ->addColumn(
-//                    'status',
-//                    Table::TYPE_BOOLEAN,
-//                    null,
-//                    ['nullable' => true],
-//                    'Status'
-//                )
                 ->setComment('Questions and Answers');
             $setup->getConnection()->createTable($table);
         }

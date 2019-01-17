@@ -50,7 +50,6 @@ class UpgradeData implements UpgradeDataInterface
             $setup
                 ->getConnection()
                 ->update($tableName, ['status' => false], 'name IN (\'Dimon\',\'Alexey\')');
-//            ->update($tableName, ['status' => 'false'], 'greeting_id IN (1,2)');
         }
         $setup->endSetup();
 
@@ -66,8 +65,6 @@ class UpgradeData implements UpgradeDataInterface
             $setup
                 ->getConnection()
                 ->update($tableName, ['status' => false], 'status=1');
-//            ->update($tableName, ['status' => true], 'name IN (\'Dimon\',\'Alexey\',\'Maxim\')');
-//            ->update($tableName, ['status' => 'false'], 'greeting_id IN (1,2)');
         }
         $setup->endSetup();
 
@@ -99,6 +96,21 @@ class UpgradeData implements UpgradeDataInterface
             $setup
                 ->getConnection()
                 ->update($tableName, ['status' => Question::STATUS_PENDING]);
+        }
+        $setup->endSetup();
+
+        $version='0.0.8';
+        $setup->startSetup();
+
+        $setup->startSetup();
+        if ($context->getVersion()
+            && version_compare($context->getVersion(), $version) < 0
+        ) {
+            $tableName = $setup->getTable('bodenkovv_askquestion');
+
+            $setup
+                ->getConnection()
+                ->update($tableName, ['store_id' => 1],'store_id=0');
         }
         $setup->endSetup();
 

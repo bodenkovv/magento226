@@ -33,7 +33,6 @@ class InstallData implements InstallDataInterface
                     'name' => 'Dimon',
                     'email' => 'dimon@geekhub.ck.ua',
                     'phone' => '+380932231111',
-//                    'status' => false,
                 ],
                 [
                     'question' => 'Здравствуйте! На сколько месяцев доступна рассрочка',
@@ -42,17 +41,7 @@ class InstallData implements InstallDataInterface
                     'name' => 'Alexey',
                     'email' => 'alexey@geekhub.ck.ua',
                     'phone' => '+380932231112',
-//                    'status' => true,
                 ],
-//                [
-//                    'question' => 'Добрый день, подскажите , а на эту модель будут акции в январе - феврале 2019?',
-//                    'answer' => '',
-//                    'product_url' => 'https://magento226.local/mars-heattech-trade-pullover.html',
-//                    'name' => 'Maxim',
-//                    'email' => 'maxim@geekhub.ck.ua',
-//                    'phone' => '+380932231113',
-//                    'status' => false,
-//                ],
             ];
 
         foreach ($data as $bind) {

@@ -36,31 +36,13 @@ class UpgradeSchema implements UpgradeSchemaInterface
         }
         $setup->endSetup();
 
-
         $setup->startSetup();
-        if (version_compare($context->getVersion(), '0.0.6', '<')) {
-            $tableName = $setup->getTable('bodenkovv_askquestion');
-            $setup->getConnection()->addColumn(
-                $tableName,
-                'store_id',
-                [
-                    'type' => Table::TYPE_SMALLINT,
-                    'length' => 5,
-                    ['unsigned' => true, 'nullable' => false, 'default' => '0'],
-                    'default' => 0,
-                    'comment' => 'Store ID'
-                ]
-            );
-        }
-        $setup->endSetup();
-
-        $setup->startSetup();
-        if (version_compare($context->getVersion(), '0.0.7', '<')) {
+        if (version_compare($context->getVersion(), '0.0.3', '<')) {
             $tableName = $setup->getTable('bodenkovv_askquestion');
             $setup->getConnection()
                 ->modifyColumn(
-                $tableName,
-                'status',
+                    $tableName,
+                    'status',
                     [
                         'type' => Table::TYPE_TEXT,
                         'length' => 15,
@@ -68,29 +50,47 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'default' => false,
                         'comment' => 'Status'
                     ]
-                )
-                ->modifyColumn(
+                );
+        }
+        $setup->endSetup();
+
+        $setup->startSetup();
+        if (version_compare($context->getVersion(), '0.0.4', '<')) {
+            $tableName = $setup->getTable('bodenkovv_askquestion');
+            $setup->getConnection()->addColumn(
+                    $tableName,
+                    'store_id',
+                    [
+                        'type' => Table::TYPE_SMALLINT,
+                        'length' => 5,
+                        ['nullable' => false, 'default' => 0],
+                        'default' => 0,
+                        'comment' => 'Store ID'
+                    ]
+                );
+            $setup->getConnection()->addColumn(
                     $tableName,
                 'sku',
                     [
                         'type' => Table::TYPE_TEXT,
                         'length' => 63,
-                        ['nullable' => false],
-                        'comment' => 'Sku'
+                        ['nullable' => true, 'default' => ''],
+                        'default' => '',
+                        'comment' => 'SKU'
                     ]
-                )
-                ->modifyColumn(
+                );
+            $setup->getConnection()->addColumn(
                     $tableName,
                     'product_name',
                     [
                         'type' => Table::TYPE_TEXT,
                         'length' => null,
-                        ['nullable' => false],
+                        ['nullable' => true, 'default' => ''],
+                        'default' => '',
                         'comment' => 'Product Name'
                     ]
                 );
         }
         $setup->endSetup();
-
     }
 }
