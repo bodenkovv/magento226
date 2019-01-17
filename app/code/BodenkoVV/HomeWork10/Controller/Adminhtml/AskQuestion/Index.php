@@ -9,7 +9,6 @@ use \Magento\Framework\App\Action\Context;
 use \Magento\Framework\Exception\LocalizedException;
 use \Magento\Framework\Registry;
 use \BodenkoVV\HomeWork10\Helper\Data;
-//use Magento\Framework\App\Helper\AbstractHelper;
 
 class Index extends \Magento\Backend\App\Action
 {
