@@ -68,7 +68,7 @@ class NewField extends AbstractModifier
                         'arguments' => [
                             'data' => [
                                 'config' => [
-                                    'label' => __('HomeWork10'),
+//                                    'label' => __('HomeWork10'),
                                     'componentType' => Fieldset::NAME,
                                     'dataScope' => 'data.product.custom_fieldset_homework10',
                                     'collapsible' => true,
