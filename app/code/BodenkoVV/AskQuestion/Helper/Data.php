@@ -24,11 +24,8 @@ class Data extends AbstractHelper
      */
     protected $_categoryPostFactory = null;
 
-    /** @var string DEF_CUSTOMER_NAME */
-    const DEF_CUSTOMER_NAME = 'Big BOB';
-
-    /** @var string XML_PATH_MODULEMENUTEST */
-    const XML_PATH_MODULEMENUTEST = 'askquestion/';
+    /** @var string XML_PATH_MODULE_MENU */
+    const XML_PATH_MODULE_MENU = 'askquestion/';
 
     /** @var QuestionFactory $_postQuestionFactory */
     public $_postQuestionFactory;
@@ -105,58 +102,6 @@ class Data extends AbstractHelper
      */    public function getGeneralConfig($code, $storeId = null)
     {
 
-        return $this->getConfigValue(self::XML_PATH_MODULEMENUTEST .'general/'. $code, $storeId);
-    }
-
-    /**
-     * @return string user name
-     */
-    public function getUserName()
-    {
-        /** @var PostCollection $postCollection */
-        return $this->getCustomerName();
-    }
-
-    /**
-     * @return string user name
-     */
-    public function getCustomerName()
-    {
-
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $customerSession = $objectManager->create('Magento\Customer\Model\Session');
-
-        if ($customerSession->isLoggedIn()) {
-            $customerSession->getCustomerId();  // get Customer Id
-            $customerSession->getCustomerGroupId();
-            $customerSession->getCustomer();
-            $customerSession->getCustomerData();
-            return $customerSession->getCustomer()->getName();
-        } else {
-            return self::DEF_CUSTOMER_NAME;
-        }
-
-    }
-
-    /**
-     * @return int customer id
-     */
-    public function getCustomerId()
-    {
-
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $customerSession = $objectManager->create('Magento\Customer\Model\Session');
-
-        if ($customerSession->isLoggedIn()) {
-            $customerSession->getCustomerId();  // get Customer Id
-            $customerSession->getCustomerGroupId();
-            $customerSession->getCustomer();
-            $customerSession->getCustomerData();
-            return $customerSession->getCustomerId();
-        }
-        else
-        {
-            return 0;
-        }
+        return $this->getConfigValue(self::XML_PATH_MODULE_MENU .'general/'. $code, $storeId);
     }
 }

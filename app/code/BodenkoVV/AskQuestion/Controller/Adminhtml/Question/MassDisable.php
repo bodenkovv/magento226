@@ -8,6 +8,7 @@ namespace BodenkoVV\AskQuestion\Controller\Adminhtml\Question;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context as ContextAlias;
 use Magento\Ui\Component\MassAction\Filter;
+use Magento\Framework\Stdlib\DateTime\DateTime;
 use BodenkoVV\AskQuestion\Model\QuestionFactory;
 use BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
 
@@ -23,24 +24,24 @@ class MassDisable extends \Magento\Backend\App\Action
      */
     const ADMIN_RESOURCE = 'BodenkoVV_AskQuestion::save';
 
-    /**
-     * @var Filter
-     */
+    /** @var Filter */
     protected $filter;
 
-    /**
-     * @var CollectionFactory
-     */
+    /** @var CollectionFactory */
     protected $_collectionFactory;
 
-
+    /** @var QuestionFactory  */
     public $_questionFactory;
+
+    /** @var Date $date */
+    protected $date;
 
     /**
      * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
      * @param ContextAlias $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
+     * @param DateTime $date
      * @param QuestionFactory $questionFactory
      */
     public function __construct(
@@ -48,13 +49,14 @@ class MassDisable extends \Magento\Backend\App\Action
         ContextAlias $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
+        DateTime $date,
         QuestionFactory $questionFactory
     )
     {
-        //
         $this->filter = $filter;
         $this->_collectionFactory = $collectionFactory;
         $this->_questionFactory = $questionFactory;
+        $this->date = $date;
         parent::__construct($context);
     }
 
@@ -62,11 +64,9 @@ class MassDisable extends \Magento\Backend\App\Action
      * @return \DateTime $datetime
      * @throws \Exception
      */
-    public function getDatetimeNow() {
-        $tz_object = new \DateTimeZone('Europe/Kiev');
-        $datetime = new \DateTime();
-        $datetime->setTimezone($tz_object);
-        return $datetime->format('Y-m-d H:i:s');
+    public function getDatetimeNow(): \DateTime
+    {
+        return $this->date->gmtDate();
     }
 
     /**

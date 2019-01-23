@@ -8,7 +8,10 @@
 
  class Index extends \Magento\Framework\App\Action\Action
  {
+     /** @var string  */
      const STATUS_ERROR = 'Error';
+
+     /** @var string  */
      const STATUS_SUCCESS = 'Success';
 
      /**
