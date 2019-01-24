@@ -1,0 +1,71 @@
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="custom_fieldset">
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+        <item name="label" xsi:type="string" translate="true">Home Work 10+ </item>
+        <item name="provider" xsi:type="string">product</item>
+        <item name="dataScope" xsi:type="string">data.product.custom_fieldset_homework10</item>
+        <item name="sortOrder" xsi:type="number">20</item>
+        <item name="collapsible" xsi:type="boolean">true</item>
+        <item name="opened" xsi:type="boolean">false</item>
+        <item name="ns" xsi:type="string">product_form</item>
+        </item>
+        </argument>
+
+        <field name="custom_field_input_xml">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="label" xsi:type="string" translate="true">Input Attribute Name</item>
+                    <item name="dataScope" xsi:type="string">custom_field_input_xml</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="custom_field_select_xml" component="Magento_Ui/js/form/element/select" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Select Customer Group</label>
+                <!--<disabled>true</disabled>-->
+                <dataScope>custom_field_select_xml</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Customer\Model\Customer\Source\GroupSourceInterface"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+        <field name="custom_field_checkbox_xml" component="Magento_CatalogInventory/js/components/use-config-settings" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="value" xsi:type="string">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>custom_field_checkbox_xml</dataScope>
+                <exports>
+                    <link name="checked">${$.parentName}.custom_field_select_xml:disabled</link>
+                </exports>
+            </settings>
+            <formElements>
+                <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                    <settings>
+                        <description translate="true">Use Config Settings</description>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+
+    </fieldset>
+</form>
+

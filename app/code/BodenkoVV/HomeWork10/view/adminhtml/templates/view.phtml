@@ -1,0 +1,12 @@
+<?php /** @var $block \Magento\Backend\Block\Template */ ?>
+<hr>
+<?php if ($block->getAskQuestionEnable())
+    {
+     ?>
+    <h2><?= $block->escapeHtml(__($block->getAskQuestionText())); ?></h2>
+     <?php
+    }else
+    {
+        $block->escapeHtml(__('Module AskQuestion don`t active'));
+    };
+?>

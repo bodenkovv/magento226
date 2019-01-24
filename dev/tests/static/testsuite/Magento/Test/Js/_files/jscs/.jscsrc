@@ -117,6 +117,7 @@
         "requireParamTypes": true
     },
   "excludeFiles": [
-    "../../../../../../../../../app/code/BodenkoVV/AskQuestion/view/frontend/web/js/validation-ua-tell.js"
+    "../../../../../../../../../app/code/BodenkoVV/AskQuestion/view/frontend/web/js/validation-ua-tell.js",
+    "../../../../../../../../../app/code/BodenkoVV/HomeWork10/view/adminhtml/web/js/m2kocomponent.js"
   ]
 }
