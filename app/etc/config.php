@@ -6,6 +6,8 @@ return [
         'Magento_Eav' => 1,
         'BodenkoVV_AskQuestion' => 1,
         'BodenkoVV_HomeWork11' => 1,
+        'BodenkoVV_Homework5' => 1,
+        'Magento_Config' => 1,
         'Magento_Theme' => 1,
         'Magento_Cms' => 1,
         'Magento_Customer' => 1,
