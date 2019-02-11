@@ -3,6 +3,7 @@
 namespace BodenkoVV\AskQuestion\Block;
 
 use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
+use \BodenkoVV\AskQuestion\Model\QuestionFactory;
 use \BodenkoVV\AskQuestion\Helper\Data;
 
 /**
@@ -17,6 +18,8 @@ class TabAskQuestion extends \Magento\Framework\View\Element\Template
     /** @var Data $_helperData */
     public $_helperData;
 
+    /** @var QuestionFactory  */
+    public $questionFactory;
     /**
      * Requests constructor.
      * @param CollectionFactory $collectionFactory
@@ -26,6 +29,7 @@ class TabAskQuestion extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         CollectionFactory $collectionFactory,
+        QuestionFactory $questionFactory,
         Data $helperData,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
@@ -33,6 +37,7 @@ class TabAskQuestion extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
         $this->_helperData = $helperData;
         $this->collectionFactory = $collectionFactory;
+        $this->questionFactory = $questionFactory;
     }
 
     /**
@@ -50,9 +55,13 @@ class TabAskQuestion extends \Magento\Framework\View\Element\Template
      */
     public function getQuestionByProductSku($sku = '')
     {
-        $collectionFactory = $this->collectionFactory->create();
-        $collectionFactory->addFieldToFilter('sku', ['eq'=>$sku]);
-
-        return $collectionFactory;
+        $this->_helperData->currentProductId = $sku;
+        $collection = $this->collectionFactory->create();
+//        $questioModel = $this->questionFactory->create();
+//        $questioModel->getCollection()->load();
+//        $collection->addFieldToFilter('sku', ['eq'=>$sku]);
+//        $collection->load();
+       // $questioModel->beforeLoad();
+        return $collection;
     }
 }

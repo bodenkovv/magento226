@@ -2,11 +2,13 @@
 
 namespace BodenkoVV\AskQuestion\Model\ResourceModel;
 
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
 /**
  * Class Question
  * @package BodenkoVV\AskQuestion\Model\ResourceModel
  */
-class Question extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Question extends AbstractDb
 {
     protected function _construct()
     {

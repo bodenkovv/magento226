@@ -24,7 +24,7 @@
         <settings>
             <submitUrl path="askquestion/question/save"/>
         </settings>
-        <dataProvider class="BodenkoVV\AskQuestion\Ui\Component\Question\DataProvider" name="bodenkovv_askquestion_question_listing_data_source">
+        <dataProvider class="BodenkoVV\AskQuestion\Ui\Component\DataProvider" name="bodenkovv_askquestion_question_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>id</primaryFieldName>

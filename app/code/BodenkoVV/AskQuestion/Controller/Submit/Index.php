@@ -72,6 +72,7 @@
                  ->setProductUrl($request->getParam('product_url'))
                  ->setSku($request->getParam('sku'))
                  ->setStoreId($request->getParam('store_id'))
+                 ->setProductId($request->getParam('product_id'))
                  ->setQuestion($request->getParam('question'));
              $requestQuestion->save();
 

@@ -67,29 +67,45 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'default' => 0,
                         'comment' => 'Store ID'
                     ]
-                );
+            );
             $setup->getConnection()->addColumn(
-                    $tableName,
+                $tableName,
                 'sku',
-                    [
-                        'type' => Table::TYPE_TEXT,
-                        'length' => 63,
-                        ['nullable' => true, 'default' => ''],
-                        'default' => '',
-                        'comment' => 'SKU'
-                    ]
-                );
+                [
+                    'type' => Table::TYPE_TEXT,
+                    'length' => 63,
+                    ['nullable' => true, 'default' => ''],
+                    'default' => '',
+                    'comment' => 'SKU'
+                ]
+            );
             $setup->getConnection()->addColumn(
-                    $tableName,
-                    'product_name',
-                    [
-                        'type' => Table::TYPE_TEXT,
-                        'length' => null,
-                        ['nullable' => true, 'default' => ''],
-                        'default' => '',
-                        'comment' => 'Product Name'
-                    ]
-                );
+                $tableName,
+                'product_name',
+                [
+                    'type' => Table::TYPE_TEXT,
+                    'length' => null,
+                    ['nullable' => true, 'default' => ''],
+                    'default' => '',
+                    'comment' => 'Product Name'
+                ]
+            );
+        }
+        $setup->endSetup();
+        $setup->startSetup();
+        if (version_compare($context->getVersion(), '1.0.2', '<')) {
+            $tableName = $setup->getTable('bodenkovv_askquestion');
+            $setup->getConnection()->addColumn(
+                $tableName,
+                'product_id',
+                [
+                    'type' => Table::TYPE_INTEGER,
+                    'length' => 5,
+                    ['nullable' => false, 'default' => 0],
+                    'default' => 0,
+                    'comment' => 'Product ID'
+                ]
+            );
         }
         $setup->endSetup();
     }

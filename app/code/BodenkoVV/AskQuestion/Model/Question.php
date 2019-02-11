@@ -34,6 +34,22 @@ class Question extends AbstractModel
     const STATUS_PROCESSED = 'processed';
 
     /**
+     * Prefix of model events names
+     *
+     * @var string
+     */
+    protected $_eventPrefix = 'askquestion_question_model_load_before';
+
+    /**
+     * Parameter name in event
+     *
+     * In observe method you can use $observer->getEvent()->getObject() in this case
+     *
+     * @var string
+     */
+    protected $_eventObject = 'object';
+
+    /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     private $storeManager;
@@ -54,8 +70,12 @@ class Question extends AbstractModel
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
     ) {
+
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->storeManager = $storeManager;
+
+        $params = ['object' => $this, 'registry' => $registry, 'resourceCollection' => $resourceCollection];
+//        $this->_eventManager->dispatch($this->_eventPrefix, $params);
     }
 
     /**
@@ -81,5 +101,19 @@ class Question extends AbstractModel
         }
 
         return parent::beforeSave();
+    }
+
+    /**
+     * Process operation before object load
+     *
+     * @param string $identifier
+     * @param string|null $field
+     * @return void
+     * @since 100.2.0
+     */
+    public function beforeLoad($identifier, $field = null)
+    {
+        $i=0;
+        $this->_beforeLoad($identifier, $field);
     }
 }

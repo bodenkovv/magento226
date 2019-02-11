@@ -45,6 +45,14 @@ class Data extends AbstractHelper
     /** @var \Magento\Framework\Registry $_registry */
     protected $_registry;
 
+    /** @var $currentProductName */
+    public $currentProductName;
+
+    /** @var $currentProductSku */
+    public $currentProductSku;
+
+    /** @var $currentProductId */
+    public $currentProductId;
     /**
      * Data constructor.
      * @param \Magento\Framework\App\Helper\Context $context
@@ -61,11 +69,10 @@ class Data extends AbstractHelper
         QuestionFactory $postQuestionFactory,
         StoreManagerInterface $storeManager,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $registry,
-        array $data= []
+        \Magento\Framework\Registry $registry
     )
     {
-        parent::__construct($context, $data);
+        parent::__construct($context);
         $this->_registry = $registry;
         $this->_postQuestion = $postQuestion;
         $this->_postQuestionFactory = $postQuestionFactory;
@@ -89,9 +96,7 @@ class Data extends AbstractHelper
      */
     public function getConfigValue($field, $storeId = null)
     {
-        return $this->scopeConfig->getValue(
-            $field, ScopeInterface::SCOPE_STORE, $storeId
-        );
+        return $this->scopeConfig->getValue($field, ScopeInterface::SCOPE_STORE, $storeId);
     }
 
     /**
@@ -99,9 +104,10 @@ class Data extends AbstractHelper
      * @param $storeId
      *
      * @return mixed
-     */    public function getGeneralConfig($code, $storeId = null)
+     */
+    public function getGeneralConfig($code, $storeId = null)
     {
-
         return $this->getConfigValue(self::XML_PATH_MODULE_MENU .'general/'. $code, $storeId);
     }
+
 }
