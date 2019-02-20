@@ -2,73 +2,54 @@
 
 namespace BodenkoVV\AskQuestion\Model\ResourceModel\Question;
 
+use BodenkoVV\AskQuestion\Helper\Data;
+use BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection as QuestionCollection;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
+/**
+ * Class Collection
+ * @package BodenkoVV\AskQuestion\Model\ResourceModel\Question
+ */
 class Collection extends AbstractCollection
 {
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    private $storeManager;
-
     /**
      * Name prefix of events that are dispatched by model
      *
      * @var string
      */
-    protected $_eventPrefix;//= 'askquestion_question_collection';
+    protected $_eventPrefix = 'askquestion_question_collection';
 
     /**
      * Name of event parameter
      *
      * @var string
      */
-    protected $_eventObject;// = '';
+    protected $_eventObject ='eventObject';
 
+    public $collectionFactory;
     /**
      * @inheritdoc
      */
-    protected function construct()
+    protected function _construct()
     {
         $this->_init(
             \BodenkoVV\AskQuestion\Model\Question::class,
             \BodenkoVV\AskQuestion\Model\ResourceModel\Question::class
         );
-        $i=0;
-//        $textDisplay = new \Magento\Framework\DataObject(array('text' => 'Mageplaza'));
-//        $this->_eventManager->dispatch('askquestion_question_collection_load_before', ['mp_text' => $textDisplay]);
-//        $this->_eventManager->dispatch('askquestion_question_collection_load_before', ['collection' => $this]);
-//        $this->_eventManager->dispatch('askquestion_question_model_load_before', ['collection' => $this]);
     }
 
-    /**
-     * Redeclare before load method for adding event
-     *
-     * @return $this
-     */
-    protected function _beforeLoad()
+    public function __construct(Data $helperData, \Magento\Store\Model\StoreManagerInterface $storeManager)
     {
-        $i=0;
-        parent::_beforeLoad();
-//        $this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);
-//        if ($this->_eventPrefix && $this->_eventObject) {
-//            $this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);
-//        }
-        return $this;
+        $this->helperData = $helperData;
+        $this->storeManager = $storeManager;
+//        $this->collectionFactory = $collectionFactory;
     }
 
-    /**
-     * @param int $storeId
-     * @return Collection
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     */
-    public function addStoreFilter(int $storeId = 0): self
-    {
-        $i=0;
-//        if (!$storeId) {
-//            $storeId = (int) $this->storeManager->getStore()->getId();
-//        }
-//        $this->addFieldToFilter('store_id', $storeId);
-//        return $this;
-    }
+//    public function addStoreFilter()
+//    {
+//        $i=0;
+//
+//        return $questionCollection;
+//    }
+
 }

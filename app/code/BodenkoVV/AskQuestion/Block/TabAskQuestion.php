@@ -2,66 +2,60 @@
 
 namespace BodenkoVV\AskQuestion\Block;
 
-use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
-use \BodenkoVV\AskQuestion\Model\QuestionFactory;
-use \BodenkoVV\AskQuestion\Helper\Data;
+use BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection;
+use BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
+use BodenkoVV\AskQuestion\Model\QuestionFactory;
+use BodenkoVV\AskQuestion\Helper\Data;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Class TabAskQuestion
  * @package BodenkoVV\AskQuestion\Block
  */
-class TabAskQuestion extends \Magento\Framework\View\Element\Template
+class TabAskQuestion extends Template
 {
-    /**@var \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory      */
+    /**@var CollectionFactory */
     private $collectionFactory;
 
-    /** @var Data $_helperData */
-    public $_helperData;
+    /** @var Data $helperData */
+    public $helperData;
 
     /** @var QuestionFactory  */
     public $questionFactory;
+
     /**
      * Requests constructor.
      * @param CollectionFactory $collectionFactory
+     * @param QuestionFactory $questionFactory
      * @param Data $helperData
-     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param Context $context
      * @param array $data
      */
     public function __construct(
+        Collection $collection,
         CollectionFactory $collectionFactory,
         QuestionFactory $questionFactory,
         Data $helperData,
-        \Magento\Framework\View\Element\Template\Context $context,
+        Context $context,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_helperData = $helperData;
+        $this->helperData = $helperData;
         $this->collectionFactory = $collectionFactory;
+        $this->collection = $collection;
         $this->questionFactory = $questionFactory;
     }
 
     /**
-     * @return object
+     * @return Collection
      */
-    public function _prepareLayout()
+    public function getQuestionByProductSku()
     {
-        return parent::_prepareLayout();
-    }
-
-    /**
-     * @param string $sku
-     *
-     * @return \BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection
-     */
-    public function getQuestionByProductSku($sku = '')
-    {
-        $this->_helperData->currentProductId = $sku;
+//        $collection = $this->collection;
         $collection = $this->collectionFactory->create();
-//        $questioModel = $this->questionFactory->create();
-//        $questioModel->getCollection()->load();
-//        $collection->addFieldToFilter('sku', ['eq'=>$sku]);
-//        $collection->load();
-       // $questioModel->beforeLoad();
+        //$this->helperData,$this->collectionFactory
+//        $collection->addStoreFilter($this->collectionFactory, $this->helperData);
         return $collection;
     }
 }

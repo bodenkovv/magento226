@@ -2333,7 +2333,7 @@
     function jqLiteOff(element, type, fn, unsupported) {
         if (isDefined(unsupported)) throw jqLiteMinErr('offargs', 'jqLite#off() does not support the `selector` argument');
 
-        var events = jqLiteExpandoStore(element, 'events'),
+        var events = jqLiteExpandoStore(element, 'BodenkoVV.AskQuestion.etc.events'),
             handle = jqLiteExpandoStore(element, 'handle');
 
         if (!handle) return; //no listeners registered
@@ -2811,10 +2811,10 @@
         on: function onFn(element, type, fn, unsupported){
             if (isDefined(unsupported)) throw jqLiteMinErr('onargs', 'jqLite#on() does not support the `selector` or `eventData` parameters');
 
-            var events = jqLiteExpandoStore(element, 'events'),
+            var events = jqLiteExpandoStore(element, 'BodenkoVV.AskQuestion.etc.events'),
                 handle = jqLiteExpandoStore(element, 'handle');
 
-            if (!events) jqLiteExpandoStore(element, 'events', events = {});
+            if (!events) jqLiteExpandoStore(element, 'BodenkoVV.AskQuestion.etc.events', events = {});
             if (!handle) jqLiteExpandoStore(element, 'handle', handle = createEventHandler(element, events));
 
             forEach(type.split(' '), function(type){
@@ -2995,7 +2995,7 @@
         clone: jqLiteClone,
 
         triggerHandler: function(element, eventName, eventData) {
-            var eventFns = (jqLiteExpandoStore(element, 'events') || {})[eventName];
+            var eventFns = (jqLiteExpandoStore(element, 'BodenkoVV.AskQuestion.etc.events') || {})[eventName];
 
             eventData = eventData || [];
 

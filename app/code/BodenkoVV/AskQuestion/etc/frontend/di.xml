@@ -6,4 +6,12 @@
         </arguments>
     </type>
 
+<!--    <type name="BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory">-->
+<!--        <plugin name="bodenkovv-askquestion-question-model" type="BodenkoVV\AskQuestion\Plugin\QuestionModelPlugin" sortOrder="1" />-->
+<!--    </type>-->
+
+<!--    <type name="BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory">-->
+<!--        <plugin name="bodenkovv_askquestion"-->
+<!--                type="BodenkoVV\AskQuestion\Plugin\Model\ResourceModel\Question\Collection"/>-->
+<!--    </type>-->
 </config>

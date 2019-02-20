@@ -3,11 +3,14 @@
 namespace BodenkoVV\AskQuestion\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
 use Magento\Store\Model\ScopeInterface;
 use BodenkoVV\AskQuestion\Model\Question;
 use BodenkoVV\AskQuestion\Model\QuestionFactory;
+use BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
 use \Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * Class Data
@@ -39,10 +42,10 @@ class Data extends AbstractHelper
     /** @var  $helperData */
     protected $helperData;
 
-    /** @var \Magento\Framework\View\Result\PageFactory $resultPageFactory */
+    /** @var PageFactory $resultPageFactory */
     protected $resultPageFactory;
 
-    /** @var \Magento\Framework\Registry $_registry */
+    /** @var Registry $_registry */
     protected $_registry;
 
     /** @var $currentProductName */
@@ -53,23 +56,27 @@ class Data extends AbstractHelper
 
     /** @var $currentProductId */
     public $currentProductId;
+
+    public $collectionFactory;
+
     /**
      * Data constructor.
-     * @param \Magento\Framework\App\Helper\Context $context
+     * @param Context $context
      * @param Question $postQuestion
      * @param QuestionFactory $postQuestionFactory
      * @param StoreManagerInterface $storeManager
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     * @param \Magento\Framework\Registry $registry
-     * @param array $data
+     * @param PageFactory $resultPageFactory
+     * @param CollectionFactory $collectionFactory
+     * @param Registry $registry
      */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
+        Context $context,
         Question $postQuestion,
         QuestionFactory $postQuestionFactory,
         StoreManagerInterface $storeManager,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $registry
+        PageFactory $resultPageFactory,
+        CollectionFactory $collectionFactory,
+        Registry $registry
     )
     {
         parent::__construct($context);
@@ -77,6 +84,7 @@ class Data extends AbstractHelper
         $this->_postQuestion = $postQuestion;
         $this->_postQuestionFactory = $postQuestionFactory;
         $this->_storeManager = $storeManager;
+        $this->collectionFactory = $collectionFactory;
         $this->resultPageFactory = $resultPageFactory;
     }
 
@@ -109,5 +117,4 @@ class Data extends AbstractHelper
     {
         return $this->getConfigValue(self::XML_PATH_MODULE_MENU .'general/'. $code, $storeId);
     }
-
 }

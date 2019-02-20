@@ -4,6 +4,7 @@ namespace BodenkoVV\AskQuestion\Block;
 
 use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection;
 use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Class Requests
@@ -12,39 +13,46 @@ use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory;
 class Requests
 {
     /**
-     * @var \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory
+     * @var CollectionFactory
      */
     private $collectionFactory;
 
     /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    private $productCollectionFactory;
+    /**
      * Requests constructor.
      * @param CollectionFactory $collectionFactory
-     * @param \Magento\Framework\View\Element\Template\Context $context
+     * @param Context $context
      * @param array $data
      */
     public function __construct(
-        CollectionFactory $collectionFactory,
-        \Magento\Framework\View\Element\Template\Context $context,
+//        CollectionFactory $collectionFactory,
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+        Context $context,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->collectionFactory = $collectionFactory;
+//        $this->collectionFactory = $collectionFactory;
+        $this->productCollectionFactory = $productCollectionFactory;
     }
 
     /**
      * @return Collection
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getSampleRequests(): Collection
     {
-        /** @var Collection $collection */
-        $collection = $this->collectionFactory->create();
-        $collection->addStoreFilter()
+        /** @var $productCollection \Magento\Catalog\Model\ResourceModel\Product\Collection */
+        $productCollection = $this->productCollectionFactory->create();
+//        $productCollection->addStoreFilter($store->getId());
+//        $collection = $this->collectionFactory->create();
+        $productCollection->addStoreFilter()
             ->getSelect()
             ->orderRand();
         if ($limit = $this->getData('limit')) {
-            $collection->setPageSize($limit);
+            $productCollection->setPageSize($limit);
         }
-        return $collection;
+        return $productCollection;
     }
 }

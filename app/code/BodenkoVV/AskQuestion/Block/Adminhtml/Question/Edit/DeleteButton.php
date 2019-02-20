@@ -10,7 +10,7 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 /**
  * Class DeleteButton
  */
-class DeleteButton extends GenericButton implements ButtonProviderInterface
+class DeleteButton implements ButtonProviderInterface
 {
     /**
      * @return array

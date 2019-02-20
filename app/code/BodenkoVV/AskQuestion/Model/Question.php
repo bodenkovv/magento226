@@ -2,8 +2,10 @@
 
 namespace BodenkoVV\AskQuestion\Model;
 
+use BodenkoVV\AskQuestion\Helper\Data;
 use BodenkoVV\AskQuestion\Model\ResourceModel\Question as QuestionResource;
 use Magento\Framework\Model\AbstractModel;
+use Magento\Catalog\Model\Product;
 
 /**
  * Class Question
@@ -38,7 +40,7 @@ class Question extends AbstractModel
      *
      * @var string
      */
-    protected $_eventPrefix = 'askquestion_question_model_load_before';
+//    protected $_eventPrefix = 'askquestion_question_model_load_before';
 
     /**
      * Parameter name in event
@@ -47,19 +49,26 @@ class Question extends AbstractModel
      *
      * @var string
      */
-    protected $_eventObject = 'object';
+//    protected $_eventObject = 'object';
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     private $storeManager;
 
+    public $resourceModelQuestion;
+
+    public $currentProduct;
+
     /**
+     * Question constructor.
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
-     * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
+     * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
+     * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
+     * @param QuestionResource $resourceModelQuestion
+     * @param Magento\Catalog\Model\Product $product
      * @param array $data
      */
     public function __construct(
@@ -68,13 +77,19 @@ class Question extends AbstractModel
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+
+//        QuestionResource $resourceModelQuestion,
+//        \Magento\Catalog\Model\Product $product,
         array $data = []
     ) {
 
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->storeManager = $storeManager;
 
-        $params = ['object' => $this, 'registry' => $registry, 'resourceCollection' => $resourceCollection];
+//        $this->currentProduct = $product;
+//        $this->resourceModelQuestion = $resourceModelQuestion;
+//        $params = ['object' => $this, 'registry' => $registry,
+//                    'resourceCollection' => $resourceCollection];
 //        $this->_eventManager->dispatch($this->_eventPrefix, $params);
     }
 
@@ -103,17 +118,18 @@ class Question extends AbstractModel
         return parent::beforeSave();
     }
 
-    /**
-     * Process operation before object load
-     *
-     * @param string $identifier
-     * @param string|null $field
-     * @return void
-     * @since 100.2.0
-     */
-    public function beforeLoad($identifier, $field = null)
-    {
-        $i=0;
-        $this->_beforeLoad($identifier, $field);
-    }
+//    /**
+//     * Process operation before object load
+//     *
+//     * @param string $identifier
+//     * @param string|null $field
+//     * @return void
+//     * @since 100.2.0
+//     */
+//    public function beforeLoad($identifier, $field = null)
+//    {
+//        $i=0;
+//        $this->addFieldToFilter('store_id', $storeId);
+//        $this->_beforeLoad($identifier, $field);
+//    }
 }
