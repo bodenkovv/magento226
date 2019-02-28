@@ -1,55 +1,36 @@
 <?php
+namespace VVBodenko\AskQuestion\Plugin\Model\ResourceModel\Question;
 
-namespace BodenkoVV\AskQuestion\Plugin\Model\ResourceModel\Question;
+use VVBodenko\AskQuestion\Model\ResourceModel\Question\Collection as ProductCollection;
 
-use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory as QuestionCollectionFactory;
-use \BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection as QuestionCollection;
-use \BodenkoVV\AskQuestion\Helper\Data;
-
+/**
+ * Class Collection
+ * @package VVBodenko\AskQuestion\Plugin\AskQuestion\Model\ResourceModel\AskQuestion
+ */
 class Collection
 {
-
-//    public function beforeLoad($identifier, $field = null)
-//    {
-//        $i=0;
-//        $this->addFieldToFilter('store_id', $storeId);
-//        $this->_beforeLoad($identifier, $field);
-//    }
-
-//public function beforeLoad(\BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory $subject, $storeId)
-
-    //public function beforeAddStoreFilter(QuestionCollectionFactory $questionCollectionFactory, Data $helper)
-
-    //Data $helperData,QuestionCollectionFactory $questionCollection
-    public function afterAddStoreFilter(QuestionCollection $subject, $result)
+    /**
+     * Collection constructor.
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     */
+    public function __construct(
+        \Magento\Store\Model\StoreManagerInterface $storeManager
+    ) {
+        $this->storeManager = $storeManager;
+    }
+    /**
+     * @param ProductCollection $subject
+     * @param \Closure $proceed
+     * @param bool $printQuery
+     * @param bool $logQuery
+     * @return mixed
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function aroundLoad(ProductCollection $subject, \Closure $proceed, $printQuery = false, $logQuery = false)
     {
-
-        // logging to test override
-//        $logger = \Magento\Framework\App\ObjectManager::getInstance()->get('\Psr\Log\LoggerInterface');
-//        $logger->debug('Model Override Test before');
-//        $questionCollection=$questionCollection->create();
-//        $questionCollection=$questionCollection;
-
-        $product = $result->getCurrentProduct();
-
-        $test1=\Magento\Framework\App\ObjectManager::getInstance()->get('BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory')->create();
-        $test2=$result->_postQuestionFactory->create();
-
-//        $this->addFieldToFilter('product_id', ['eq'=>$product->getEntityId()]);
-        $result = $subject->addFieldToFilter('product_id', ['eq'=>$product->getEntityId()]);
-        $i=0;
-       // return $subject->create()->addFieldToFilter('store_id',$storeId);
+        $storeId = (int) $this->storeManager->getStore()->getStoreId();
+        $subject->addFieldToFilter('store_id', $storeId);
+        $result = $proceed($printQuery, $logQuery);
         return $result;
     }
-//
-//    public function afterGetName(\Magento\Catalog\Model\Product $subject, $result)
-//    {
-//        // logging to test override
-//        $logger = \Magento\Framework\App\ObjectManager::getInstance()->get('\Psr\Log\LoggerInterface');
-//        $logger->debug('Model Override Test after');
-//
-//        return $result;
-//    }
 }
-
-?>

@@ -10,7 +10,7 @@ use Magento\Framework\View\Element\Template\Context;
  * Class Requests
  * @package BodenkoVV\AskQuestion\Block
  */
-class Requests
+class Requests extends \Magento\Framework\View\Element\Template
 {
     /**
      * @var CollectionFactory

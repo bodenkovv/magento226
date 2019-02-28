@@ -6,8 +6,8 @@
                   instance="BodenkoVV\AskQuestion\Observer\Catalog\Model\Product\LoadAfter"/>
     </event>
 
-<!--    <event name="askquestion_question_collection_load_before">-->
-<!--        <observer name="bodenkovv_askquestion"-->
-<!--                  instance="BodenkoVV\AskQuestion\Observer\AskQuestion\Model\QuestionLoadBefore"/>-->
-<!--    </event>-->
+    <event name="askquestion_question_collection_load_before">
+        <observer name="bodenkovv_askquestion"
+                  instance="BodenkoVV\AskQuestion\Observer\AskQuestion\Model\QuestionLoadBefore"/>
+    </event>
 </config>

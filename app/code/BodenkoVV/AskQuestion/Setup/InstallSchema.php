@@ -6,6 +6,7 @@ use \Magento\Framework\Setup\InstallSchemaInterface;
 use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\SchemaSetupInterface;
 use \Magento\Framework\DB\Ddl\Table;
+use \BodenkoVV\AskQuestion\Model\Question;
 
 /**
  * Class InstallSchema
@@ -95,6 +96,41 @@ class InstallSchema implements InstallSchemaInterface
                     ['nullable' => false],
                     'Phone user'
                 )
+                ->addColumn(
+                    'status',
+                    Table::TYPE_TEXT,
+                    15,
+                    ['nullable' => false, 'default' => Question::STATUS_PENDING],
+                    'Status'
+                )
+                ->addColumn(
+                    'store_id',
+                    Table::TYPE_SMALLINT,
+                    5,
+                    ['nullable' => false, 'default' => 0],
+                    'Store ID'
+                )
+                ->addColumn(
+                'sku',
+                    Table::TYPE_TEXT,
+                63,
+                    ['nullable' => true, 'default' => ''],
+                    'SKU'
+                )
+                ->addColumn(
+                'product_name',
+                    Table::TYPE_TEXT,
+                    null,
+                    ['nullable' => true, 'default' => ''],
+                    'Product Name'
+                )
+//                ->addColumn(
+//                'product_id',
+//                    Table::TYPE_INTEGER,
+//                    5,
+//                    ['nullable' => false, 'default' => 0],
+//                    'Product ID'
+//                )
                 ->setComment('Questions and Answers');
             $setup->getConnection()->createTable($table);
         }

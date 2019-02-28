@@ -38,12 +38,12 @@ class Collection extends AbstractCollection
         );
     }
 
-    public function __construct(Data $helperData, \Magento\Store\Model\StoreManagerInterface $storeManager)
-    {
-        $this->helperData = $helperData;
-        $this->storeManager = $storeManager;
+//    public function __construct(Data $helperData, \Magento\Store\Model\StoreManagerInterface $storeManager)
+//    {
+//        $this->helperData = $helperData;
+//        $this->storeManager = $storeManager;
 //        $this->collectionFactory = $collectionFactory;
-    }
+//    }
 
 //    public function addStoreFilter()
 //    {

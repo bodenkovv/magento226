@@ -34,13 +34,14 @@ class Question extends AbstractModel
 {
     const STATUS_PENDING = 'pending';
     const STATUS_PROCESSED = 'processed';
+    const STATUS_ANSWERED = 'answered';
 
     /**
      * Prefix of model events names
      *
      * @var string
      */
-//    protected $_eventPrefix = 'askquestion_question_model_load_before';
+    protected $_eventPrefix = 'askquestion_question_model_load_before';
 
     /**
      * Parameter name in event
@@ -49,7 +50,7 @@ class Question extends AbstractModel
      *
      * @var string
      */
-//    protected $_eventObject = 'object';
+    protected $_eventObject = 'object';
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface

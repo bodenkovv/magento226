@@ -6,9 +6,9 @@
         </arguments>
     </type>
 
-<!--    <type name="BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory">-->
-<!--        <plugin name="bodenkovv-askquestion-question-model" type="BodenkoVV\AskQuestion\Plugin\QuestionModelPlugin" sortOrder="1" />-->
-<!--    </type>-->
+    <type name="BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection">
+        <plugin name="bodenkovv-askquestion-question-model" type="BodenkoVV\AskQuestion\Plugin\QuestionModelPlugin" sortOrder="1" />
+    </type>
 
 <!--    <type name="BodenkoVV\AskQuestion\Model\ResourceModel\Question\CollectionFactory">-->
 <!--        <plugin name="bodenkovv_askquestion"-->

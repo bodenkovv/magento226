@@ -33,6 +33,7 @@ class TabAskQuestion extends Template
      * @param array $data
      */
     public function __construct(
+        Magento\Framework\Registry $registry,
         Collection $collection,
         CollectionFactory $collectionFactory,
         QuestionFactory $questionFactory,
@@ -57,5 +58,30 @@ class TabAskQuestion extends Template
         //$this->helperData,$this->collectionFactory
 //        $collection->addStoreFilter($this->collectionFactory, $this->helperData);
         return $collection;
+    }
+
+    /**
+     * @return Collection
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function getQuestions()
+    {
+        /** @var Collection $collection */
+        $collection = $this->collectionFactory->create();
+        $collection
+            ->addFieldToFilter('sku', ['eq' => $this->getCurrentProduct()->getSku()])
+            ->getSelect()
+            ->orderRand();
+        if ($limit = $this->getData('limit')) {
+            $collection->setPageSize($limit);
+        }
+        return $collection;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCurrentProduct()
+    {
+        return $this->_registry->registry('current_product');
     }
 }
