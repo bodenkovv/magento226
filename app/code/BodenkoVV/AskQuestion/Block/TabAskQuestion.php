@@ -26,6 +26,8 @@ class TabAskQuestion extends Template
 
     /**
      * Requests constructor.
+     * @param Magento\Framework\Registry $registry
+     * @param Collection $collection
      * @param CollectionFactory $collectionFactory
      * @param QuestionFactory $questionFactory
      * @param Data $helperData
@@ -33,19 +35,20 @@ class TabAskQuestion extends Template
      * @param array $data
      */
     public function __construct(
-        Magento\Framework\Registry $registry,
-        Collection $collection,
+//        Collection $collection,
         CollectionFactory $collectionFactory,
         QuestionFactory $questionFactory,
         Data $helperData,
         Context $context,
+        \Magento\Framework\Registry $registry,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->helperData = $helperData;
         $this->collectionFactory = $collectionFactory;
-        $this->collection = $collection;
+//        $this->collection = $collection;
         $this->questionFactory = $questionFactory;
+        $this->_registry = $registry;
     }
 
     /**
