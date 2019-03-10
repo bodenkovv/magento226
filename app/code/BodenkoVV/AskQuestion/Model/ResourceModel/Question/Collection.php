@@ -37,19 +37,4 @@ class Collection extends AbstractCollection
             \BodenkoVV\AskQuestion\Model\ResourceModel\Question::class
         );
     }
-
-//    public function __construct(Data $helperData, \Magento\Store\Model\StoreManagerInterface $storeManager)
-//    {
-//        $this->helperData = $helperData;
-//        $this->storeManager = $storeManager;
-//        $this->collectionFactory = $collectionFactory;
-//    }
-
-//    public function addStoreFilter()
-//    {
-//        $i=0;
-//
-//        return $questionCollection;
-//    }
-
 }

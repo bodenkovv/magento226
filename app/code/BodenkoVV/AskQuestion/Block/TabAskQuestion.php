@@ -35,7 +35,6 @@ class TabAskQuestion extends Template
      * @param array $data
      */
     public function __construct(
-//        Collection $collection,
         CollectionFactory $collectionFactory,
         QuestionFactory $questionFactory,
         Data $helperData,
@@ -46,7 +45,6 @@ class TabAskQuestion extends Template
         parent::__construct($context, $data);
         $this->helperData = $helperData;
         $this->collectionFactory = $collectionFactory;
-//        $this->collection = $collection;
         $this->questionFactory = $questionFactory;
         $this->_registry = $registry;
     }
@@ -56,7 +54,6 @@ class TabAskQuestion extends Template
      */
     public function getQuestionByProductSku()
     {
-//        $collection = $this->collection;
         $collection = $this->collectionFactory->create();
         //$this->helperData,$this->collectionFactory
 //        $collection->addStoreFilter($this->collectionFactory, $this->helperData);

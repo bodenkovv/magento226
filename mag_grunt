@@ -1,4 +1,12 @@
 grunt clean
-grunt exec:vector
-grunt less:vector
+
+#grunt exec:vector
+#grunt less:vector
+
+grunt exec
+grunt less
 grunt watch
+
+#grunt clean; grunt exec; grunt less
+#bin/magento setup:static-content:deploy -f -s standard
+#bin/magento cache:clean

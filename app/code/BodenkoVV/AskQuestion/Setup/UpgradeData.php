@@ -6,6 +6,11 @@ use \Magento\Framework\Setup\UpgradeDataInterface;
 use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\ModuleDataSetupInterface;
 use \BodenkoVV\AskQuestion\Model\Question;
+use Magento\Framework\Component\ComponentRegistrar;
+use \Magento\Framework\File\Csv;
+use Magento\Eav\Setup\EavSetup;
+use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Store\Model\Store;
 
 /**
  * Class UpgradeData
@@ -24,7 +29,7 @@ class UpgradeData implements UpgradeDataInterface
     private $componentRegistrar;
 
     public function __construct(
-        \PalashAs\AskQuestion\Model\AskQuestionFactory $askQuestionFactory,
+        \BodenkoVV\AskQuestion\Model\QuestionFactory $questionFactory,
         ComponentRegistrar $componentRegistrar,
         Csv $csv,
         EavSetupFactory $eavSetupFactory
@@ -32,7 +37,7 @@ class UpgradeData implements UpgradeDataInterface
     {
         $this->componentRegistrar = $componentRegistrar;
         $this->csv = $csv;
-        $this->askQuestionFactory = $askQuestionFactory;
+        $this->questionFactory = $questionFactory;
         $this->eavSetupFactory = $eavSetupFactory;
     }
     /**
@@ -111,38 +116,7 @@ class UpgradeData implements UpgradeDataInterface
         }
         $setup->endSetup();
 
-        $version='1.0.5';
-        $setup->startSetup();
-
-        $setup->startSetup();
-        if ($context->getVersion()
-            && version_compare($context->getVersion(), $version) < 0
-        ) {
-            $tableName = $setup->getTable('bodenkovv_askquestion');
-
-            $setup
-                ->getConnection()
-                ->update($tableName, ['status' => false], 'status=1');
-        }
-        $setup->endSetup();
-
-
-        $version='1.0.6';
-        $setup->startSetup();
-
-        $setup->startSetup();
-        if ($context->getVersion()
-            && version_compare($context->getVersion(), $version) < 0
-        ) {
-            $tableName = $setup->getTable('bodenkovv_askquestion');
-
-            $setup
-                ->getConnection()
-                ->update($tableName, ['store_id' => 0]);
-        }
-        $setup->endSetup();
-
-        $version='1.0.7';
+        $version='1.0.2';
         $setup->startSetup();
 
         $setup->startSetup();
@@ -154,21 +128,6 @@ class UpgradeData implements UpgradeDataInterface
             $setup
                 ->getConnection()
                 ->update($tableName, ['status' => Question::STATUS_PENDING]);
-        }
-        $setup->endSetup();
-
-        $version='1.0.8';
-        $setup->startSetup();
-
-        $setup->startSetup();
-        if ($context->getVersion()
-            && version_compare($context->getVersion(), $version) < 0
-        ) {
-            $tableName = $setup->getTable('bodenkovv_askquestion');
-
-            $setup
-                ->getConnection()
-                ->update($tableName, ['store_id' => 1],'store_id=0');
         }
         $setup->endSetup();
 
