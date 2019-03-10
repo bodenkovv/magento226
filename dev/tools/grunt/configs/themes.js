@@ -50,5 +50,25 @@ module.exports = {
             'css/styles'
         ],
         dsl: 'less'
+    },
+    theme2: {
+        area: 'frontend',
+        name: 'vector/theme2',
+        locale: 'en_US',
+        files: [
+            'css/styles-m',
+            'css/styles-l'
+        ],
+        dsl: 'less'
+    },
+    theme1: {
+        area: 'frontend',
+        name: 'vector/theme1',
+        locale: 'en_US',
+        files: [
+            'css/styles-m',
+            'css/styles-l'
+        ],
+        dsl: 'less'
     }
 };
