@@ -11,6 +11,6 @@ grunt refresh
 grunt watch
 
 
-#grunt clean; grunt exec; grunt less
-#bin/magento setup:static-content:deploy -f -s standard
-#bin/magento cache:clean
+grunt clean; grunt exec; grunt less
+bin/magento setup:static-content:deploy -f -s standard
+bin/magento cache:clean

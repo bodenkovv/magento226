@@ -378,10 +378,10 @@
     @_icon-image: '/images/test.png';
 
     //  "Call" the mixin
-    //.lib-url-check(@_icon-image);
+    .lib-url-check(@_icon-image);
 
     //  Will return url('/images/test.png')
-    //.lib-css(background, #eee @lib-url-check-output no-repeat 0 0);
+    .lib-css(background, #eee @lib-url-check-output no-repeat 0 0);
 }
 
 //
@@ -399,10 +399,10 @@
     @_icon-image: false;
 
     //  "Call" the mixin
-//    .lib-url-check(@_icon-image);
+    .lib-url-check(@_icon-image);
 
     //  Will return 'false' and outputs nothing
-//    .lib-css(background, #eee @lib-url-check-output no-repeat 0 0);
+    .lib-css(background, #eee @lib-url-check-output no-repeat 0 0);
 }
 
 //  ```
