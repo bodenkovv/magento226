@@ -45,8 +45,6 @@ class Requests extends \Magento\Framework\View\Element\Template
     {
         /** @var $productCollection \Magento\Catalog\Model\ResourceModel\Product\Collection */
         $productCollection = $this->productCollectionFactory->create();
-//        $productCollection->addStoreFilter($store->getId());
-//        $collection = $this->collectionFactory->create();
         $productCollection->addStoreFilter()
             ->getSelect()
             ->orderRand();

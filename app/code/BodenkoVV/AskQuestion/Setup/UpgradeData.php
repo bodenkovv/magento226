@@ -28,6 +28,13 @@ class UpgradeData implements UpgradeDataInterface
      */
     private $componentRegistrar;
 
+    /**
+     * UpgradeData constructor.
+     * @param \BodenkoVV\AskQuestion\Model\QuestionFactory $questionFactory
+     * @param ComponentRegistrar $componentRegistrar
+     * @param Csv $csv
+     * @param EavSetupFactory $eavSetupFactory
+     */
     public function __construct(
         \BodenkoVV\AskQuestion\Model\QuestionFactory $questionFactory,
         ComponentRegistrar $componentRegistrar,
@@ -40,6 +47,7 @@ class UpgradeData implements UpgradeDataInterface
         $this->questionFactory = $questionFactory;
         $this->eavSetupFactory = $eavSetupFactory;
     }
+
     /**
      * Creates sample question in table bodenkovv_askquestion
      *
@@ -133,6 +141,11 @@ class UpgradeData implements UpgradeDataInterface
 
     }
 
+    /**
+     * @param ModuleDataSetupInterface $setup
+     * @param $fileName
+     * @throws \Exception
+     */
     public function updateDataForRequestSample(ModuleDataSetupInterface $setup, $fileName)
     {
         $tableName = $setup->getTable('bodenkovv_askquestion');
@@ -164,6 +177,7 @@ class UpgradeData implements UpgradeDataInterface
             }
         }
     }
+
     /**
      * @param $fileName
      * @return string
@@ -173,6 +187,7 @@ class UpgradeData implements UpgradeDataInterface
         return $this->componentRegistrar->getPath(ComponentRegistrar::MODULE, 'BodenkoVV_AskQuestion') .
             DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $fileName;
     }
+
     /**
      * @param $data
      * @return array

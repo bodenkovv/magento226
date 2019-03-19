@@ -2,13 +2,13 @@
 
 namespace BodenkoVV\AskQuestion\Model\Config\Source;
 
-use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Framework\Option\ArrayInterface;
 
 /**
  * @api
  * @since 100.0.2
  */
-class Status implements \Magento\Framework\Option\ArrayInterface
+class Status implements ArrayInterface
 {
     /**
      * Options Status question

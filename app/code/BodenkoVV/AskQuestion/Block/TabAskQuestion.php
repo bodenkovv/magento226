@@ -55,8 +55,7 @@ class TabAskQuestion extends Template
     public function getQuestionByProductSku()
     {
         $collection = $this->collectionFactory->create();
-        //$this->helperData,$this->collectionFactory
-//        $collection->addStoreFilter($this->collectionFactory, $this->helperData);
+
         return $collection;
     }
 

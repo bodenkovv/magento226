@@ -5,12 +5,13 @@
  */
 namespace BodenkoVV\AskQuestion\Block\Adminhtml\Question\Edit;
 
+use Magento\Cms\Block\Adminhtml\Block\Edit\GenericButton;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class DeleteButton
  */
-class DeleteButton implements ButtonProviderInterface
+class DeleteButton extends GenericButton implements ButtonProviderInterface
 {
     /**
      * @return array
@@ -23,8 +24,8 @@ class DeleteButton implements ButtonProviderInterface
                 'label' => __('Delete Block'),
                 'class' => 'delete',
                 'on_click' => 'deleteConfirm(\'' . __(
-                    'Are you sure you want to do this?'
-                ) . '\', \'' . $this->getDeleteUrl() . '\')',
+                        'Are you sure you want to do this?'
+                    ) . '\', \'' . $this->getDeleteUrl() . '\')',
                 'sort_order' => 20,
             ];
         }
@@ -36,6 +37,6 @@ class DeleteButton implements ButtonProviderInterface
      */
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/*/delete', ['block_id' => $this->getBlockId()]);
+        return $this->getUrl('*/*/delete', ['id' => $this->getBlockId()]);
     }
 }

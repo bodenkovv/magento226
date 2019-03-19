@@ -2,7 +2,7 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">bodenkovv_askquestion_question_form.bodenkovv_askquestion_question_listing_data_source</item>
+            <item name="provider" xsi:type="string">bodenkovv_askquestion_question_form.bodenkovv_askquestion_question_form_data_source</item>
         </item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
     </argument>
@@ -17,14 +17,14 @@
         <namespace>bodenkovv_askquestion_question_form</namespace>
         <dataScope>data</dataScope>
         <deps>
-            <dep>bodenkovv_askquestion_question_form.bodenkovv_askquestion_question_listing_data_source</dep>
+            <dep>bodenkovv_askquestion_question_form.bodenkovv_askquestion_question_form_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="bodenkovv_askquestion_question_listing_data_source" component="Magento_Ui/js/form/provider">
+    <dataSource name="bodenkovv_askquestion_question_form_data_source" component="Magento_Ui/js/form/provider">
         <settings>
             <submitUrl path="askquestion/question/save"/>
         </settings>
-        <dataProvider class="BodenkoVV\AskQuestion\Ui\Component\DataProvider" name="bodenkovv_askquestion_question_listing_data_source">
+        <dataProvider class="BodenkoVV\AskQuestion\Ui\Component\Question\DataProvider" name="bodenkovv_askquestion_question_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>id</primaryFieldName>

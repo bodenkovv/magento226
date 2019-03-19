@@ -7,10 +7,10 @@ echo "php bin/magento cache:clean"
 php bin/magento cache:clean
 echo "-----------------------------"
 echo "php bin/magento indexer:reindex"
-php bin/magento indexer:reindex
+#php bin/magento indexer:reindex
 echo "-----------------------------"
 echo "php bin/magento cache:flush"
-php bin/magento cache:flush
+#php bin/magento cache:flush
 echo "-----------------------------"
 
 

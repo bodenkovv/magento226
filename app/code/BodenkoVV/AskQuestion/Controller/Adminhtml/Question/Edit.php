@@ -54,9 +54,7 @@ class Edit extends Action
      */
     protected function _initAction()
     {
-        // load layout, set active menu and breadcrumbs
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-
         $resultPage = $this->resultPageFactory->create();
         $resultPage->addBreadcrumb(__($this->_pageName), __($this->_pageName));
         $resultPage->getConfig()->getTitle()->prepend(__($this->_pageName));
@@ -71,11 +69,8 @@ class Edit extends Action
      */
     public function execute()
     {
-        // 1. Get ID and create model
         $id = $this->getRequest()->getParam('id');
         $model = $this->_objectManager->create(\BodenkoVV\AskQuestion\Model\Question::class);
-
-        // 2. Initial checking
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
@@ -88,8 +83,6 @@ class Edit extends Action
         }
 
         $this->_coreRegistry->register('bodenkovv_askquestion', $model);
-
-        // 5. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_initAction();
         $resultPage->addBreadcrumb(

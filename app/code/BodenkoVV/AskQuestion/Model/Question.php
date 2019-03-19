@@ -57,10 +57,6 @@ class Question extends AbstractModel
      */
     private $storeManager;
 
-    public $resourceModelQuestion;
-
-    public $currentProduct;
-
     /**
      * Question constructor.
      * @param \Magento\Framework\Model\Context $context
@@ -81,10 +77,8 @@ class Question extends AbstractModel
 
         array $data = []
     ) {
-
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->storeManager = $storeManager;
-
     }
 
     /**
@@ -96,7 +90,7 @@ class Question extends AbstractModel
     }
 
     /**
-     * @return \Magento\Framework\Model\AbstractModel
+     * @return AbstractModel
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function beforeSave()

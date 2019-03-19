@@ -32,7 +32,9 @@ class QuestionLoadBefore implements ObserverInterface
     {
         /** @var Data/Product $product */
         $product = $this->helperData->getCurrentProduct();
-        $collectionQuestion = $observer->getData('eventObject');
-        $collectionQuestion ->addFieldToFilter('product_id', ['eq'=>$product->getEntityId()]);
+        if (isset($product)) {
+            $collectionQuestion = $observer->getData('eventObject');
+            $collectionQuestion ->addFieldToFilter('product_id', ['eq'=>$product->getEntityId()]);
+        }
     }
 }

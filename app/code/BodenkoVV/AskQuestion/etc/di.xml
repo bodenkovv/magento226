@@ -1,18 +1,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
-
-<!--    <virtualType name="BodenkoVV\AskQuestion\Model\ResourceModel\Question\Grid\CollectionVirtual"-->
-<!--                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">-->
-<!--        <arguments>-->
-<!--            <argument name="mainTable" xsi:type="string">bodenkovv_askquestion</argument>-->
-<!--            <argument name="resourceModel" xsi:type="string">BodenkoVV\AskQuestion\Model\ResourceModel\Question</argument>-->
-<!--        </arguments>-->
-<!--    </virtualType>-->
-    
-    
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="bodenkovv_askquestion_question_listing_data_source" xsi:type="string">BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection</item>
+                <item name="bodenkovv_askquestion_question_listing_data_source" xsi:type="string">BodenkoVV\AskQuestion\Model\ResourceModel\Question\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
@@ -32,6 +22,4 @@
             <argument name="resourceModel" xsi:type="string">BodenkoVV\AskQuestion\Model\ResourceModel\Question</argument>
         </arguments>
     </virtualType>
-
-
 </config>

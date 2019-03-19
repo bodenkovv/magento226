@@ -19,16 +19,30 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     /** @var $loadedData */
     protected $loadedData;
 
-
+    /**
+     * DataProvider constructor.
+     * @param $name
+     * @param $primaryFieldName
+     * @param $requestFieldName
+     * @param array $meta
+     * @param array $data
+     * @param CollectionFactory $questionCollectionFactory
+     */
     public function __construct(
-
+        $name,
         $primaryFieldName,
         $requestFieldName,
         CollectionFactory $questionCollectionFactory,
+        array $meta = [],
         array $data = []
     ) {
+        $this->name = $name;
+        $this->primaryFieldName = $primaryFieldName;
+        $this->requestFieldName = $requestFieldName;
+        $this->meta = $meta;
+        $this->data = $data;
+        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->collection = $questionCollectionFactory->create();
-        parent::__construct($primaryFieldName, $requestFieldName, $$data);
     }
 
     /**

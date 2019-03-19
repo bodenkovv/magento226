@@ -8,10 +8,10 @@ namespace BodenkoVV\AskQuestion\Controller\Adminhtml\Question;
  */
 class Index extends \Magento\Backend\App\Action
 {
-/** @var string  $_pageName*/
+    /** @var string  $_pageName*/
     protected $_pageName='Question';
 
-/** @var \Magento\Framework\View\Result\PageFactory $resultPageFactory*/
+    /** @var \Magento\Framework\View\Result\PageFactory $resultPageFactory*/
 	protected $resultPageFactory;
 
     /**

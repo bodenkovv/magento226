@@ -1,9 +1,0 @@
-php bin/magento cache:flush
-sudo php bin/magento setup:static-content:deploy -f
-php bin/magento cache:flush
-
-#sudo find . -type d -exec chmod 770 {} \; && sudo find . -type f -exec chmod 660 {} \; && sudo chmod u+x bin/magento
-sudo find ./var/view_preprocessed/ -type d -exec chmod 777 {} \; && sudo find ./var/view_preprocessed/ -type f -exec chmod 666 {} \;
-sudo find ./generated/code/ -type d -exec chmod 777 {} \; && sudo find ./generated/code/ -type f -exec chmod 666 {} \;
-sudo find ./var/cache/ -type d -exec chmod 777 {} \; && sudo find ./var/cache/ -type f -exec chmod 666 {} \;
-sudo find ./pub/static/ -type d -exec chmod 777 {} \; && sudo find ./pub/static/ -type f -exec chmod 666 {} \;

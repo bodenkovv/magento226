@@ -2,12 +2,12 @@
 namespace VVBodenko\AskQuestion\Plugin\Model\ResourceModel\Question;
 
 use VVBodenko\AskQuestion\Model\ResourceModel\Question\Collection as ProductCollection;
-
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 /**
  * Class Collection
  * @package VVBodenko\AskQuestion\Plugin\AskQuestion\Model\ResourceModel\AskQuestion
  */
-class Collection
+class Collection extends AbstractCollection
 {
     /**
      * Collection constructor.
@@ -18,6 +18,7 @@ class Collection
     ) {
         $this->storeManager = $storeManager;
     }
+
     /**
      * @param ProductCollection $subject
      * @param \Closure $proceed

@@ -124,13 +124,6 @@ class InstallSchema implements InstallSchemaInterface
                     ['nullable' => true, 'default' => ''],
                     'Product Name'
                 )
-//                ->addColumn(
-//                'product_id',
-//                    Table::TYPE_INTEGER,
-//                    5,
-//                    ['nullable' => false, 'default' => 0],
-//                    'Product ID'
-//                )
                 ->setComment('Questions and Answers');
             $setup->getConnection()->createTable($table);
         }

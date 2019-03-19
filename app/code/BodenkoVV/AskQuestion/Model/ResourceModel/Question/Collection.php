@@ -26,7 +26,6 @@ class Collection extends AbstractCollection
      */
     protected $_eventObject ='eventObject';
 
-    public $collectionFactory;
     /**
      * @inheritdoc
      */
