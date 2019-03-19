@@ -6,6 +6,8 @@
  */
 namespace BodenkoVV\AskQuestion\Controller\Adminhtml\Question;
 
+use Magento\Backend\App\Action;
+
 /**
  * Class Delete
  * @package BodenkoVV\AskQuestion\Controller\Adminhtml\Question
@@ -18,6 +20,39 @@ class Delete extends \Magento\Backend\App\Action
      * @see _isAllowed()
      */
     const ADMIN_RESOURCE = 'BodenkoVV_AskQuestion::question_delete';
+
+    /** @var \BodenkoVV\AskQuestion\Model\Question  */
+    public $questionModel;
+
+    /**
+     * Core registry
+     *
+     * @var \Magento\Framework\Registry
+     */
+    protected $_coreRegistry;
+
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
+    protected $resultPageFactory;
+
+    /**
+     * @param Action\Context $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \BodenkoVV\AskQuestion\Model\Question $question
+     * @param \Magento\Framework\Registry $registry
+     */
+    public function __construct(
+        Action\Context $context,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
+        \BodenkoVV\AskQuestion\Model\Question $question,
+        \Magento\Framework\Registry $registry
+    ) {
+        $this->resultPageFactory = $resultPageFactory;
+        $this->questionModel = $question;
+        $this->_coreRegistry = $registry;
+        parent::__construct($context);
+    }
 
     /**
      * Delete action
@@ -35,7 +70,8 @@ class Delete extends \Magento\Backend\App\Action
             $title = "";
             try {
                 // init model and delete
-                $model = $this->_objectManager->create(\BodenkoVV\AskQuestion\Model\Question::class);
+//                $model = $this->_objectManager->create(\BodenkoVV\AskQuestion\Model\Question::class);
+                $model = $this->questionModel;
                 $model->load($id);
                 
                 $title = $model->getTitle();

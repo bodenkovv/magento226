@@ -5,6 +5,7 @@
  */
 namespace BodenkoVV\AskQuestion\Block\Adminhtml\Question\Edit;
 
+use Magento\Cms\Block\Adminhtml\Block\Edit\GenericButton;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**

@@ -33,10 +33,8 @@ class Save extends \Magento\Backend\App\Action
      */
     protected $dataPersistor;
 
-    /**
-     * @var \Magento\Cms\Model\PageFactory
-     */
-    private $pageFactory;
+    /** @var \BodenkoVV\AskQuestion\Model\QuestionFactory  */
+    private $questionFactory;
 
     /**
      * @var \Magento\Cms\Api\PageRepositoryInterface
@@ -47,18 +45,18 @@ class Save extends \Magento\Backend\App\Action
      * @param Action\Context $context
      * @param PostDataProcessor $dataProcessor
      * @param DataPersistorInterface $dataPersistor
-     * @param \BodenkoVV\AskQuestion\Model\QuestionFactory $pageFactory
+     * @param \BodenkoVV\AskQuestion\Model\QuestionFactory $questionFactory
      */
     public function __construct(
         Action\Context $context,
         PostDataProcessor $dataProcessor,
         DataPersistorInterface $dataPersistor,
-        \BodenkoVV\AskQuestion\Model\QuestionFactory $pageFactory = null
+        \BodenkoVV\AskQuestion\Model\QuestionFactory $questionFactory = null
     ) {
         $this->dataProcessor = $dataProcessor;
         $this->dataPersistor = $dataPersistor;
-        $this->pageFactory = $pageFactory
-            ?: \Magento\Framework\App\ObjectManager::getInstance()->get(\BodenkoVV\AskQuestion\Model\QuestionFactory::class);
+        $this->questionFactory = $questionFactory;
+//            ?: \Magento\Framework\App\ObjectManager::getInstance()->get(\BodenkoVV\AskQuestion\Model\QuestionFactory::class);
         parent::__construct($context);
     }
 
@@ -80,7 +78,7 @@ class Save extends \Magento\Backend\App\Action
             }
 
             /** @var \Magento\Cms\Model\Page $model */
-            $model = $this->pageFactory->create();
+            $model = $this->questionFactory->create();
 
             $id = $this->getRequest()->getParam('id');
             if ($id) {

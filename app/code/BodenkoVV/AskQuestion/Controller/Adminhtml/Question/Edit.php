@@ -32,29 +32,32 @@ class Edit extends Action
     /** @var string $_pageName */
     protected $_pageName='Question Edit Item';
 
+    /** @var \BodenkoVV\AskQuestion\Model\Question  */
+    public $questionModel;
+
     /**
      * @param Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \BodenkoVV\AskQuestion\Model\Question $question
      * @param \Magento\Framework\Registry $registry
      */
     public function __construct(
         Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
+        \BodenkoVV\AskQuestion\Model\Question $question,
         \Magento\Framework\Registry $registry
     ) {
         $this->resultPageFactory = $resultPageFactory;
+        $this->questionModel = $question;
         $this->_coreRegistry = $registry;
         parent::__construct($context);
     }
 
     /**
-     * Init actions
-     *
      * @return \Magento\Backend\Model\View\Result\Page
      */
     protected function _initAction()
     {
-        // load layout, set active menu and breadcrumbs
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
 
         $resultPage = $this->resultPageFactory->create();
@@ -64,23 +67,16 @@ class Edit extends Action
     }
 
     /**
-     * Edit CMS page
-     *
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
-     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
-        // 1. Get ID and create model
         $id = $this->getRequest()->getParam('id');
-        $model = $this->_objectManager->create(\BodenkoVV\AskQuestion\Model\Question::class);
-
-        // 2. Initial checking
+//        $model = $this->_objectManager->create(\BodenkoVV\AskQuestion\Model\Question::class);
+        $model = $this->questionModel;
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                $this->messageManager->addErrorMessage(__('This page no longer exists.'));
-                /** \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
 
                 return $resultRedirect->setPath('*/*/');
@@ -89,7 +85,6 @@ class Edit extends Action
 
         $this->_coreRegistry->register('bodenkovv_askquestion', $model);
 
-        // 5. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_initAction();
         $resultPage->addBreadcrumb(

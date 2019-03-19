@@ -16,11 +16,6 @@ use Magento\Framework\View\Element\UiComponent\DataProvider\Reporting;
 class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
 {
     /**
-     * @var AuthorizationInterface
-     */
-    private $authorization;
-
-    /**
      * @var AddFilterInterface[]
      */
     private $additionalFilterPool;
@@ -66,19 +61,7 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
         $this->additionalFilterPool = $additionalFilterPool;
     }
 
-    /**
-     * @deprecated 101.0.7
-     * @return AuthorizationInterface|mixed
-     */
-    private function getAuthorizationInstance()
-    {
-        if ($this->authorization === null) {
-            $this->authorization = ObjectManager::getInstance()->get(AuthorizationInterface::class);
-        }
-        return $this->authorization;
-    }
-
-    /**
+   /**
      * Prepares Meta
      *
      * @return array
