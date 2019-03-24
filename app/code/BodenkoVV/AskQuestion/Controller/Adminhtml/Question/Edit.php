@@ -72,7 +72,6 @@ class Edit extends Action
     public function execute()
     {
         $id = $this->getRequest()->getParam('id');
-//        $model = $this->_objectManager->create(\BodenkoVV\AskQuestion\Model\Question::class);
         $model = $this->questionModel;
         if ($id) {
             $model->load($id);

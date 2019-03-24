@@ -61,11 +61,10 @@ class Data extends AbstractHelper
         QuestionFactory $postQuestionFactory,
         StoreManagerInterface $storeManager,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $registry,
-        array $data= []
+        \Magento\Framework\Registry $registry
     )
     {
-        parent::__construct($context, $data);
+        parent::__construct($context);
         $this->_registry = $registry;
         $this->_postQuestion = $postQuestion;
         $this->_postQuestionFactory = $postQuestionFactory;

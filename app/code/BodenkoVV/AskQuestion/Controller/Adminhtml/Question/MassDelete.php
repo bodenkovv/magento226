@@ -69,14 +69,12 @@ class MassDelete extends \Magento\Backend\App\Action
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
         $collectionSize = $collection->getSize();
-
         foreach ($collection as $page) {
 
             $collectionQuestion = $this->_questionFactory->create();
             $collectionQuestion->load($page['id']);
             $collectionQuestion->delete();
         }
-
         $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', $collectionSize));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */

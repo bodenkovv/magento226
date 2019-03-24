@@ -34,7 +34,7 @@ class Index extends \Magento\Backend\App\Action
 	public function execute()
 	{
 		$resultPage = $this->resultPageFactory->create();
-          $resultPage->addBreadcrumb(__($this->_pageName), __($this->_pageName));
+		$resultPage->addBreadcrumb(__($this->_pageName), __($this->_pageName));
         $resultPage->getConfig()->getTitle()->prepend(__($this->_pageName));
 		return $resultPage;
 	}

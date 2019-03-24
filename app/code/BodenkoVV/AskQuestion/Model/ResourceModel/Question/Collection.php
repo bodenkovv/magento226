@@ -24,10 +24,10 @@ class Collection extends AbstractCollection
 
     /**
      * @param int $storeId
-     * @return Collection
+     * @return $this
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function addStoreFilter(int $storeId = 0): self
+    public function addStoreFilter(int $storeId)
     {
         if (!$storeId) {
             $storeId = (int) $this->storeManager->getStore()->getId();

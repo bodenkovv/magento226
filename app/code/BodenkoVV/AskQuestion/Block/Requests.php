@@ -35,7 +35,7 @@ class Requests
      * @return Collection
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function getSampleRequests(): Collection
+    public function getSampleRequests()
     {
         /** @var Collection $collection */
         $collection = $this->collectionFactory->create();
