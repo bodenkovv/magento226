@@ -20,7 +20,6 @@ class Part3Block extends \Magento\Framework\View\Element\Template
         $reflectionClass = $curTempClass->getReflectionConstants();
         $result = '';
         foreach ($reflectionClass as $items) {
-//            echo "\n".$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
             $result = $result."\n".$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
         }
 
@@ -39,9 +38,7 @@ class Part3Block extends \Magento\Framework\View\Element\Template
         $curTempClass = new \ReflectionClass($temp);
         $result = '';
         $reflectionClass = $curTempClass->getMethods(ReflectionMethod::IS_PUBLIC);
-      //  $reflectionClass = new ReflectionMethod('ClassContent');
         foreach ($reflectionClass as $items) {
-//            echo "\n".$items->class.' : '.$items->name;
             $result = $result."\n".$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
         }
 

@@ -9,7 +9,6 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
 use RecursiveRegexIterator;
-//use Magento\Framework\App\Helper\AbstractHelper;
 
 class Part1 extends\Magento\Framework\View\Element\Template implements \Magento\Framework\View\Element\BlockInterface
 {
@@ -67,20 +66,4 @@ class Part1 extends\Magento\Framework\View\Element\Template implements \Magento\
         }
         if ($resultPrint===0) return $result;
     }
-
-//    /**
-//     * execute function to get path info
-//     *
-//     * @return string
-//     */
-//    public function main()
-//    {
-//      //  $foo1 = new Part1();
-//        //$foo1->
-//        getPathContent('./app/code/',0);
-//    }
-
 }
-//
-//$foo1 = new Part1();
-//$foo1->getPathContent('./app/code/',1);

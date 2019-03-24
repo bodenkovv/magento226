@@ -38,8 +38,8 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-         $resultPage = $this->_pageFactory->create();
-       $resultPage->getLayout()->getBlock('customer_form_part')->setClassString($this->_part3Class->_classString);
+        $resultPage = $this->_pageFactory->create();
+        $resultPage->getLayout()->getBlock('customer_form_part')->setClassString($this->_part3Class->_classString);
         $resultPage->getLayout()->getBlock('customer_form_part')->setClassObj($this->_part3Class->_classObj);
         $resultPage->getLayout()->getBlock('customer_form_part')->setClassBool($this->_part3Class->_classBool);
         $resultPage->getLayout()->getBlock('customer_form_part')->setClassInt($this->_part3Class->_classInt);

@@ -2,18 +2,15 @@
 
 namespace BodenkoVV\HomeWork11\Model;
 
-//use Magento\Framework\App\Helper\AbstractHelper;
-
-class Part3Helper //extends AbstractHelper
+class Part3Helper
 {
-    public $_classString;//='tessssst';
-    public $_classObj;//='\BodenkoVV\HomeWork11\NativePhp\Part1';
-    public $_classBool;//=false;
-    public $_classInt;//=2;
-    public $_classConstant;//=111;
-    public $_classArray;//=[];
+    public $_classString;
+    public $_classObj;
+    public $_classBool;
+    public $_classInt;
+    public $_classConstant;
+    public $_classArray;
     public $_classA='fffff';
-
 
     /**
      *Constructor

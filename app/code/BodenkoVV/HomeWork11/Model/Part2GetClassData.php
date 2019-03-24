@@ -54,7 +54,6 @@ class ChildClassContent extends ClassContent
     /** @var $priv_test1_child, @var $priv_test2_child */
     private $priv_test1_child, $priv_test2_child;
 
-
     /**
      * get pub child name
      *
@@ -65,7 +64,6 @@ class ChildClassContent extends ClassContent
         return $this->childNameValuePub();
     }
 }
-
 
 class Part2GetClassData extends\Magento\Framework\View\Element\Template implements \Magento\Framework\View\Element\BlockInterface
 {
@@ -80,17 +78,10 @@ class Part2GetClassData extends\Magento\Framework\View\Element\Template implemen
     public function getAllConstNameValue()
     {
         $temp = new ChildClassContent();
-//        $curGetClassData = new Part2GetClassData();
-//        echo "\n ------------ \n";
-//        $curGetClassData->getAllConstNameValue($curChildClassContent);
-
-        //$curTemp = new ReflectionClass($temp);
         $curTempClass = new \ReflectionClass($temp);
         $reflectionClass = $curTempClass->getReflectionConstants();
         $result[] = 'All CONST:';
-//        echo "\nAll CONST:";
         foreach ($reflectionClass as $items) {
-//            echo "\n".$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
             $result[]=$items->class.' : '.$items->name.' : '.$curTempClass->getConstant($items->name);
         }
 
@@ -108,14 +99,10 @@ class Part2GetClassData extends\Magento\Framework\View\Element\Template implemen
     public function getAllPublicMetod()
     {
         $temp = new ChildClassContent();
-        //$curTemp = new \ReflectionClass($temp);
         $curTempClass = new \ReflectionClass($temp);
         $reflectionClass = $curTempClass->getMethods(ReflectionMethod::IS_PUBLIC);
-      //  $reflectionClass = new ReflectionMethod('ClassContent');
-        $result[] = '\nPublic metods:';
-//        echo "Public metods:";
+        $result[] = 'Public metods:';
         foreach ($reflectionClass as $items) {
-//            echo "\n".$items->class.' : '.$items->name;
             $result[]=$items->class.' : '.$items->name;
         }
 
@@ -137,15 +124,4 @@ class Part2GetClassData extends\Magento\Framework\View\Element\Template implemen
         $curGetClassData->getAllPublicMetod($curChildClassContent);
         echo "\n ----";
     }
-
 }
-
-//
-//$curChildClassContent = new ChildClassContent();
-//$curGetClassData = new Part2GetClassData();
-//
-//echo "\n ------------ \n";
-//$curGetClassData->getAllConstNameValue($curChildClassContent);
-//echo "\n ------------ \n";
-//$curGetClassData->getAllPublicMetod($curChildClassContent);
-//echo "\n ------------ \n";
