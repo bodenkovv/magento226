@@ -29,12 +29,12 @@ define([
 
                 return;
             }
-
-            if (!($.mage.cookies.get(this.options.cookieName))) {
+            // debugger;
+            if (!$.mage.cookies.get(this.options.cookieName)) {
                 this.ajaxSubmit();
             } else {
                 alert({
-                    title: $.mage.__('Atantion!!!'), content: $.mage.__('120s has not passed yet. Please waite and tray again.')
+            title: $.mage.__('Atantion!!!'), content: $.mage.__('120s has not passed yet. Please waite and tray again.')
                 });
 
             }
@@ -44,8 +44,10 @@ define([
          * Submit request via AJAX. Add form key to the post data.
          */
         ajaxSubmit: function () {
-            var formData = new FormData($(this.element).get(0));
+            var formData;
 
+            formData = new FormData($(this.element).get(0));
+// debugger;
             formData.append('form_key', $.mage.cookies.get('form_key'));
             formData.append('isAjax', 1);
 
@@ -73,7 +75,7 @@ define([
                         $('#email').val('');
                         $('#question').val('');
 
-                        if (!($.mage.cookies.get(this.options.cookieName))) {
+                        if (!$.mage.cookies.get(this.options.cookieName)) {
                             $.mage.cookies.set(this.options.cookieName, this.options.cookieName,{lifetime: 120});
                         }
                     }

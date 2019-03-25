@@ -1,0 +1,26 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="bodenkovv_askquestion_question_listing_data_source" xsi:type="string">BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="bodenkovv_askquestion_question_status_data_source" xsi:type="string">BodenkoVV\AskQuestion\Model\Config\Source\Status</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="BodenkoVV\AskQuestion\Model\ResourceModel\Question\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">bodenkovv_askquestion</argument>
+            <argument name="resourceModel" xsi:type="string">BodenkoVV\AskQuestion\Model\ResourceModel\Question</argument>
+        </arguments>
+    </virtualType>
+
+</config>

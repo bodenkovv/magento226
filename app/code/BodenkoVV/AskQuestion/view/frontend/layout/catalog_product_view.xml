@@ -12,6 +12,16 @@
                     <argument translate="true" name="title" xsi:type="string">Ask Question a Sample Home Work 6</argument>
                 </arguments>
             </block>
+
+            <block class="BodenkoVV\AskQuestion\Block\TabAskQuestion"
+                   name="tabaskquestion.sample.tab"
+                   as="tabaskquestion.sample"
+                   template="BodenkoVV_AskQuestion::product/view/tabaskquestion_sample.phtml"
+                   group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">All Questions</argument>
+                </arguments>
+            </block>
         </referenceBlock>
     </body>
 </page>
