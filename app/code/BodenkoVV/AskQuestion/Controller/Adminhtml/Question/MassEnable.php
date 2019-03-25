@@ -63,10 +63,9 @@ class MassEnable extends \Magento\Backend\App\Action
     }
 
     /**
-     * @return \DateTime $datetime
-     * @throws \Exception
+     * @return string
      */
-    public function getDatetimeNow(): \DateTime
+    public function getDatetimeNow()
     {
         return $this->date->gmtDate();
     }

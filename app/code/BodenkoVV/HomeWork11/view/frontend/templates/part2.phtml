@@ -1,0 +1,18 @@
+<?php
+/** @var \BodenkoVV\HomeWork11\Model\Part2GetClassData $block */
+?>
+<br>
+<h2>Part2:</h2>
+<h3>Variable and metods: </h3>
+<div>
+<?php
+foreach ($block->getAllConstNameValue() as $item)
+{
+    echo $item.'<br>';
+}
+foreach ($block->getAllPublicMetod() as $item)
+{
+    echo $item.'<br>';
+}
+?>
+</div>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="BodenkoVV\HomeWork11\Block\Part3Block" name="customer_form_part" template="BodenkoVV_HomeWork11::part.phtml">
+            </block>
+            <block class="BodenkoVV\HomeWork11\Model\Part1" name="customer_form_part1" template="BodenkoVV_HomeWork11::part1.phtml">
+            </block>
+            <block class="BodenkoVV\HomeWork11\Model\Part2GetClassData" name="customer_form_part2" template="BodenkoVV_HomeWork11::part2.phtml">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

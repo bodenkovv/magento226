@@ -1,0 +1,19 @@
+<?php
+/** @var \Magento\Customer\Block\Form\Register $block */
+?>
+<br>
+<h2>di.xml injection:</h2>
+<h3>$class_string="<?php echo $block->getClassString()?>"</h3>
+<h3>$class_obj="<?php echo $block->getClassObj()['instance']?>"</h3>
+<h3>$class_bool="<?php echo $block->getClassBool()?>"</h3>
+<h3>$class_int="<?php echo $block->getClassInt()?>"</h3>
+<h3>$class_constant="<?php echo $block->getClassConstant()?>"</h3>
+<h3>$class_array="<?php
+    foreach ($block->getClassArray() as $item)
+    {
+        echo '['.$item.'] ';
+    }?>"</h3>
+<h2>Get All Variable - reflection :</h2>
+<?php
+echo $block->getAllConstNameValue($block->getClassAllVariable());
+?>

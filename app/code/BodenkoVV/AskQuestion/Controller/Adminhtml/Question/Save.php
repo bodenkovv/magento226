@@ -6,9 +6,11 @@
  */
 namespace BodenkoVV\AskQuestion\Controller\Adminhtml\Question;
 
+use BodenkoVV\AskQuestion\Model\QuestionFactory;
 use Magento\Backend\App\Action;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Cms\Controller\Adminhtml\Page\PostDataProcessor;
 
 /**
  * Class Save
@@ -33,32 +35,24 @@ class Save extends \Magento\Backend\App\Action
      */
     protected $dataPersistor;
 
-    /**
-     * @var \Magento\Cms\Model\PageFactory
-     */
-    private $pageFactory;
-
-    /**
-     * @var \Magento\Cms\Api\PageRepositoryInterface
-     */
-    private $pageRepository;
+    /** @var QuestionFactory  */
+    private $questionFactory;
 
     /**
      * @param Action\Context $context
      * @param PostDataProcessor $dataProcessor
      * @param DataPersistorInterface $dataPersistor
-     * @param \BodenkoVV\AskQuestion\Model\QuestionFactory $pageFactory
+     * @param QuestionFactory $questionFactory
      */
     public function __construct(
         Action\Context $context,
         PostDataProcessor $dataProcessor,
         DataPersistorInterface $dataPersistor,
-        \BodenkoVV\AskQuestion\Model\QuestionFactory $pageFactory = null
+        QuestionFactory $questionFactory
     ) {
         $this->dataProcessor = $dataProcessor;
         $this->dataPersistor = $dataPersistor;
-        $this->pageFactory = $pageFactory
-            ?: \Magento\Framework\App\ObjectManager::getInstance()->get(\BodenkoVV\AskQuestion\Model\QuestionFactory::class);
+        $this->questionFactory = $questionFactory;
         parent::__construct($context);
     }
 
@@ -80,7 +74,7 @@ class Save extends \Magento\Backend\App\Action
             }
 
             /** @var \Magento\Cms\Model\Page $model */
-            $model = $this->pageFactory->create();
+            $model = $this->questionFactory->create();
 
             $id = $this->getRequest()->getParam('id');
             if ($id) {

@@ -41,7 +41,7 @@ class Requests extends \Magento\Framework\View\Element\Template
     /**
      * @return Collection
      */
-    public function getSampleRequests(): Collection
+    public function getSampleRequests()
     {
         /** @var $productCollection \Magento\Catalog\Model\ResourceModel\Product\Collection */
         $productCollection = $this->productCollectionFactory->create();
