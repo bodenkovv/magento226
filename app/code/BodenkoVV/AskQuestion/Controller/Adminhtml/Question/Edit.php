@@ -53,18 +53,6 @@ class Edit extends Action
         parent::__construct($context);
     }
 
-    /**
-     * @return \Magento\Backend\Model\View\Result\Page
-     */
-    protected function _initAction()
-    {
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->addBreadcrumb(__($this->_pageName), __($this->_pageName));
-        $resultPage->getConfig()->getTitle()->prepend(__($this->_pageName));
-        return $resultPage;
-    }
 
     /**
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
@@ -83,16 +71,17 @@ class Edit extends Action
         }
 
         $this->_coreRegistry->register('bodenkovv_askquestion', $model);
+        $resultPage = $this->resultPageFactory->create();
 
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->_initAction();
-        $resultPage->addBreadcrumb(
-            $id ? __('Edit Page') : __('New Page'),
-            $id ? __('Edit Page') : __('New Page')
-        );
-        $resultPage->getConfig()->getTitle()->prepend(__('Pages'));
-        $resultPage->getConfig()->getTitle()
-            ->prepend($model->getId() ? $model->getTitle() : __('New Page'));
+        if (is_numeric($id)&&($id>0)) {
+            $resultPage->addBreadcrumb(__('Edit Page'),__('Edit Page'));
+            $resultPage->getConfig()->getTitle()
+                ->prepend($model->getTitle());
+        } else {
+            $resultPage->addBreadcrumb(__('New Page'),__('New Page'));
+            $resultPage->getConfig()->getTitle()
+                ->prepend(__('New Page'));
+        }
 
         return $resultPage;
     }
