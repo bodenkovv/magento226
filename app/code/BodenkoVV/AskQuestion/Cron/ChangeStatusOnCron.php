@@ -31,6 +31,7 @@ class ChangeStatusOnCron
         $this->questionsFactory = $askQuestionsFactory;
         $this->cronDayAlert = 3;
     }
+
     public function execute()
     {
         $currentDate = date("Y-m-d h:i:s");
@@ -38,11 +39,14 @@ class ChangeStatusOnCron
         $filterDate = date('Y-m-d h:i:s', $filterDateTime);
 
         $questions = $this->questionsFactory->create();
-        $collection = $questions->getCollection()
+        $collection = $questions
             ->addFieldToFilter('status', array('eq' => Question::STATUS_PENDING))
-            ->addFieldToFilter('created_at', array('lt' => $filterDate));
+            ->addFieldToFilter('question_date', array('lt' => $filterDate));
         foreach ($collection as $item) {
-            $item->setStatus(Question::STATUS_ANSWERED)->save();
+            $item->setStatus(Question::STATUS_ANSWERED)
+                ->setAnswer($item->getAnswer().'; Auto generation. To late more '.$this->cronDayAlert.' day after recive this question.')
+                ->setAnswerDate($currentDate)
+                ->save();
         }
     }
 }

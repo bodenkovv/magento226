@@ -90,6 +90,19 @@ class UpdateProductQty extends \Symfony\Component\Console\Command\Command
     }
 
     /**
+     * @param $id
+     * @return bool
+     */
+    private function isNumericData($id)
+    {
+        if (isset($id) && is_numeric($id) && ($id >= 0)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int|void|null
@@ -98,16 +111,16 @@ class UpdateProductQty extends \Symfony\Component\Console\Command\Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $this->state->setAreaCode(Area::AREA_ADMINHTML);
-        if ($input->getArgument('product_id')) {
+        if ($this->isNumericData($input->getArgument('product_id'))) {
             $productId = $input->getArgument('product_id');
         } else {
-            $output->writeln("<info>NEED Input product Id for update!<info>");
+            $output->writeln("<info>NEED Input product Id (numeric) for update!<info>");
             return;
         }
-        if ($input->getArgument('qty') && is_numeric($input->getArgument('qty')) && ($input->getArgument('qty') >= 0)) {
+        if ($this->isNumericData($input->getArgument('qty'))) {
             $qty = $input->getArgument('qty');
         } else {
-            $output->writeln("<info>NEED Input product qty for update:<info>");
+            $output->writeln("<info>NEED Input product qty (numeric)for update:<info>");
             return;
         }
         $output->writeln("<info>You enter Product Id: $productId and Product Qty: $qty. <info>");
