@@ -6,8 +6,19 @@
                 <bodenkovv_askquestion_enable>1</bodenkovv_askquestion_enable>
                 <bodenkovv_askquestion_title>AskQuestion</bodenkovv_askquestion_title>
                 <bodenkovv_askquestion_description>You have chance ask us about this product </bodenkovv_askquestion_description>
-                <bodenkovv_askquestion_status_auto>pending</bodenkovv_askquestion_status_auto>
             </general>
+            <cron>
+                <bodenkovv_askquestion_enable_auto_confirming>1</bodenkovv_askquestion_enable_auto_confirming>
+                <bodenkovv_askquestion_status_auto>pending</bodenkovv_askquestion_status_auto>
+                <bodenkovv_askquestion_frequency_auto>3</bodenkovv_askquestion_frequency_auto>
+            </cron>
+            <test>
+
+            </test>
+            <dynamical>
+
+            </dynamical>
+
         </askquestion>
     </default>
 </config>

@@ -26,13 +26,66 @@
                     <label>AskQuestion description</label>
                     <comment>You have chance ask us about this product.</comment>
                 </field>
+           </group>
 
-                <field id="bodenkovv_askquestion_status_auto" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Chose default status questions</label>
+            <group id="cron" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cron configuration</label>
+
+                <field id="bodenkovv_askquestion_status_auto" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Chose default status questions (and for auto confirm)</label>
                     <source_model>BodenkoVV\AskQuestion\Model\Config\Source\Status</source_model>
                 </field>
 
-           </group>
+                <field id="bodenkovv_askquestion_frequency_auto" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Day of auto confirm</label>
+                </field>
+
+                <field id="bodenkovv_askquestion_enable_auto_confirming" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable auto confirm</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+            </group>
+
+            <group id="test" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Test</label>
+
+                <field id="font_style" translate="label" sortOrder="50" type="multiselect" showInStore="0"
+                       showInWebsite="1" showInDefault="1">
+                    <label>Style</label>
+                    <source_model>Dotdigitalgroup\Email\Model\Config\Configuration\Styling</source_model>
+                </field>
+                <field id="price_title" translate="label" sortOrder="60" showInStore="0" showInWebsite="1"
+                       showInDefault="1">
+                    <label>Product Price</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="price_color" translate="label" sortOrder="70" type="select" showInStore="0" showInWebsite="1"
+                       showInDefault="1">
+                    <label>Price Color</label>
+                    <frontend_model>Dotdigitalgroup\Email\Block\Adminhtml\Config\Configuration\Colorpicker</frontend_model>
+                </field>
+                <field id="price_font_size" translate="label" sortOrder="80" type="select" showInStore="0"
+                       showInWebsite="1" showInDefault="1">
+                    <label>Font Size</label>
+                    <source_model>Dotdigitalgroup\Email\Model\Config\Configuration\Fontsize</source_model>
+                </field>
+
+                <field id="bodenkovv_askquestion_test1" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Day of auto confirm</label>
+                </field>
+
+            </group>
+
+            <group id="dynamical" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Dynamical Test</label>
+                <field id="emails" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Additional Emails</label>
+                    <frontend_model>BodenkoVV\AskQuestion\Block\Adminhtml\Form\Field\AdditionalEmail</frontend_model>
+                    <backend_model>BodenkoVV\AskQuestion\Config\Backend\AdditionalEmail</backend_model>
+                </field>
+            </group>
+
         </section>
     </system>
 </config>

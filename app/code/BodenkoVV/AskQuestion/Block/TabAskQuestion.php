@@ -24,29 +24,47 @@ class TabAskQuestion extends Template
     /** @var QuestionFactory  */
     public $questionFactory;
 
-    /**
-     * Requests constructor.
-     * @param Magento\Framework\Registry $registry
-     * @param Collection $collection
-     * @param CollectionFactory $collectionFactory
-     * @param QuestionFactory $questionFactory
-     * @param Data $helperData
-     * @param Context $context
-     * @param array $data
-     */
+    /** @var \Magento\Framework\Registry  */
+    public $_registry;
+
+    /** @var \Magento\Framework\View\Result\PageFactory  */
+    public $resultPageFactory;
+
     public function __construct(
         CollectionFactory $collectionFactory,
         QuestionFactory $questionFactory,
-        Data $helperData,
+//        Data $helperData,
         Context $context,
         \Magento\Framework\Registry $registry,
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->helperData = $helperData;
+//        $this->helperData = $helperData;
         $this->collectionFactory = $collectionFactory;
         $this->questionFactory = $questionFactory;
         $this->_registry = $registry;
+        $this->resultPageFactory = $resultPageFactory;
+    }
+
+    /**
+     * @return \Magento\Framework\View\Result\Page
+     */
+    public function execute()
+    {
+//        $resultPage = $this->resultPageFactory->create();
+//        if ($this->helperData->getGeneralConfig('bodenkovv_askquestion_enable'))
+//        {
+//            $resultPage->getLayout()->getBlock('tabaskquestion.sample')->setAskQuestionEnable($this->helperData->getGeneralConfig('bodenkovv_askquestion_enable'));
+//            $resultPage->getLayout()->getBlock('tabaskquestion.sample')->setAskQuestionTitle($this->helperData->getGeneralConfig('bodenkovv_askquestion_title'));
+//            $resultPage->getLayout()->getBlock('tabaskquestion.sample')->setAskQuestionText($this->helperData->getGeneralConfig('bodenkovv_askquestion_description'));
+//
+//        } else
+//        {
+//            $resultPage->getConfig()->getTitle()->prepend((__('Module AskQuestion don`t active')));
+//        }
+//
+//        return $resultPage;
     }
 
     /**
