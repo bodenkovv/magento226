@@ -30,17 +30,23 @@ class TabAskQuestion extends Template
     /** @var \Magento\Framework\View\Result\PageFactory  */
     public $resultPageFactory;
 
+    public $askQuestionEnable;
+
+    public $askQuestionText;
+
+    public $askQuestionTitle;
+
     public function __construct(
+        Context $context,
         CollectionFactory $collectionFactory,
         QuestionFactory $questionFactory,
-//        Data $helperData,
-        Context $context,
+        Data $helperData,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
-//        $this->helperData = $helperData;
+        $this->helperData = $helperData;
         $this->collectionFactory = $collectionFactory;
         $this->questionFactory = $questionFactory;
         $this->_registry = $registry;
@@ -50,21 +56,25 @@ class TabAskQuestion extends Template
     /**
      * @return \Magento\Framework\View\Result\Page
      */
-    public function execute()
+    public function _toHtml()
     {
-//        $resultPage = $this->resultPageFactory->create();
-//        if ($this->helperData->getGeneralConfig('bodenkovv_askquestion_enable'))
-//        {
-//            $resultPage->getLayout()->getBlock('tabaskquestion.sample')->setAskQuestionEnable($this->helperData->getGeneralConfig('bodenkovv_askquestion_enable'));
-//            $resultPage->getLayout()->getBlock('tabaskquestion.sample')->setAskQuestionTitle($this->helperData->getGeneralConfig('bodenkovv_askquestion_title'));
-//            $resultPage->getLayout()->getBlock('tabaskquestion.sample')->setAskQuestionText($this->helperData->getGeneralConfig('bodenkovv_askquestion_description'));
-//
-//        } else
-//        {
-//            $resultPage->getConfig()->getTitle()->prepend((__('Module AskQuestion don`t active')));
-//        }
-//
-//        return $resultPage;
+        $this->getQuestionConfig();
+        parent::_toHtml();
+    }
+
+    public function getQuestionConfig()
+    {
+        $resultPage = $this->resultPageFactory->create();
+        if ($this->helperData->getGeneralConfig('bodenkovv_askquestion_enable'))
+        {
+            $this->askQuestionEnable = $this->helperData->getGeneralConfig('bodenkovv_askquestion_enable');
+            $this->askQuestionTitle = $this->helperData->getGeneralConfig('bodenkovv_askquestion_title');
+            $this->askQuestionText = $this->helperData->getGeneralConfig('bodenkovv_askquestion_description');
+
+        } else
+        {
+            $resultPage->getConfig()->getTitle()->prepend((__('Module AskQuestion don`t active')));
+        }
     }
 
     /**
