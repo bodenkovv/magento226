@@ -49,18 +49,18 @@ class UpdateProductQty extends \Symfony\Component\Console\Command\Command
     }
 
     /**
-     * @param $productId
-     * @param $stockData
+     * @param int $productId
+     * @param int $qty
      * @return bool
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function updateProductStock($productId, $stockData) {
+    public function updateProductStock($productId, $qty) {
         $product = $this->productRepository->getById($productId);
         $stockItem = $this->_stockRegistry->getStockItem($product->getId());
         $stockItem->setData('manage_stock',1);
         $stockItem->setData('use_config_notify_stock_qty',1);
         $stockItem->setData('is_in_stock',1);
-        $stockItem->setData('qty',$stockData);
+        $stockItem->setData('qty',$qty);
 
         if ($stockItem->save()) {
             $this->_stockRegistry->updateStockItemBySku($product->getSku(), $stockItem);

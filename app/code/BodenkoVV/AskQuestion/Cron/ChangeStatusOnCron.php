@@ -29,7 +29,7 @@ class ChangeStatusOnCron
     {
         $this->logger = $logger;
         $this->questionsFactory = $askQuestionsFactory;
-        $this->cronDayAlert = 3;
+        $this->cronDayAlert = $this->getDaysNumberBeforeStatusIsChanged();
     }
 
     public function execute()
@@ -48,5 +48,13 @@ class ChangeStatusOnCron
                 ->setAnswerDate($currentDate)
                 ->save();
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getDaysNumberBeforeStatusIsChanged()
+    {
+        return 3;
     }
 }
