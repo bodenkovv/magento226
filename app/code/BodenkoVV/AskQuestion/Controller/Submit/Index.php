@@ -5,6 +5,7 @@
  use Magento\Framework\Controller\ResultFactory;
  use Magento\Framework\Exception\LocalizedException;
  use BodenkoVV\AskQuestion\Model\QuestionFactory;
+ use BodenkoVV\AskQuestion\Helper\ForMail;
 
  class Index extends \Magento\Framework\App\Action\Action
  {
@@ -25,6 +26,12 @@
      private $requestQuestionFactory;
 
      /**
+     * @var Mail
+     *
+     */
+       private $mailHelper;
+
+     /**
       * Index constructor.
       * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
       * @param QuestionFactory $requestQuestionFactory
@@ -33,11 +40,13 @@
      public function __construct(
          \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
          QuestionFactory $requestQuestionFactory,
-         \Magento\Framework\App\Action\Context $context
+         \Magento\Framework\App\Action\Context $context,
+         ForMail $mailHelper
      ) {
          parent::__construct($context);
          $this->requestQuestionFactory = $requestQuestionFactory;
          $this->formKeyValidator = $formKeyValidator;
+         $this->mailHelper = $mailHelper;
      }
 
      /**
@@ -76,6 +85,15 @@
                  ->setQuestion($request->getParam('question'));
              $requestQuestion->save();
 
+             if ($request->getParam('email')) {
+                 $email = $request->getParam('email');
+                 $customerName = $request->getParam('name');
+                 $product = $request->getParam('product_name');
+                 $sku = $request->getParam('sku');
+                 $message = $request->getParam('question');
+
+                 $this->mailHelper->sendMail($email, $customerName, $message, $product, $sku);
+             }
              $data = [
                  'status' => self::STATUS_SUCCESS,
                  'message' => __('Your Question receive.')
