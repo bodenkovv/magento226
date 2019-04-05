@@ -7,6 +7,9 @@
  use BodenkoVV\AskQuestion\Model\QuestionFactory;
  use BodenkoVV\AskQuestion\Helper\ForMail;
 
+ use BodenkoVV\AskQuestion\Api\Data\AskQuestionInterface;
+ use BodenkoVV\AskQuestion\Api\AskQuestionRepositoryInterface;
+
  class Index extends \Magento\Framework\App\Action\Action
  {
      /** @var string  */
@@ -32,6 +35,11 @@
        private $mailHelper;
 
      /**
+      * @var AskQuestionRepositoryInterface
+      */
+     private $askQuestionRepository;
+
+     /**
       * Index constructor.
       * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
       * @param QuestionFactory $requestQuestionFactory
@@ -41,12 +49,14 @@
          \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
          QuestionFactory $requestQuestionFactory,
          \Magento\Framework\App\Action\Context $context,
-         ForMail $mailHelper
+         ForMail $mailHelper,
+         AskQuestionRepositoryInterface $askQuestionRepository
      ) {
          parent::__construct($context);
          $this->requestQuestionFactory = $requestQuestionFactory;
          $this->formKeyValidator = $formKeyValidator;
          $this->mailHelper = $mailHelper;
+         $this->askQuestionRepository = $askQuestionRepository;
      }
 
      /**
@@ -72,7 +82,7 @@
                  throw new LocalizedException(__('Not valid Ukrainian Phone Number.'));
              }
 
-             /** @var ResultFactory $requestQuestion */
+             /** @var AskQuestionInterface $requestQuestion */
              $requestQuestion = $this->requestQuestionFactory->create();
              $requestQuestion->setName($request->getParam('name'))
                  ->setEmail($request->getParam('email'))
@@ -83,7 +93,9 @@
                  ->setStoreId($request->getParam('store_id'))
                  ->setProductId($request->getParam('product_id'))
                  ->setQuestion($request->getParam('question'));
-             $requestQuestion->save();
+//             $requestQuestion->save();
+
+             $this->askQuestionRepository->save($requestQuestion);
 
              if ($request->getParam('email')) {
                  $email = $request->getParam('email');

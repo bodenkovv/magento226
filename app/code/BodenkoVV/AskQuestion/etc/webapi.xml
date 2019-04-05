@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Ask Question -->
+    <route url="/V1/askQuestion/:askQuestionId" method="GET">
+        <service class="BodenkoVV\AskQuestion\Api\AskQuestionRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/askQuestion/:askQuestionId" method="GET">
+        <service class="BodenkoVV\AskQuestion\Api\AskQuestionRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="BodenkoVV_AskQuestion::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/askQuestion/search" method="GET">
+        <service class="BodenkoVV\AskQuestion\Api\AskQuestionRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="BodenkoVV_AskQuestion::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/askQuestion" method="POST">
+        <service class="BodenkoVV\AskQuestion\Api\AskQuestionRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="BodenkoVV_AskQuestion::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/askQuestion/:id" method="PUT">
+        <service class="BodenkoVV\AskQuestion\Api\AskQuestionRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="BodenkoVV_AskQuestion::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/askQuestion/:askQuestionId" method="DELETE">
+        <service class="BodenkoVV\AskQuestion\Api\AskQuestionRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="BodenkoVV_AskQuestion::manage"/>
+        </resources>
+    </route>
+</routes>

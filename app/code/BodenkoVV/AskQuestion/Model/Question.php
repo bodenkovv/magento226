@@ -6,31 +6,14 @@ use BodenkoVV\AskQuestion\Helper\Data;
 use BodenkoVV\AskQuestion\Model\ResourceModel\Question as QuestionResource;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Catalog\Model\Product;
+use BodenkoVV\AskQuestion\Api\Data\AskQuestionInterface;
 
 /**
  * Class Question
  * @package BodenkoVV\Question\Model
  *
- * @method int|string getRequestId()
- * @method int|string getName()
- * @method Question setName(string $name)
- * @method string getEmail()
- * @method Question setEmail(string $email)
- * @method string getPhone()
- * @method Question setPhone(string $phone)
- * @method string getProductName()
- * @method Question setProductName(string $productName)
- * @method string getSku()
- * @method Question setSku(string $sku)
- * @method string getRequest()
- * @method Question setRequest(string $request)
- * @method string getCreatedAt()
- * @method string getStatus()
- * @method Question setStatus(string $status)
- * @method int|string getStoreId()
- * @method Question setStoreId(int $storeId)
  */
-class Question extends AbstractModel
+class Question extends AbstractModel implements AskQuestionInterface
 {
     const STATUS_PENDING = 'pending';
     const STATUS_PROCESSED = 'processed';
@@ -105,4 +88,139 @@ class Question extends AbstractModel
 
         return parent::beforeSave();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->getData('question_id');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setId($id)
+    {
+        return $this->setData('question_id', $id);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt()
+    {
+        return $this->getData('created_at');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->getData('name');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setName($name)
+    {
+        return $this->setData('name', $name);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getEmail()
+    {
+        return $this->getData('email');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setEmail($email)
+    {
+        return $this->setData('email', $email);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getPhone()
+    {
+        return $this->getData('phone');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setPhone($phone)
+    {
+        return $this->setData('phone', $phone);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getProductName()
+    {
+        return $this->getData('product_name');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setProductName($productName)
+    {
+        return $this->setData('product_name', $productName);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getSku()
+    {
+        return $this->getData('sku');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setSku($sku)
+    {
+        return $this->setData('sku', $sku);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getQuestion()
+    {
+        return $this->getData('question');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setQuestion($question)
+    {
+        return $this->setData('question', $question);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getStatus()
+    {
+        return $this->getData('status');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setStatus($status)
+    {
+        return $this->setData('status', $status);
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function getStoreId()
+    {
+        return $this->getData('store_id');
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function setStoreId($storeId)
+    {
+        return $this->setData('store_id', $storeId);
+    }
+
 }
