@@ -9,6 +9,7 @@ return [
         'Magento_Config' => 1,
         'BodenkoVV_HomeWork11' => 1,
         'Magento_Backend' => 1,
+        'Geekhub_CustomerOrder' => 1,
         'Magento_Customer' => 1,
         'Magento_AdminNotification' => 1,
         'Magento_Indexer' => 1,
