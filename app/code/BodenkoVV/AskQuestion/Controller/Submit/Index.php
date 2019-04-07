@@ -93,7 +93,6 @@
                  ->setStoreId($request->getParam('store_id'))
                  ->setProductId($request->getParam('product_id'))
                  ->setQuestion($request->getParam('question'));
-//             $requestQuestion->save();
 
              $this->askQuestionRepository->save($requestQuestion);
 

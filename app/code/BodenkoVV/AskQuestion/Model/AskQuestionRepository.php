@@ -61,7 +61,6 @@ class AskQuestionRepository implements AskQuestionRepositoryInterface
     public function __construct(
         ResourceAskQuestion $resource,
         QuestionFactory $askQuestionFactory,
-//        QuestionCollectionFactory $askQuestionCollectionFactory,
         AskQuestionInterfaceFactory $dataAskQuestionFactory,
         AskQuestionSearchResultsInterfaceFactory $searchResultsFactory,
         DataObjectHelper $dataObjectHelper,
@@ -69,7 +68,6 @@ class AskQuestionRepository implements AskQuestionRepositoryInterface
     ) {
         $this->resource = $resource;
         $this->askQuestionFactory = $askQuestionFactory;
-//        $this->askQuestionCollectionFactory = $askQuestionCollectionFactory;
         $this->searchResultsFactory = $searchResultsFactory;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->dataAskQuestionFactory = $dataAskQuestionFactory;
