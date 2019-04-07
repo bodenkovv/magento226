@@ -2,14 +2,24 @@
 
 namespace BodenkoVV\AskQuestion\Setup;
 
+use BodenkoVV\AskQuestion\Model\QuestionFactory;
+use Exception;
+use Magento\Catalog\Model\Product;
+use Magento\Customer\Model\Attribute;
+use Magento\Customer\Model\Group;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use \Magento\Framework\Setup\UpgradeDataInterface;
 use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\ModuleDataSetupInterface;
 use \BodenkoVV\AskQuestion\Model\Question;
 use Magento\Framework\Component\ComponentRegistrar;
 use \Magento\Framework\File\Csv;
+use Magento\Eav\Model\Entity\Attribute\Source\Boolean;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Customer\Model\Customer;
+use Magento\Customer\Model\GroupFactory;
+use Magento\Customer\Model\ResourceModel\GroupRepository;
 use Magento\Store\Model\Store;
 
 /**
@@ -18,34 +28,51 @@ use Magento\Store\Model\Store;
  */
 class UpgradeData implements UpgradeDataInterface
 {
-    /**
-     * @var Csv
-     */
+    /** @var Csv */
     private $csv;
 
-    /**
-     * @var ComponentRegistrar
-     */
+    /** @var ComponentRegistrar */
     private $componentRegistrar;
+
+    /**  @var EavSetupFactory */
+    private $eavSetupFactory;
+
+    /**  @var Attribute */
+    private $customerAttribute;
+
+    /**  @var GroupFactory */
+    private $groupFactory;
+
+    /**  @var GroupRepository */
+    private $groupRepository;
 
     /**
      * UpgradeData constructor.
-     * @param \BodenkoVV\AskQuestion\Model\QuestionFactory $questionFactory
+     * @param QuestionFactory $questionFactory
      * @param ComponentRegistrar $componentRegistrar
      * @param Csv $csv
      * @param EavSetupFactory $eavSetupFactory
+     * @param Attribute $customerAttribute
+     * @param GroupFactory $groupFactory
+     * @param GroupRepository $groupRepository
      */
     public function __construct(
-        \BodenkoVV\AskQuestion\Model\QuestionFactory $questionFactory,
+        QuestionFactory $questionFactory,
         ComponentRegistrar $componentRegistrar,
         Csv $csv,
-        EavSetupFactory $eavSetupFactory
+        EavSetupFactory $eavSetupFactory,
+        Attribute $customerAttribute,
+        GroupFactory $groupFactory,
+        GroupRepository $groupRepository
     )
     {
         $this->componentRegistrar = $componentRegistrar;
         $this->csv = $csv;
         $this->questionFactory = $questionFactory;
         $this->eavSetupFactory = $eavSetupFactory;
+        $this->customerAttribute = $customerAttribute;
+        $this->groupFactory = $groupFactory;
+        $this->groupRepository = $groupRepository;
     }
 
     /**
@@ -94,9 +121,9 @@ class UpgradeData implements UpgradeDataInterface
 
             if (version_compare($context->getVersion(), '1.0.2') < 0) {
             $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
-            $eavSetup->removeAttribute(\Magento\Catalog\Model\Product::ENTITY, 'allow_ask_questions');
+            $eavSetup->removeAttribute(Product::ENTITY, 'allow_ask_questions');
             $eavSetup->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
+                Product::ENTITY,
                 'allow_to_ask_questions',
                 [
                     'group' => 'General',
@@ -106,8 +133,8 @@ class UpgradeData implements UpgradeDataInterface
                     'label' => 'Allow to ask questions',
                     'input' => 'boolean',
                     'class' => '',
-                    'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
-                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
+                    'source' => Boolean::class,
+                    'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                     'visible' => true,
                     'required' => false,
                     'user_defined' => false,
@@ -139,12 +166,79 @@ class UpgradeData implements UpgradeDataInterface
         }
         $setup->endSetup();
 
+
+        $version='1.0.3';
+        $setup->startSetup();
+
+        $setup->startSetup();
+        if ($context->getVersion()
+            && version_compare($context->getVersion(), $version) < 0
+        ) {
+            //add attribute
+            $code = 'disallow_ask_question';
+            /** @var EavSetup $eavSetup */
+            $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+            $eavSetup->addAttribute(
+                Customer::ENTITY,
+                'disallow_ask_question',
+                [
+                    'type'         => 'int',
+                    'label'        => 'Disallow Ask Question',
+                    'input'        => 'select',
+                    'source'       => Boolean::class,
+                    'required'     => false,
+                    'visible'      => false,
+                    'user_defined' => true,
+                    'position'     => 999,
+                    'system'       => 0,
+                    'default'      => 0,
+                    'used_in_forms' => ['adminhtml_customer', 'customer_account_edit'],
+                ]
+            );
+            $attribute = $this->customerAttribute->loadByCode(Customer::ENTITY, $code);
+            $attribute->addData([
+                'attribute_set_id' => 1,
+                'attribute_group_id' => 1,
+                'used_in_forms' => ['adminhtml_customer', 'customer_account_edit'],
+            ])->save();
+
+
+            // add Group
+            /** @var Group $group */
+            $group = $this->groupFactory->create();
+            $group->setCode('Forbidden for Ask Question')->save();
+
+
+            // add section Corpus
+            $code = 'corpus';
+            /** @var EavSetup $eavSetup */
+            $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+            $eavSetup->addAttribute(
+                'customer_address',
+                $code,
+                [
+                    'label'        => 'Corpus',
+                    'input'        => 'text',
+                    'required'     => false,
+                    'visible'      => true,
+                    'position'     => 999,
+                    'default'      => '-',
+                    'system'       => 0
+                ]
+            );
+            $attribute = $this->customerAttribute->loadByCode('customer_address', $code);
+            $attribute->addData([
+                'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address'],
+            ])->save();
+        }
+        $setup->endSetup();
+
     }
 
     /**
      * @param ModuleDataSetupInterface $setup
      * @param $fileName
-     * @throws \Exception
+     * @throws Exception
      */
     public function updateDataForRequestSample(ModuleDataSetupInterface $setup, $fileName)
     {
