@@ -63,6 +63,5 @@ class ChangeStatusOnCron
                     ->save();
             }
         }
-
     }
 }
