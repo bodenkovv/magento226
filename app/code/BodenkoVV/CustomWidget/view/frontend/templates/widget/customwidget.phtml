@@ -1,0 +1,8 @@
+<?php /* @var $block \Magento\Cms\Block\Widget\Block */?>
+<div class="geekhub-custom-widget">
+    <?php if($block->getWidgetButtonTitle()): ?>
+            <?= $block->getWidgetBlock(); ?>
+            <?= /* @noEscape */ $block->getPageContent() ?>
+            <a href='<?php echo $block->escapeUrl($block->getUrl('geekhub-cms'))?>'><button><?php echo $block->escapeHtml(__($block->getWidgetButtonTitle()))?></button>
+        <?php endif;?>
+</div>
