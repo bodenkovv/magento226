@@ -21,10 +21,7 @@ class InstallData implements InstallDataInterface
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        /**
-         * Install messages
-         */
-
+        /** Install messages */
             $data = [
                 [
                     'question' => 'Доброго дня, скажіть будь ласка чи варто очікувати в продажі дану модель у жовтому відтінку? Дякую.',

@@ -69,6 +69,7 @@
                 <input type="hidden" name="sku" id="sku" value="<?= $block->getProduct()->getSku()?>"/>
                 <input type="hidden" name="product_url" id="product_url" value="<?= $block->getProduct()->getProductUrl()?>"/>
                 <input type="hidden" name="product_name" id="product_name" value="<?= $block->getProduct()->getName()?>"/>
+                <input type="hidden" name="product_id" id="product_id" value="<?= $block->getProduct()->getEntityId()?>"/>
                 <input type="hidden" name="store_id" id="store_id" value="<?= $block->getStoreId()?>"/>
                 <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
                     <span><?= $block->escapeHtml(__('Submit')) ?></span>

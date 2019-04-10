@@ -70,6 +70,7 @@ class Delete extends \Magento\Backend\App\Action
             try {
                 $model = $this->questionModel;
                 $model->load($id);
+                
                 $title = $model->getTitle();
                 $model->delete();
                 $this->messageManager->addSuccessMessage(__('The page has been deleted.'));
@@ -77,7 +78,6 @@ class Delete extends \Magento\Backend\App\Action
                     'title' => $title,
                     'status' => 'success'
                 ]);
-                
                 return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {
                 $this->_eventManager->dispatch(

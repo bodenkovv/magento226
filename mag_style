@@ -6,3 +6,17 @@ rm -rf pub/static/deployed_version.txt pub/static/frontend/ var/view_preprocesse
 
 #echo "bin/magento setup:static-content:deploy --area frontend --theme vector/theme2 -f"
 #bin/magento setup:static-content:deploy --area frontend --theme vector/theme2 -f
+
+exit
+
+
+php bin/magento cache:clean
+php bin/magento cache:flush
+php bin/magento setup:upgrade
+rm -rf pub/static/frontend/* pub/static/adminhtml/* var/cache/ var/generation/ var/page_cache/ var/view_preprocessed/ var/composer_home generated/
+php -dmemory_limit=6G bin/magento setup:static-content:deploy -f
+chmod -Rf 777 pub/ var/
+php bin/magento cache:clean
+
+
+

@@ -5,9 +5,10 @@
 ?>
     <div class="homework11-askquestion-block">
         <?php
-        echo 'Store ID = ['.$block->_helperData->_storeManager->getStore()->getId().']<hr>';
+        echo 'Store ID = ['.$block->helperData->_storeManager->getStore()->getId().']<hr>';
 
-        foreach ($block->getQuestionByProductSku($block->_helperData->getCurrentProduct()->getSku()) as $Items):
+
+        foreach ($block->getQuestionByProductSku() as $Items):
          ?>
             <h2><?= $block->escapeHtml(__($Items->getQuestion())); ?></h2>
             <sup><b title="<?= $block->escapeHtml(__($Items->getPhone())).' & '.$block->escapeHtml(__($Items->getEmail()));?>"><?= $block->escapeHtml(__($Items->getName())).'</b> - '.$block->escapeHtml(__($Items->getQuestionDate())); ?></sup>

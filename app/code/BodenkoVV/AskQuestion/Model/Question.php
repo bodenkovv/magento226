@@ -2,8 +2,10 @@
 
 namespace BodenkoVV\AskQuestion\Model;
 
+use BodenkoVV\AskQuestion\Helper\Data;
 use BodenkoVV\AskQuestion\Model\ResourceModel\Question as QuestionResource;
 use Magento\Framework\Model\AbstractModel;
+use Magento\Catalog\Model\Product;
 
 /**
  * Class Question
@@ -32,6 +34,23 @@ class Question extends AbstractModel
 {
     const STATUS_PENDING = 'pending';
     const STATUS_PROCESSED = 'processed';
+    const STATUS_ANSWERED = 'answered';
+
+    /**
+     * Prefix of model events names
+     *
+     * @var string
+     */
+    protected $_eventPrefix = 'askquestion_question_model_load_before';
+
+    /**
+     * Parameter name in event
+     *
+     * In observe method you can use $observer->getEvent()->getObject() in this case
+     *
+     * @var string
+     */
+    protected $_eventObject = 'object';
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
@@ -39,11 +58,14 @@ class Question extends AbstractModel
     private $storeManager;
 
     /**
+     * Question constructor.
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
-     * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
+     * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
+     * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
+     * @param QuestionResource $resourceModelQuestion
+     * @param Magento\Catalog\Model\Product $product
      * @param array $data
      */
     public function __construct(
@@ -52,6 +74,7 @@ class Question extends AbstractModel
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+
         array $data = []
     ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
@@ -67,7 +90,7 @@ class Question extends AbstractModel
     }
 
     /**
-     * @return \Magento\Framework\Model\AbstractModel
+     * @return AbstractModel
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function beforeSave()
