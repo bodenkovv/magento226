@@ -7,6 +7,7 @@ return [
         'BodenkoVV_AskQuestion' => 1,
         'Magento_Theme' => 1,
         'Magento_Config' => 1,
+        'BodenkoVV_HomeWork11' => 1,
         'Magento_Backend' => 1,
         'Magento_Customer' => 1,
         'Magento_AdminNotification' => 1,
