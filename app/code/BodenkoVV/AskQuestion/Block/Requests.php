@@ -28,13 +28,11 @@ class Requests extends \Magento\Framework\View\Element\Template
      * @param array $data
      */
     public function __construct(
-//        CollectionFactory $collectionFactory,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         Context $context,
         array $data = []
     ) {
         parent::__construct($context, $data);
-//        $this->collectionFactory = $collectionFactory;
         $this->productCollectionFactory = $productCollectionFactory;
     }
 

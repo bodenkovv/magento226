@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-//namespace part2_Class;
 namespace BodenkoVV\HomeWork11\Model;
 
 use ReflectionClass;

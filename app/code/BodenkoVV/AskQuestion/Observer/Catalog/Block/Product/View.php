@@ -1,5 +1,5 @@
 <?php
-namespace PalashAs\AskQuestion\Observer\Catalog\Block\Product;
+namespace BodenkoVV\AskQuestion\Observer\Catalog\Block\Product;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Registry;

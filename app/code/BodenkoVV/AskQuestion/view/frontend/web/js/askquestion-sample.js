@@ -29,7 +29,6 @@ define([
 
                 return;
             }
-            // debugger;
             if (!$.mage.cookies.get(this.options.cookieName)) {
                 this.ajaxSubmit();
             } else {
@@ -47,7 +46,6 @@ define([
             var formData;
 
             formData = new FormData($(this.element).get(0));
-// debugger;
             formData.append('form_key', $.mage.cookies.get('form_key'));
             formData.append('isAjax', 1);
 

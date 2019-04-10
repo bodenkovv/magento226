@@ -38,7 +38,6 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
-//        $name,
         $primaryFieldName,
         $requestFieldName,
         Reporting $reporting,
@@ -50,7 +49,6 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
         array $additionalFilterPool = []
     ) {
         parent::__construct(
-//            $name,
             $primaryFieldName,
             $requestFieldName,
             $reporting,

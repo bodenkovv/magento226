@@ -42,8 +42,9 @@ class ChangeStatusOnCron
 
         if ($this->helperData->getGeneralConfig('bodenkovv_askquestion_enable_auto_confirming')) {
 
-            $this->cronDayAlert = $this->helperData->getGeneralConfig('bodenkovv_askquestion_frequency_auto');
-            $this->cronStatusAlert = $this->helperData->getGeneralConfig('bodenkovv_askquestion_status_auto');
+
+            $this->cronDayAlert = $this->helperData->getCronDayAlert();
+            $this->cronStatusAlert = $this->helperData->getCronStatusAlert();
 
             $this->cronDayAlert = (($this->cronDayAlert)&&is_numeric($this->cronDayAlert)&&($this->cronDayAlert>0)) ? $this->cronDayAlert : 3;
             $this->cronStatusAlert = (($this->cronStatusAlert)&&($this->cronDayAlert<>Question::STATUS_ANSWERED)) ? $this->cronDayAlert : Question::STATUS_PENDING;
