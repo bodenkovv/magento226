@@ -30,11 +30,17 @@ class TabAskQuestion extends Template
     /** @var \Magento\Framework\View\Result\PageFactory  */
     public $resultPageFactory;
 
+    public $askQuestionEnable;
+
+    public $askQuestionText;
+
+    public $askQuestionTitle;
+
     public function __construct(
+        Context $context,
         CollectionFactory $collectionFactory,
         QuestionFactory $questionFactory,
         Data $helperData,
-        Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         array $data = []
@@ -45,6 +51,30 @@ class TabAskQuestion extends Template
         $this->questionFactory = $questionFactory;
         $this->_registry = $registry;
         $this->resultPageFactory = $resultPageFactory;
+    }
+
+    /**
+     * @return \Magento\Framework\View\Result\Page
+     */
+    public function _toHtml()
+    {
+        $this->getQuestionConfig();
+        parent::_toHtml();
+    }
+
+    public function getQuestionConfig()
+    {
+        $resultPage = $this->resultPageFactory->create();
+        if ($this->helperData->getGeneralConfig('bodenkovv_askquestion_enable'))
+        {
+            $this->askQuestionEnable = $this->helperData->getGeneralConfig('bodenkovv_askquestion_enable');
+            $this->askQuestionTitle = $this->helperData->getGeneralConfig('bodenkovv_askquestion_title');
+            $this->askQuestionText = $this->helperData->getGeneralConfig('bodenkovv_askquestion_description');
+
+        } else
+        {
+            $resultPage->getConfig()->getTitle()->prepend((__('Module AskQuestion don`t active')));
+        }
     }
 
     /**
