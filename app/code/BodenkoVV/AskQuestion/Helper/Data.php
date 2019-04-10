@@ -117,4 +117,22 @@ class Data extends AbstractHelper
     {
         return $this->getConfigValue(self::XML_PATH_MODULE_MENU .'general/'. $code, $storeId);
     }
+
+    /**
+     * @param null $storeId
+     * @return mixed
+     */
+    public function getCronDayAlert($storeId = null)
+    {
+        return $this->getConfigValue(self::XML_PATH_MODULE_MENU .'cron/'. 'bodenkovv_askquestion_frequency_auto', $storeId);
+    }
+
+    /**
+     * @param null $storeId
+     * @return mixed
+     */
+    public function getCronStatusAlert($storeId = null)
+    {
+        return $this->getConfigValue(self::XML_PATH_MODULE_MENU .'cron/'. 'bodenkovv_askquestion_status_auto', $storeId);
+    }
 }
