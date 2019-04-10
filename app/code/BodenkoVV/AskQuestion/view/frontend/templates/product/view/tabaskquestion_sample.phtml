@@ -3,6 +3,8 @@
  * @var $block BodenkoVV\AskQuestion\Block\TabAskQuestion
  */
 ?>
+<?php if ($block->askQuestionEnable) {
+?>
     <div class="homework11-askquestion-block">
         <?php
         echo 'Store ID = ['.$block->helperData->_storeManager->getStore()->getId().']<hr>';
@@ -18,3 +20,7 @@
         endforeach;
         ?>
     </div>
+<?php
+}
+?>
+

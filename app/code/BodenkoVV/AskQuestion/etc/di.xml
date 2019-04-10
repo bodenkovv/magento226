@@ -22,4 +22,14 @@
             <argument name="resourceModel" xsi:type="string">BodenkoVV\AskQuestion\Model\ResourceModel\Question</argument>
         </arguments>
     </virtualType>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="update_product_qty" xsi:type="object">
+                    BodenkoVV\AskQuestion\Console\Command\UpdateProductQty
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>
